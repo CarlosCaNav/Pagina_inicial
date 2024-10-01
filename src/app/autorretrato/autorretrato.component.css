@@ -1,0 +1,11 @@
+.autorretrato{
+    position: absolute;
+    height: 500px;
+    width: 500px;
+    border: 2px solid black;
+}
+
+.partes{
+    position: absolute;
+    transition: 0.3s;
+    }

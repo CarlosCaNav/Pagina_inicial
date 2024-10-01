@@ -1,13 +1,73 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { AutorretratoComponent } from "./autorretrato/autorretrato.component";
+import { NgStyle } from '@angular/common';
+import { PosicionService } from './posicion.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, AutorretratoComponent, NgStyle],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+
+  constructor(public posicionService: PosicionService) { }
+
   title = 'Pagina_Inicial_2.1';
+
+
+  @HostListener('document:mousemove', ['$event'])
+  raton(event: MouseEvent) {
+
+    this.posicionService.autorretrato.escala = window.innerHeight / 1000;
+
+    this.posicionService.puntero.x = event.clientX / window.innerWidth;
+    this.posicionService.puntero.y = event.clientY / window.innerHeight;
+
+    this.posicionService.cejas.xd = this.posicionService.puntero.x * 4;
+    this.posicionService.cejas.yd = this.posicionService.puntero.y * 2;
+    this.posicionService.ojos.x = this.posicionService.puntero.x * 2;
+    this.posicionService.pupila.xd = this.posicionService.puntero.x * 20;
+    this.posicionService.pupila.yi = this.posicionService.puntero.y * 5;
+    this.posicionService.pupila.yd = this.posicionService.puntero.y * 5;
+    this.posicionService.nariz.x = this.posicionService.puntero.x * 10;
+    this.posicionService.barba.x = this.posicionService.puntero.x * 5;
+    this.posicionService.boca.x = this.posicionService.puntero.x * 4;
+    this.posicionService.oreja.x = 1 - this.posicionService.puntero.x * 4;
+
+    if (this.posicionService.puntero.x < this.posicionService.autorretrato.x) {
+
+      const posicionRelativa = (this.posicionService.autorretrato.x * this.posicionService.puntero.x) /
+        (this.posicionService.autorretrato.x * this.posicionService.autorretrato.x);
+
+
+      this.posicionService.pupila.xi = posicionRelativa * 20;
+    }
+
+    if (this.posicionService.puntero.x >= 0.55 && this.posicionService.puntero.x <= 0.6 && this.posicionService.autorretrato.x == 0.6) {
+      this.posicionService.autorretrato.x = 0.8
+      this.posicionService.pelo.x = -20;
+      setTimeout(() => {
+        this.posicionService.pelo.x = 20
+      }, 300)
+      setTimeout(() => {
+        this.posicionService.pelo.x = 0
+      }, 600)
+    }
+    else if (this.posicionService.puntero.x >= 0.75 && this.posicionService.puntero.x <= 0.9 && this.posicionService.autorretrato.x == 0.8) {
+      this.posicionService.autorretrato.x = 0.6
+
+
+      this.posicionService.pelo.x = 20;
+      setTimeout(() => {
+        this.posicionService.pelo.x = -20
+      }, 300)
+      setTimeout(() => {
+        this.posicionService.pelo.x = 0
+      }, 600)
+    }
+
+  }
 }
