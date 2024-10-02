@@ -7,10 +7,10 @@ export class PosicionService {
 
   constructor() {  }
 
-  //posiciones
-  puntero = { x: 0, y: 0 };  //expresado en porcentaje de pantalla
+  //posiciones expresado en porcentaje de pantalla
+  puntero = { x: 0, y: 0 }; 
 
-  autorretrato = { x: 0.6, y: 0.5, escala: 0.4};
+  autorretrato = { x: 0.6, y: 0.3, escala: 0.0, sAnimacion: 1}; 
 
   pelo = { x: 0, y: 0 };
   cejas = { xd: 1, yd: 1, xi: 1,  yi: 1, rx:0, ry:0 };
@@ -20,4 +20,8 @@ export class PosicionService {
   nariz = { x: 0, y: 0 };
   boca = { x: 0, y: 0 };
   barba = { x: 0, y: 0 };
+
+  presentacion = { x: 0.1, y: 0.3, escala: 0.0};
+
+  animacionActual: string = "aparecer" //aparecer, esquiva, desplazamiento...
 }

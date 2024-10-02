@@ -1,8 +1,14 @@
-<div class="todo"><p class="presentacion">¡Hola! me llamo Carlos Carretero. <br> Soy un desarrollador web autodidacta.</p>
+<div class="todo">
+    
+    <p class="presentacion" [ngStyle]="{'margin': (posicionService.presentacion.y * 100) +'vh ' +
+      (posicionService.presentacion.x * 100) +'vw', 'scale': this.posicionService.presentacion.escala}">
+        ¡Hola! me llamo Carlos Carretero. <br> Soy un desarrollador web autodidacta. <br>
+    A continuación le dejo diferentes proyectos con Apis, Firebase, etc</p>
 
 <div class="autorretrato" [ngStyle]="{'scale': this.posicionService.autorretrato.escala}">
     <div
-        [ngStyle]="{'margin': this.posicionService.autorretrato.y * 100 +'vh ' + this.posicionService.autorretrato.x * 100 +'vw', 'transition': 0.5 + 's'}">
+        [ngStyle]="{'margin': (posicionService.autorretrato.y * 100) + 'vh ' + (this.posicionService.autorretrato.x * 100) +'vw',
+         'transition': posicionService.autorretrato.sAnimacion + 's'}">
         <app-autorretrato />
     </div>
 </div>
