@@ -1,10 +1,10 @@
-.todo{
+.todo {
     height: 100vh;
     width: 100vw;
-    background-color:rgb(201, 244, 255);
+    background-color: rgb(201, 244, 255);
 }
 
-.presentacion{
+.presentacion {
     position: absolute;
     z-index: 10;
     /* 
@@ -16,10 +16,17 @@
     transition: 2s;
 }
 
-.autorretrato{
+.autorretrato {
     /* estos márgenes los aplico para que la imagen se mueva desde el centro y no desde la esquina superior izquierda */
-    position: absolute;/* 
+    position: absolute;
+    /* 
     margin-top: -250px; 
     margin-left: -250px; */
+    transition: 1s;
+}
+
+.burbujas {
+    position: absolute;
+    z-index: 10;
     transition: 1s;
 }

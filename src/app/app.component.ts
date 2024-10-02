@@ -21,9 +21,12 @@ export class AppComponent {
     this.posicionService.presentacion.x =0.6;
     this.posicionService.presentacion.y =0.6;
     this.posicionService.presentacion.escala = 0;
+    this.posicionService.ejemploFalso.x =0.4;
+    this.posicionService.ejemploFalso.y =1.2;
 
     const duracionAutorretrato = 100;
     const duracionPresentacion = 3000;   
+    const ejemplofalso = 3000; 
 
     setTimeout(() => {
       this.posicionService.autorretrato.sAnimacion = 3;
@@ -38,6 +41,9 @@ export class AppComponent {
       this.posicionService.presentacion.escala = 1;
       this.posicionService.animacionActual = "esquiva"
     }, duracionAutorretrato + duracionPresentacion)
+    setTimeout(() => {
+      this.posicionService.ejemploFalso.y =0.8;
+    }, duracionAutorretrato + duracionPresentacion + ejemplofalso)
   }
 
   title = 'Pagina_Inicial_2.1';
@@ -93,7 +99,7 @@ export class AppComponent {
           this.posicionService.pelo.x = 0
         }, 600)
       }
-      else if (this.posicionService.puntero.x >= 0.75 && this.posicionService.puntero.x <= 0.9 && this.posicionService.autorretrato.x == 0.8) {
+      else if (((this.posicionService.puntero.x >= 0.75 && this.posicionService.puntero.x <= 0.9) || this.posicionService.puntero.x <= 0.4) && this.posicionService.autorretrato.x == 0.8 ) {
         this.posicionService.autorretrato.x = 0.6
 
 

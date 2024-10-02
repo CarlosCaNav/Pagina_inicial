@@ -21,7 +21,11 @@ export class PosicionService {
   boca = { x: 0, y: 0 };
   barba = { x: 0, y: 0 };
 
-  presentacion = { x: 0.1, y: 0.3, escala: 0.0};
+  ejemploFalso = { x: 0, y: 0 };
+  
+  presentacion = { x: 0.2, y: 0.3, escala: 0.0};
 
   animacionActual: string = "aparecer" //aparecer, esquiva, desplazamiento...
+
+
 }

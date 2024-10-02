@@ -1,15 +1,19 @@
 <div class="todo">
-    
+
     <p class="presentacion" [ngStyle]="{'margin': (posicionService.presentacion.y * 100) +'vh ' +
       (posicionService.presentacion.x * 100) +'vw', 'scale': this.posicionService.presentacion.escala}">
         ¡Hola! me llamo Carlos Carretero. <br> Soy un desarrollador web autodidacta. <br>
-    A continuación le dejo diferentes proyectos con Apis, Firebase, etc</p>
+        A continuación le dejo diferentes proyectos con APIs, Firebase, etc.</p>
 
-<div class="autorretrato" [ngStyle]="{'scale': this.posicionService.autorretrato.escala}">
-    <div
-        [ngStyle]="{'margin': (posicionService.autorretrato.y * 100) + 'vh ' + (this.posicionService.autorretrato.x * 100) +'vw',
+    <div class="autorretrato" [ngStyle]="{'scale': this.posicionService.autorretrato.escala}">
+        <div [ngStyle]="{'margin': (posicionService.autorretrato.y * 100) + 'vh ' + (this.posicionService.autorretrato.x * 100) +'vw',
          'transition': posicionService.autorretrato.sAnimacion + 's'}">
-        <app-autorretrato />
+            <app-autorretrato />
+        </div>
     </div>
-</div>
+
+    <div class="burbujas" [ngStyle]="{'margin': (posicionService.ejemploFalso.y * 100) +'vh ' + (posicionService.ejemploFalso.x * 100) +'vw' }">
+        <img src="/partes/ejemplofake.png">
+    </div>
+
 </div>
