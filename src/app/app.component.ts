@@ -18,15 +18,13 @@ export class AppComponent {
     this.posicionService.autorretrato.x = 1.5;
     this.posicionService.autorretrato.y = -0.5;
     this.posicionService.autorretrato.escala = 0;
-    this.posicionService.presentacion.x =0.6;
-    this.posicionService.presentacion.y =0.6;
+    this.posicionService.presentacion.x = 0.6;
+    this.posicionService.presentacion.y = 0.6;
     this.posicionService.presentacion.escala = 0;
-    this.posicionService.ejemploFalso.x =0.4;
-    this.posicionService.ejemploFalso.y =1.2;
 
     const duracionAutorretrato = 100;
-    const duracionPresentacion = 3000;   
-    const ejemplofalso = 3000; 
+    const duracionPresentacion = 3000;
+    const ejemplofalso = 2000;
 
     setTimeout(() => {
       this.posicionService.autorretrato.sAnimacion = 3;
@@ -36,18 +34,44 @@ export class AppComponent {
     }, duracionAutorretrato)
     setTimeout(() => {
       this.posicionService.autorretrato.sAnimacion = 0.5;
-      this.posicionService.presentacion.x =0.2;
-      this.posicionService.presentacion.y =0.3;
+      this.posicionService.presentacion.x = 0.2;
+      this.posicionService.presentacion.y = 0.3;
       this.posicionService.presentacion.escala = 1;
       this.posicionService.animacionActual = "esquiva"
     }, duracionAutorretrato + duracionPresentacion)
     setTimeout(() => {
-      this.posicionService.ejemploFalso.y =0.8;
+      this.posicionService.escapeRoom.posicionY = 80;
     }, duracionAutorretrato + duracionPresentacion + ejemplofalso)
+    setTimeout(() => {
+      this.posicionService.escapeRoom.sTransicion = 0.2;
+    }, duracionAutorretrato + duracionPresentacion + ejemplofalso + ejemplofalso)
   }
 
   title = 'Pagina_Inicial_2.1';
 
+
+  burbuja() {
+    this.posicionService.presentacion.escala = 0;
+    this.posicionService.escapeRoom.sTransicion = 1;
+    this.posicionService.escapeRoom.posicionX = 13;
+    this.posicionService.escapeRoom.posicionY = 30;
+    this.posicionService.escapeRoom.tamanioX = 40;
+    this.posicionService.escapeRoom.tamanioY = 30;
+    this.posicionService.escapeRoom.bordeRadio = 5;
+
+    setTimeout(() => {
+      this.posicionService.autorretrato.sAnimacion = 1;
+      this.posicionService.autorretrato.x = 0.65;
+      this.posicionService.tEscapeRoom.x = 0.35;
+      this.posicionService.tEscapeRoom.y = 0.35;
+      this.posicionService.tEscapeRoom.escala = 1;
+      this.posicionService.animacionActual = "esquiva"
+    }, 1000)
+/* 
+    burbuja(proyecto: string) {
+      this.posicionService.[proyecto].sTransicion = 0.2; */
+    
+  }
 
   @HostListener('document:mousemove', ['$event'])
   raton(event: MouseEvent) {
@@ -75,19 +99,20 @@ export class AppComponent {
       const posicionRelativa = (this.posicionService.autorretrato.x * this.posicionService.puntero.x) /
         (this.posicionService.autorretrato.x * this.posicionService.autorretrato.x);
 
-
       this.posicionService.pupila.xd = posicionRelativa * 18;
+      this.posicionService.pupila.xi = 0; // si se sale el puntero de la pantalla y luego vuelve por el lado opuesto, no volvía a su lugar
     }
     else {
-      const posicionRelativa = (this.posicionService.puntero.x - this.posicionService.autorretrato.x) / (1 - this.posicionService.autorretrato.x) 
+      const posicionRelativa = (this.posicionService.puntero.x - this.posicionService.autorretrato.x) / (1 - this.posicionService.autorretrato.x)
 
 
       this.posicionService.pupila.xi = posicionRelativa * 20;
+      this.posicionService.pupila.xd = 18; // si se sale el puntero de la pantalla y luego vuelve por el lado opuesto, no volvía a su lugar
 
     }
 
 
-    if (this.posicionService.animacionActual == "esquiva") {
+    if (this.posicionService.animacionActual == "ahoraNoQuieroQueFuncioneEsto") /* esquiva */ {
 
       if (this.posicionService.puntero.x >= 0.55 && this.posicionService.puntero.x <= 0.6 && this.posicionService.autorretrato.x == 0.6) {
         this.posicionService.autorretrato.x = 0.8;
@@ -99,7 +124,7 @@ export class AppComponent {
           this.posicionService.pelo.x = 0
         }, 600)
       }
-      else if (((this.posicionService.puntero.x >= 0.75 && this.posicionService.puntero.x <= 0.9) || this.posicionService.puntero.x <= 0.4) && this.posicionService.autorretrato.x == 0.8 ) {
+      else if (((this.posicionService.puntero.x >= 0.75 && this.posicionService.puntero.x <= 0.9) || this.posicionService.puntero.x <= 0.4) && this.posicionService.autorretrato.x == 0.8) {
         this.posicionService.autorretrato.x = 0.6
 
 

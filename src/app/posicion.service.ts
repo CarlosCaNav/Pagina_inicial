@@ -24,8 +24,11 @@ export class PosicionService {
   ejemploFalso = { x: 0, y: 0 };
   
   presentacion = { x: 0.2, y: 0.3, escala: 0.0};
+  tEscapeRoom = { x: 0.6, y: 0.6, escala: 0.0};
 
-  animacionActual: string = "aparecer" //aparecer, esquiva, desplazamiento...
+  animacionActual: string = "aparecer"; //aparecer, esquiva, desplazamiento...
+
+  escapeRoom = { tamanioX: 10, tamanioY: 10, posicionX: 50, posicionY: 120, bordeRadio: 100, sTransicion: 2, };
 
 
 }

@@ -2,7 +2,7 @@
 
     <p class="presentacion" [ngStyle]="{'margin': (posicionService.presentacion.y * 100) +'vh ' +
       (posicionService.presentacion.x * 100) +'vw', 'scale': this.posicionService.presentacion.escala}">
-        ¡Hola! me llamo Carlos Carretero. <br> Soy un desarrollador web autodidacta. <br>
+        ¡Hola! me llamo Carlos Carretero. <br> Soy un desarrollador web autodidacta o algo así. <br>
         A continuación le dejo diferentes proyectos con APIs, Firebase, etc.</p>
 
     <div class="autorretrato" [ngStyle]="{'scale': this.posicionService.autorretrato.escala}">
@@ -12,8 +12,20 @@
         </div>
     </div>
 
-    <div class="burbujas" [ngStyle]="{'margin': (posicionService.ejemploFalso.y * 100) +'vh ' + (posicionService.ejemploFalso.x * 100) +'vw' }">
-        <img src="/partes/ejemplofake.png">
+    <div class="burbujas" (click)="burbuja()" [ngStyle]="{
+        'margin-top': posicionService.escapeRoom.posicionY +'vh',
+        'margin-left': posicionService.escapeRoom.posicionX + 'vw',
+        'height': posicionService.escapeRoom.tamanioY + 'vh',
+        'width': posicionService.escapeRoom.tamanioX + 'vh',
+        'border-radius': posicionService.escapeRoom.bordeRadio + '%',
+        'transition': posicionService.escapeRoom.sTransicion + 's',
+        }">
     </div>
+    <p class="presentacion" [ngStyle]="{'margin': (posicionService.tEscapeRoom.y * 100) +'vh ' +
+      (posicionService.tEscapeRoom.x * 100) +'vw', 'scale': this.posicionService.tEscapeRoom.escala}">
+        Proyecto toh wapo de una escapeRoom <br>
+        Dele hermano! lo vas a Flipar! <br>
+    ¡spoiler! por mucho que clikes no va a furular de momento</p>
+
 
 </div>
