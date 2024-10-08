@@ -5,6 +5,9 @@
 /tmp
 /out-tsc
 /bazel-out
+/Pagina_Inicial_2.0
+/autorretrato
+/.directory
 
 # Node
 /node_modules

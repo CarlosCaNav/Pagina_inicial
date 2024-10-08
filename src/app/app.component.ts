@@ -1,19 +1,33 @@
 import { Component, HostListener } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { AutorretratoComponent } from "./autorretrato/autorretrato.component";
-import { NgStyle } from '@angular/common';
+import { NgFor, NgStyle } from '@angular/common';
 import { PosicionService } from './posicion.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, AutorretratoComponent, NgStyle],
+  imports: [RouterOutlet, AutorretratoComponent, NgStyle, NgFor],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
 
   constructor(public posicionService: PosicionService) {
+
+    for (let i = 0; i <= this.posicionService.nombreProyectos.length - 1; ++i) {
+      this.posicionService.proyectos.push({
+        id: i,
+        nombre: posicionService.nombreProyectos[i],
+        tamanioX: 10,
+        tamanioY: 10,
+        posicionX: 50,
+        posicionY: 120,
+        bordeRadio: 100,
+        sTransicion: 1,
+        url: posicionService.urlImagenes[i],
+      })
+    }
 
     this.posicionService.autorretrato.x = 1.5;
     this.posicionService.autorretrato.y = -0.5;
@@ -23,8 +37,8 @@ export class AppComponent {
     this.posicionService.presentacion.escala = 0;
 
     const duracionAutorretrato = 100;
-    const duracionPresentacion = 3000;
-    const ejemplofalso = 2000;
+    const duracionPresentacion = 2000;
+    const burbujas = 2000;
 
     setTimeout(() => {
       this.posicionService.autorretrato.sAnimacion = 3;
@@ -37,40 +51,79 @@ export class AppComponent {
       this.posicionService.presentacion.x = 0.2;
       this.posicionService.presentacion.y = 0.3;
       this.posicionService.presentacion.escala = 1;
-      this.posicionService.animacionActual = "esquiva"
+      this.posicionService.animacionActual = "esquiva";
     }, duracionAutorretrato + duracionPresentacion)
+
     setTimeout(() => {
-      this.posicionService.escapeRoom.posicionY = 80;
-    }, duracionAutorretrato + duracionPresentacion + ejemplofalso)
+    this.colocarBurbujas(false);
+    }, duracionAutorretrato + duracionPresentacion + burbujas)
+
+
     setTimeout(() => {
-      this.posicionService.escapeRoom.sTransicion = 0.2;
-    }, duracionAutorretrato + duracionPresentacion + ejemplofalso + ejemplofalso)
+      for (let i = 0; i <= this.posicionService.nombreProyectos.length - 1; ++i) {
+
+        this.posicionService.proyectos[i].sTransicion = 0.2;
+      }
+    }, duracionAutorretrato + duracionPresentacion + burbujas + burbujas)
   }
 
   title = 'Pagina_Inicial_2.1';
 
 
-  burbuja() {
-    this.posicionService.presentacion.escala = 0;
-    this.posicionService.escapeRoom.sTransicion = 1;
-    this.posicionService.escapeRoom.posicionX = 13;
-    this.posicionService.escapeRoom.posicionY = 30;
-    this.posicionService.escapeRoom.tamanioX = 40;
-    this.posicionService.escapeRoom.tamanioY = 30;
-    this.posicionService.escapeRoom.bordeRadio = 5;
+  colocarBurbujas(colocadas : boolean){
+    for (let i = 0; i <= this.posicionService.nombreProyectos.length - 1; ++i) {
 
+      const espaciado = 10;
+      const inicio = 50 - (this.posicionService.nombreProyectos.length - 1) / 2 * espaciado;
+      const duracionAnimacion = 1;
+      const tiempoEntreBurbujas = duracionAnimacion / (this.posicionService.nombreProyectos.length - 1);
+
+      this.posicionService.proyectos[i].posicionX = inicio + espaciado * i;
+      this.posicionService.proyectos[i].posicionY = 80;
+      this.posicionService.proyectos[i].tamanioX = 10;
+      this.posicionService.proyectos[i].tamanioY = 10;
+      this.posicionService.proyectos[i].bordeRadio = 100;
+
+      if(colocadas){this.posicionService.proyectos[i].sTransicion = 0.5;}
+      else{this.posicionService.proyectos[i].sTransicion = i * tiempoEntreBurbujas + 3;}
+
+    }
+  }
+  
+  burbuja(id: number) {
+
+    this.posicionService.presentacion.escala = 0;
+
+    this.colocarBurbujas(true);
+    /* 
+        this.posicionService.escapeRoom.sTransicion = 1;
+        this.posicionService.escapeRoom.posicionX = 13;
+        this.posicionService.escapeRoom.posicionY = 30;
+        this.posicionService.escapeRoom.tamanioX = 40;
+        this.posicionService.escapeRoom.tamanioY = 30;
+        this.posicionService.escapeRoom.bordeRadio = 5;
+     */
     setTimeout(() => {
       this.posicionService.autorretrato.sAnimacion = 1;
       this.posicionService.autorretrato.x = 0.65;
-      this.posicionService.tEscapeRoom.x = 0.35;
-      this.posicionService.tEscapeRoom.y = 0.35;
-      this.posicionService.tEscapeRoom.escala = 1;
-      this.posicionService.animacionActual = "esquiva"
-    }, 1000)
-/* 
-    burbuja(proyecto: string) {
-      this.posicionService.[proyecto].sTransicion = 0.2; */
+
+      this.posicionService.proyectos[id].posicionX = 12;
+      this.posicionService.proyectos[id].posicionY = 25;
+      this.posicionService.proyectos[id].tamanioX = 45;
+      this.posicionService.proyectos[id].tamanioY = 35;
+      this.posicionService.proyectos[id].bordeRadio = 5;
+
+
+    this.posicionService.tEscapeRoom.x = 0.35;
+    this.posicionService.tEscapeRoom.y = 0.35;
+    this.posicionService.tEscapeRoom.escala = 1;
     
+      this.posicionService.animacionActual = "esquiva"
+    }, 500)
+    /* 
+        burbuja(proyecto: string) {
+          this.posicionService.[proyecto].sTransicion = 0.2; */
+
   }
 
   @HostListener('document:mousemove', ['$event'])

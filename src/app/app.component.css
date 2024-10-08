@@ -31,9 +31,10 @@
     border-color: 2px solid red;
     background-size: 100% 100%;
     box-shadow: 0.5vh 0.5vh 1vh black, inset  0.5vh 0.5vh 1vh white;
-    background-image: url('/proyectos/escapeRoom.jpg')
 }
+
 
 .burbujas:hover {
     box-shadow: 0vh 0vh 1vh 2vh rgb(255, 255, 255), inset  0.5vh 0.5vh 1vh white;
+    scale: 1.2;
 }

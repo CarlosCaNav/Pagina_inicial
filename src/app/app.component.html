@@ -12,20 +12,58 @@
         </div>
     </div>
 
-    <div class="burbujas" (click)="burbuja()" [ngStyle]="{
-        'margin-top': posicionService.escapeRoom.posicionY +'vh',
-        'margin-left': posicionService.escapeRoom.posicionX + 'vw',
-        'height': posicionService.escapeRoom.tamanioY + 'vh',
-        'width': posicionService.escapeRoom.tamanioX + 'vh',
-        'border-radius': posicionService.escapeRoom.bordeRadio + '%',
-        'transition': posicionService.escapeRoom.sTransicion + 's',
+    <div *ngFor="let proyecto of posicionService.proyectos">
+
+        <div class="burbujas" (click)="burbuja(proyecto.id)" [ngStyle]="{
+            'margin-top': proyecto.posicionY +'vh',
+            'margin-left': proyecto.posicionX + 'vw',
+            'height': proyecto.tamanioY + 'vh',
+            'width': proyecto.tamanioX + 'vh',
+            'border-radius': proyecto.bordeRadio + '%',
+            'transition': proyecto.sTransicion + 's',
+            'background-image': proyecto.url
+            }">
+
+        </div>
+
+    </div>
+
+    <!-- 
+    <div class="burbujas escaperoom" (click)="burbuja()" [ngStyle]="{
+            'margin-top': posicionService.escapeRoom.posicionY +'vh',
+            'margin-left': posicionService.escapeRoom.posicionX + 'vw',
+            'height': posicionService.escapeRoom.tamanioY + 'vh',
+            'width': posicionService.escapeRoom.tamanioX + 'vh',
+            'border-radius': posicionService.escapeRoom.bordeRadio + '%',
+            'transition': posicionService.escapeRoom.sTransicion + 's',
+            'background-image': posicionService.escapeRoom.url
+            }">
+    </div>
+
+    <div class="burbujas pentaculo" (click)="burbuja()" [ngStyle]="{
+        'margin-top': posicionService.pentaculo.posicionY +'vh',
+        'margin-left': posicionService.pentaculo.posicionX + 'vw',
+        'height': posicionService.pentaculo.tamanioY + 'vh',
+        'width': posicionService.pentaculo.tamanioX + 'vh',
+        'border-radius': posicionService.pentaculo.bordeRadio + '%',
+        'transition': posicionService.pentaculo.sTransicion + 's',
         }">
     </div>
+    <div class="burbujas rol" (click)="burbuja()" [ngStyle]="{
+        'margin-top': posicionService.rol.posicionY +'vh',
+        'margin-left': posicionService.rol.posicionX + 'vw',
+        'height': posicionService.rol.tamanioY + 'vh',
+        'width': posicionService.rol.tamanioX + 'vh',
+        'border-radius': posicionService.rol.bordeRadio + '%',
+        'transition': posicionService.rol.sTransicion + 's',
+        }">
+    </div>
+ -->
     <p class="presentacion" [ngStyle]="{'margin': (posicionService.tEscapeRoom.y * 100) +'vh ' +
       (posicionService.tEscapeRoom.x * 100) +'vw', 'scale': this.posicionService.tEscapeRoom.escala}">
         Proyecto toh wapo de una escapeRoom <br>
         Dele hermano! lo vas a Flipar! <br>
-    ¡spoiler! por mucho que clikes no va a furular de momento</p>
+        ¡spoiler! por mucho que clikes no va a furular de momento.</p>
 
 
 </div>
