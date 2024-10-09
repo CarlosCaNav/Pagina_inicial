@@ -61,23 +61,27 @@
     </div>
  -->
 
+<!-- 'scale': this.posicionService.posicionTextos.escala -->
 
- <p *ngIf="this.posicionService.proyectoActual == 0" class="presentacion" [ngStyle]="{'margin': (posicionService.posicionTextos.y * 100) +'vh ' +
- (posicionService.posicionTextos.x * 100) +'vw', 'scale': this.posicionService.posicionTextos.escala,'transition': posicionService.posicionTextos.velocidad + 's'}">
-   Proyecto toh wapo de una escapeRoom <br>
-   Dele hermano! lo vas a Flipar! <br>
-   ¡spoiler! por mucho que clikes no va a furular de momento.
-</p>
-<p *ngIf="this.posicionService.proyectoActual == 1" class="presentacion" [ngStyle]="{'margin': (posicionService.posicionTextos.y * 100) +'vh ' +
-  (posicionService.posicionTextos.x * 100) +'vw', 'scale': this.posicionService.posicionTextos.escala,'transition': posicionService.posicionTextos.velocidad + 's'}">
-    Proyecto toh wapo de una cosa que vi en el TombRaider <br>
-    Dele hermano! lo vas a Flipar de lo cutre que es! <br>
-    ¡spoiler! por mucho que clikes no va a furular de momento.
-</p>
-<p *ngIf="this.posicionService.proyectoActual == 2" class="presentacion" [ngStyle]="{'margin': (posicionService.posicionTextos.y * 100) +'vh ' +
-  (posicionService.posicionTextos.x * 100) +'vw', 'scale': this.posicionService.posicionTextos.escala,'transition': posicionService.posicionTextos.velocidad + 's'}">
-    Sí! soy friki, algún problema? <br>
-    Prepárese a pasar miedo Wey! <br>
-</p>
+    <div class="textoProyectos" [ngStyle]="{'margin': (posicionService.posicionTextos.y * 100) +'vh ' +
+(posicionService.posicionTextos.x * 100) +'vw',
+'transition': posicionService.posicionTextos.velocidad + 's'}">
+
+        <p *ngIf="this.posicionService.proyectoActual == 0">
+            Proyecto toh wapo de una escapeRoom <br>
+            Dele hermano! lo vas a Flipar! <br>
+            ¡spoiler! por mucho que clikes no va a furular de momento.
+        </p>
+
+        <p *ngIf="this.posicionService.proyectoActual == 1">
+            Proyecto toh wapo de una cosa que vi en el TombRaider <br>
+            Dele hermano! lo vas a Flipar de lo cutre que es! <br>
+            ¡spoiler! por mucho que clikes no va a furular de momento.
+        </p>
+        <p *ngIf="this.posicionService.proyectoActual == 2">
+            Sí! soy friki, algún problema? <br>
+            Prepárese a pasar miedo Wey! <br>
+        </p>
+    </div>
 
 </div>

@@ -11,8 +11,15 @@
     margin-top: 30vh;
     margin-left: 10vw; */
     font-size: xx-large;
-    height: 200px;
-    width: 500px;
+    height: 20vh;
+    width: 35vw;
+}
+.textoProyectos {
+    position: absolute;
+    z-index: 10;
+    font-size: xx-large;/* 
+    height: 20vh; */
+    width: 30vw;
 }
 
 .autorretrato {

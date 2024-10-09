@@ -88,115 +88,137 @@ export class AppComponent {
   //pulsar burbuja
   burbuja(id: number) {
 
-    const sTiempoTexto: number = 0.5;
+    if (id == this.posicionService.proyectoActual) {
 
-    this.colocarBurbujas(true);
+      this.posicionService.deteccionPuntero = false;
+      this.posicionService.autorretrato.sAnimacion = 5;
+      this.posicionService.autorretrato.rotacion = 2000;
+      this.posicionService.autorretrato.escala = 1.5;
 
-    this.posicionService.autorretrato.sAnimacion = 1;
-    this.posicionService.autorretrato.x = 0.65;
+      switch (this.posicionService.proyectoActual) {
+        case 0:
+          window.open('https://escaperoom-15o1.onrender.com', "_self")
+          break;
+        case 1:
+          window.open('https://luces-pentaculo-c.onrender.com', "_self")
+          break;
+      }
+    }
+    else {
 
-    this.posicionService.proyectos[id].posicionX = 12;
-    this.posicionService.proyectos[id].posicionY = 25;
-    this.posicionService.proyectos[id].tamanioX = 45;
-    this.posicionService.proyectos[id].tamanioY = 35;
-    this.posicionService.proyectos[id].bordeRadio = 5;
+      const sTiempoTexto: number = 0.5;
 
-    
-    this.posicionService.presentacion.velocidad = sTiempoTexto/2;
-    this.posicionService.presentacion.escala = 0;
-    this.posicionService.posicionTextos.velocidad = sTiempoTexto/2;
-    this.posicionService.posicionTextos.escala = 0;
+      this.colocarBurbujas(true);
+
+      this.posicionService.autorretrato.sAnimacion = 1;
+      this.posicionService.autorretrato.x = 0.65;
+      this.posicionService.autorretrato.rotacion = 0
+      this.posicionService.autorretrato.escala = 1
+
+      this.posicionService.proyectos[id].posicionX = 12;
+      this.posicionService.proyectos[id].posicionY = 25;
+      this.posicionService.proyectos[id].tamanioX = 45;
+      this.posicionService.proyectos[id].tamanioY = 35;
+      this.posicionService.proyectos[id].bordeRadio = 5;
 
 
-    setTimeout(() => {
-      this.posicionService.posicionTextos.velocidad = sTiempoTexto/2;
-      this.posicionService.posicionTextos.x = 0.6;
-      this.posicionService.posicionTextos.y = 0.6;
-    }, sTiempoTexto / 2 * 1000)
+      this.posicionService.presentacion.velocidad = sTiempoTexto / 2;
+      this.posicionService.presentacion.escala = 0;
+      this.posicionService.posicionTextos.velocidad = sTiempoTexto / 2;
+      this.posicionService.posicionTextos.escala = 0;
 
-    setTimeout(() => {
-      this.posicionService.proyectoActual = id;
-    }, sTiempoTexto / 2 * 1010)
 
-    setTimeout(() => {
-      this.posicionService.posicionTextos.velocidad = sTiempoTexto/2;
-      this.posicionService.posicionTextos.x = 0.35;
-      this.posicionService.posicionTextos.y = 0.3;
-      this.posicionService.posicionTextos.escala = 1;
-    }, sTiempoTexto * 1000)
+      setTimeout(() => {
+        this.posicionService.posicionTextos.velocidad = sTiempoTexto / 2;
+        this.posicionService.posicionTextos.x = 0.6;
+        this.posicionService.posicionTextos.y = 0.6;
+      }, sTiempoTexto / 2 * 1000)
 
-    this.posicionService.animacionActual = "esquiva"
+      setTimeout(() => {
+        this.posicionService.proyectoActual = id;
+      }, sTiempoTexto / 2 * 1010)
 
-    /* 
-        burbuja(proyecto: string) {
-          this.posicionService.[proyecto].sTransicion = 0.2; */
+      setTimeout(() => {
+        this.posicionService.posicionTextos.velocidad = sTiempoTexto / 2;
+        this.posicionService.posicionTextos.x = 0.35;
+        this.posicionService.posicionTextos.y = 0.3;
+        this.posicionService.posicionTextos.escala = window.innerHeight / 1000;
+      }, sTiempoTexto * 1000)
 
+      this.posicionService.animacionActual = "esquiva"
+
+      /* 
+          burbuja(proyecto: string) {
+            this.posicionService.[proyecto].sTransicion = 0.2; */
+
+    }
   }
-
   @HostListener('document:mousemove', ['$event'])
   raton(event: MouseEvent) {
 
-    /* this.posicionService.autorretrato.y = 0.5; */
-    this.posicionService.autorretrato.escala = window.innerHeight / 1000;
+    if (this.posicionService.deteccionPuntero) {
+      /* this.posicionService.autorretrato.y = 0.5; */
+      this.posicionService.autorretrato.escala = window.innerHeight / 1000;
 
-    this.posicionService.puntero.x = event.clientX / window.innerWidth;
-    this.posicionService.puntero.y = event.clientY / window.innerHeight;
+      this.posicionService.puntero.x = event.clientX / window.innerWidth;
+      this.posicionService.puntero.y = event.clientY / window.innerHeight;
 
-    this.posicionService.pelo.x = this.posicionService.puntero.x * 4;
-    this.posicionService.pelo.y = this.posicionService.puntero.y * 5;
-    this.posicionService.cejas.xd = this.posicionService.puntero.x * 4;
-    this.posicionService.cejas.yd = this.posicionService.puntero.y * 5;
-    this.posicionService.ojos.x = this.posicionService.puntero.x * 2;
-    this.posicionService.pupila.yi = this.posicionService.puntero.y * 5;
-    this.posicionService.pupila.yd = this.posicionService.puntero.y * 5;
-    this.posicionService.nariz.x = this.posicionService.puntero.x * 10;
-    this.posicionService.barba.x = this.posicionService.puntero.x * 5;
-    this.posicionService.boca.x = this.posicionService.puntero.x * 4;
-    this.posicionService.oreja.x = 1 - this.posicionService.puntero.x * 4;
+      this.posicionService.pelo.x = this.posicionService.puntero.x * 4;
+      this.posicionService.pelo.y = this.posicionService.puntero.y * 5;
+      this.posicionService.cejas.xd = this.posicionService.puntero.x * 4;
+      this.posicionService.cejas.yd = this.posicionService.puntero.y * 5;
+      this.posicionService.ojos.x = this.posicionService.puntero.x * 2;
+      this.posicionService.pupila.yi = this.posicionService.puntero.y * 5;
+      this.posicionService.pupila.yd = this.posicionService.puntero.y * 5;
+      this.posicionService.nariz.x = this.posicionService.puntero.x * 10;
+      this.posicionService.barba.x = this.posicionService.puntero.x * 5;
+      this.posicionService.boca.x = this.posicionService.puntero.x * 4;
+      this.posicionService.oreja.x = 1 - this.posicionService.puntero.x * 4;
 
-    if (this.posicionService.puntero.x < this.posicionService.autorretrato.x) {
+      if (this.posicionService.puntero.x < this.posicionService.autorretrato.x) {
 
-      const posicionRelativa = (this.posicionService.autorretrato.x * this.posicionService.puntero.x) /
-        (this.posicionService.autorretrato.x * this.posicionService.autorretrato.x);
+        const posicionRelativa = (this.posicionService.autorretrato.x * this.posicionService.puntero.x) /
+          (this.posicionService.autorretrato.x * this.posicionService.autorretrato.x);
 
-      this.posicionService.pupila.xd = posicionRelativa * 18;
-      this.posicionService.pupila.xi = 0; // si se sale el puntero de la pantalla y luego vuelve por el lado opuesto, no volvía a su lugar
-    }
-    else {
-      const posicionRelativa = (this.posicionService.puntero.x - this.posicionService.autorretrato.x) / (1 - this.posicionService.autorretrato.x)
-
-
-      this.posicionService.pupila.xi = posicionRelativa * 20;
-      this.posicionService.pupila.xd = 18; // si se sale el puntero de la pantalla y luego vuelve por el lado opuesto, no volvía a su lugar
-
-    }
-
-
-    if (this.posicionService.animacionActual == "esquiva") /* esquiva */ {
-
-      if (this.posicionService.puntero.x >= 0.65 && this.posicionService.puntero.x <= 0.75 && this.posicionService.autorretrato.x == 0.6 && this.posicionService.puntero.y >= 0.80) {
-        this.posicionService.autorretrato.x = 0.8;
-        this.posicionService.pelo.x = -20;
-        setTimeout(() => {
-          this.posicionService.pelo.x = 20
-        }, 300)
-        setTimeout(() => {
-          this.posicionService.pelo.x = 0
-        }, 600)
+        this.posicionService.pupila.xd = posicionRelativa * 18;
+        this.posicionService.pupila.xi = 0; // si se sale el puntero de la pantalla y luego vuelve por el lado opuesto, no volvía a su lugar
       }
-      else if (((this.posicionService.puntero.x >= 0.75 && this.posicionService.puntero.x <= 0.9) || this.posicionService.puntero.x <= 0.4) && this.posicionService.autorretrato.x == 0.8) {
-        this.posicionService.autorretrato.x = 0.6
+      else {
+        const posicionRelativa = (this.posicionService.puntero.x - this.posicionService.autorretrato.x) / (1 - this.posicionService.autorretrato.x)
 
 
-        this.posicionService.pelo.x = 20;
-        setTimeout(() => {
-          this.posicionService.pelo.x = -20
-        }, 300)
-        setTimeout(() => {
-          this.posicionService.pelo.x = 0
-        }, 600)
+        this.posicionService.pupila.xi = posicionRelativa * 20;
+        this.posicionService.pupila.xd = 18; // si se sale el puntero de la pantalla y luego vuelve por el lado opuesto, no volvía a su lugar
+
       }
 
+
+      if (this.posicionService.animacionActual == "esquiva") /* esquiva */ {
+
+        if (this.posicionService.puntero.x >= 0.65 && this.posicionService.puntero.x <= 0.75 && this.posicionService.autorretrato.x == 0.6 && this.posicionService.puntero.y >= 0.80) {
+          this.posicionService.autorretrato.x = 0.8;
+          this.posicionService.pelo.x = -20;
+          setTimeout(() => {
+            this.posicionService.pelo.x = 20
+          }, 300)
+          setTimeout(() => {
+            this.posicionService.pelo.x = 0
+          }, 600)
+        }
+        else if (((this.posicionService.puntero.x >= 0.75 && this.posicionService.puntero.x <= 0.9) || this.posicionService.puntero.x <= 0.4) && this.posicionService.autorretrato.x == 0.8) {
+          this.posicionService.autorretrato.x = 0.6
+
+
+          this.posicionService.pelo.x = 20;
+          setTimeout(() => {
+            this.posicionService.pelo.x = -20
+          }, 300)
+          setTimeout(() => {
+            this.posicionService.pelo.x = 0
+          }, 600)
+        }
+
+      }
     }
   }
 }
