@@ -13,7 +13,6 @@
     font-size: xx-large;
     height: 200px;
     width: 500px;
-    transition: 2s;
 }
 
 .autorretrato {
@@ -30,11 +29,11 @@
     z-index: 10;
     border-color: 2px solid red;
     background-size: 100% 100%;
-    box-shadow: 0.5vh 0.5vh 1vh black, inset  0.5vh 0.5vh 1vh white;
+    box-shadow: 0.5vh 0.5vh 1vh black, inset  0.5vh 0.5vh 1vh white, inset -0.2vh -0.2vh 1vh rgb(0, 0, 0); 
 }
 
 
 .burbujas:hover {
-    box-shadow: 0vh 0vh 1vh 2vh rgb(255, 255, 255), inset  0.5vh 0.5vh 1vh white;
-    scale: 1.2;
+    box-shadow: 0vh 0vh 1vh 1vh rgb(255, 255, 255), inset  0.5vh 0.5vh 1vh white;
+    scale: 1.1;
 }
