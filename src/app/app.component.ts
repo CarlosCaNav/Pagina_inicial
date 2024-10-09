@@ -88,6 +88,8 @@ export class AppComponent {
   //pulsar burbuja
   burbuja(id: number) {
 
+    this.posicionService.deteccionPuntero = true;
+
     if (id == this.posicionService.proyectoActual) {
 
       this.posicionService.deteccionPuntero = false;
@@ -153,6 +155,25 @@ export class AppComponent {
 
     }
   }
+
+
+  autorretrato(){
+    this.posicionService.deteccionPuntero = false;
+
+    this.posicionService.autorretrato.sAnimacion = 0.1;
+    this.posicionService.autorretrato.escala = 0.8;
+    this.posicionService.cejas.rd = 20;
+    this.posicionService.cejas.ri = -20;
+
+
+    setTimeout(() => {
+      this.posicionService.autorretrato.sAnimacion = 0.5;
+      this.posicionService.deteccionPuntero = true;
+      this.posicionService.cejas.rd = 0;
+      this.posicionService.cejas.ri = 0;
+    }, 1000)
+  }
+
   @HostListener('document:mousemove', ['$event'])
   raton(event: MouseEvent) {
 

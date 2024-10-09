@@ -1,8 +1,22 @@
-<div class="autorretrato" [ngStyle]="{'rotate':(posicionService.autorretrato.rotacion) +'deg ', 'transition': this.posicionService.autorretrato.sAnimacion + 's'}">
-    <img class="partes" [ngStyle]="{'margin': (25 + posicionService.pelo.y) +'px ' + (65 + posicionService.pelo.x) +'px', 'z-index': 11, 'transition': 0.3 + 's' }" src="/partes/peloSup.png">
-    <img class="partes" [ngStyle]="{'margin': (25 + posicionService.pelo.y)  +'px ' + (65 + posicionService.pelo.x) +'px', 'z-index': 0, 'transition': 0.3 + 's'  }" src="/partes/peloInf.png">
-    <img class="partes" [ngStyle]="{'margin': (185 + posicionService.cejas.yd) +'px ' + (227 + posicionService.cejas.xd) +'px', 'z-index': 10 }" src="/partes/cejaIz.png">
-    <img class="partes" [ngStyle]="{'margin': (190 + posicionService.cejas.yd) +'px ' + (135 + posicionService.cejas.xd) +'px', 'z-index': 9 }" src="/partes/cejaDer.png">
+<div class="autorretrato" >
+
+    <img class="partes"
+        [ngStyle]="{'margin': (25 + posicionService.pelo.y) +'px ' + (65 + posicionService.pelo.x) +'px', 'z-index': 11, 'transition': 0.3 + 's' }"
+        src="/partes/peloSup.png">
+
+    <img class="partes"
+        [ngStyle]="{'margin': (25 + posicionService.pelo.y)  +'px ' + (65 + posicionService.pelo.x) +'px', 'z-index': 0, 'transition': 0.3 + 's'  }"
+        src="/partes/peloInf.png">
+
+    <img class="partes"
+        [ngStyle]="{'margin': (185 + posicionService.cejas.yd) +'px ' + (227 + posicionService.cejas.xd) +'px','rotate': this.posicionService.cejas.ri + 'deg ', 'z-index': 10 }"
+        src="/partes/cejaIz.png">
+
+    <img class="partes"
+        [ngStyle]="{'margin': (190 + posicionService.cejas.yd) +'px ' + (135 + posicionService.cejas.xd) +'px',
+         'rotate': this.posicionService.cejas.rd + 'deg ', 'z-index': 9 }"
+        src="/partes/cejaDer.png">
+
     <img class="partes" [ngStyle]="{'margin': 157 +'px ' + (95 + posicionService.nariz.x) +'px', 'z-index': 8 }"
         src="/partes/nariz.png">
     <img class="partes"

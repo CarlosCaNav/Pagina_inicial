@@ -15,7 +15,7 @@ export class PosicionService {
   autorretrato = { x: 1.5, y: -0.5, escala: 0.0, sAnimacion: 1, rotacion: 0 };
 
   pelo = { x: 0, y: 0 };
-  cejas = { xd: 1, yd: 1, xi: 1, yi: 1, rx: 0, ry: 0 };
+  cejas = { xd: 1, yd: 1, xi: 1, yi: 1, rd: 0, ri: 0 };
   ojos = { x: 0, y: 0 };
   pupila = { xd: 1, yd: 1, xi: 1, yi: 1 };
   oreja = { x: 0, y: 0 };

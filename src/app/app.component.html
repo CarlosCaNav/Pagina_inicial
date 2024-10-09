@@ -6,7 +6,10 @@
         A continuación le dejo diferentes proyectos con APIs, Firebase, etc.
     </p>
 
-    <div class="autorretrato" [ngStyle]="{'scale': this.posicionService.autorretrato.escala}">
+    <div class="autorretrato" (click)="autorretrato()"
+    [ngStyle]="{'transition': this.posicionService.autorretrato.sAnimacion + 's', 'rotate':(posicionService.autorretrato.rotacion) +'deg ',
+     'scale': this.posicionService.autorretrato.escala, }">
+     
         <div [ngStyle]="{'margin': (posicionService.autorretrato.y * 100) + 'vh ' + (this.posicionService.autorretrato.x * 100) +'vw',
          'transition': posicionService.autorretrato.sAnimacion + 's'}">
             <app-autorretrato />
@@ -61,10 +64,9 @@
     </div>
  -->
 
-<!-- 'scale': this.posicionService.posicionTextos.escala -->
 
     <div class="textoProyectos" [ngStyle]="{'margin': (posicionService.posicionTextos.y * 100) +'vh ' +
-(posicionService.posicionTextos.x * 100) +'vw',
+(posicionService.posicionTextos.x * 100) +'vw','scale': this.posicionService.posicionTextos.escala,
 'transition': posicionService.posicionTextos.velocidad + 's'}">
 
         <p *ngIf="this.posicionService.proyectoActual == 0">
