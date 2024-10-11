@@ -109,6 +109,12 @@ export class AppComponent {
     }
     else {
 
+      this.posicionService.deteccionPuntero = false; //quiero que los ojos miren al proyecto
+      this.posicionService.pupila.xd = 1.5;
+      this.posicionService.pupila.yd = 1.5;
+      this.posicionService.pupila.xi = -0.5;
+      this.posicionService.pupila.yi = 3;
+      
       const sTiempoTexto: number = 0.5;
 
       this.colocarBurbujas(true);
@@ -152,12 +158,11 @@ export class AppComponent {
         this.posicionService.posicionTextos.escala = window.innerHeight / 1000;
       }, sTiempoTexto * 1000)
 
+      setTimeout(() => {
+        this.posicionService.deteccionPuntero = true; //quiero que los ojos miren al puntero
+      }, 3000)
+
       this.posicionService.animacionActual = "esquiva"
-
-      /* 
-          burbuja(proyecto: string) {
-            this.posicionService.[proyecto].sTransicion = 0.2; */
-
     }
   }
 
@@ -167,6 +172,10 @@ export class AppComponent {
     this.posicionService.presentacion.y = 0.3;
     this.posicionService.presentacion.escala = 1;
     this.posicionService.animacionActual = "esquiva";
+
+
+    this.posicionService.botones.y = 0.52;
+    this.posicionService.botones.x = 0.3;
   }
 
   autorretrato() {
