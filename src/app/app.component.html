@@ -2,14 +2,24 @@
     <p class="presentacion" [ngStyle]="{'margin': (posicionService.presentacion.y * 100) +'vh ' +
       (posicionService.presentacion.x * 100) +'vw', 'scale': this.posicionService.presentacion.escala, 
       transition: this.posicionService.presentacion.velocidad + 's'}">
-        ¡Hola! me llamo Carlos Carretero. <br> Soy un desarrollador web autodidacta o algo así. <br>
+        ¡Hola! me llamo Carlos Carretero. <br> <br> Soy un desarrollador web autodidacta o algo así. <br>
         A continuación le dejo diferentes proyectos con APIs, Firebase, etc.
     </p>
+    <button class="botones" *ngIf="posicionService.botones.y <= 0.2" (click)="this.burbuja(99); this.mostrarInicio()" [ngStyle]="{'margin': (posicionService.botones.y * 100) +'vh ' +
+    (posicionService.botones.x * 100) +'vw'}">
+     Inicio </button>
 
-    <div class="autorretrato" (click)="autorretrato()"
-    [ngStyle]="{'transition': this.posicionService.autorretrato.sAnimacion + 's', 'rotate':(posicionService.autorretrato.rotacion) +'deg ',
+     <button class="botones"  (click)="this.burbuja(98)" [ngStyle]="{'margin': (posicionService.botones.y * 100) +'vh ' +
+     (posicionService.botones.x * 100 + 7) +'vw'}">
+     Quien soy </button>
+
+     <button class="botones" (click)="this.burbuja(97)" [ngStyle]="{'margin': (posicionService.botones.y * 100) +'vh ' +
+     (posicionService.botones.x * 100 + 14) +'vw'}">
+     Contacto </button>
+
+    <div class="autorretrato" (click)="autorretrato()" [ngStyle]="{'transition': this.posicionService.autorretrato.sAnimacion + 's', 'rotate':(posicionService.autorretrato.rotacion) +'deg ',
      'scale': this.posicionService.autorretrato.escala, }">
-     
+
         <div [ngStyle]="{'margin': (posicionService.autorretrato.y * 100) + 'vh ' + (this.posicionService.autorretrato.x * 100) +'vw',
          'transition': posicionService.autorretrato.sAnimacion + 's'}">
             <app-autorretrato />
@@ -32,38 +42,6 @@
 
     </div>
 
-    <!-- 
-    <div class="burbujas escaperoom" (click)="burbuja()" [ngStyle]="{
-            'margin-top': posicionService.escapeRoom.posicionY +'vh',
-            'margin-left': posicionService.escapeRoom.posicionX + 'vw',
-            'height': posicionService.escapeRoom.tamanioY + 'vh',
-            'width': posicionService.escapeRoom.tamanioX + 'vh',
-            'border-radius': posicionService.escapeRoom.bordeRadio + '%',
-            'transition': posicionService.escapeRoom.sTransicion + 's',
-            'background-image': posicionService.escapeRoom.url
-            }">
-    </div>
-
-    <div class="burbujas pentaculo" (click)="burbuja()" [ngStyle]="{
-        'margin-top': posicionService.pentaculo.posicionY +'vh',
-        'margin-left': posicionService.pentaculo.posicionX + 'vw',
-        'height': posicionService.pentaculo.tamanioY + 'vh',
-        'width': posicionService.pentaculo.tamanioX + 'vh',
-        'border-radius': posicionService.pentaculo.bordeRadio + '%',
-        'transition': posicionService.pentaculo.sTransicion + 's',
-        }">
-    </div>
-    <div class="burbujas rol" (click)="burbuja()" [ngStyle]="{
-        'margin-top': posicionService.rol.posicionY +'vh',
-        'margin-left': posicionService.rol.posicionX + 'vw',
-        'height': posicionService.rol.tamanioY + 'vh',
-        'width': posicionService.rol.tamanioX + 'vh',
-        'border-radius': posicionService.rol.bordeRadio + '%',
-        'transition': posicionService.rol.sTransicion + 's',
-        }">
-    </div>
- -->
-
 
     <div class="textoProyectos" [ngStyle]="{'margin': (posicionService.posicionTextos.y * 100) +'vh ' +
 (posicionService.posicionTextos.x * 100) +'vw','scale': this.posicionService.posicionTextos.escala,
@@ -72,17 +50,22 @@
         <p *ngIf="this.posicionService.proyectoActual == 0">
             Proyecto toh wapo de una escapeRoom <br>
             Dele hermano! lo vas a Flipar! <br>
-            ¡spoiler! por mucho que clikes no va a furular de momento.
         </p>
 
         <p *ngIf="this.posicionService.proyectoActual == 1">
             Proyecto toh wapo de una cosa que vi en el TombRaider <br>
             Dele hermano! lo vas a Flipar de lo cutre que es! <br>
-            ¡spoiler! por mucho que clikes no va a furular de momento.
         </p>
         <p *ngIf="this.posicionService.proyectoActual == 2">
             Sí! soy friki, algún problema? <br>
             Prepárese a pasar miedo Wey! <br>
+            ¡spoiler! por mucho que clikes no va a furular de momento.
+        </p>
+        <p *ngIf="this.posicionService.proyectoActual == 97">
+            Mi correo es tal, mi número cual y etc
+        </p>
+        <p *ngIf="this.posicionService.proyectoActual == 98">
+            Soy el mejor!
         </p>
     </div>
 
