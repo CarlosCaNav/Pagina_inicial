@@ -1,0 +1,23 @@
+<div class="todo">
+    <button (click)="this.posicionService.movil(false)" class="boton">Ver sitio de escritorio</button>
+
+    <div class="texto">
+        <H1>Hola! Me llamo Carlos Carretero. Soy desarrollador web blablablá.</H1>
+        <h2>A continuación le dejo algunos de mis proyectos, <br>
+            Le recomiendo que visite este portafolio desde un PC con monitor horizontal para poder acceder a todos mis
+            proyectos o poder disfrutarlos de la forma de la que fueron diseñados.</h2>
+    </div>
+
+
+    <div *ngFor="let proyecto of posicionService.proyectos">
+
+        <div class="imagen" [ngStyle]="{
+            'background-image': proyecto.url,
+            }">
+        </div>
+
+        <div class="texto">Holi caracoli</div>
+
+    </div>
+
+</div>

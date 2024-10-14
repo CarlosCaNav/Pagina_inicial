@@ -1,0 +1,30 @@
+.todo{
+    background-image: url(/fondos/prueba.jpg);
+    height: 100vh;
+    width: 100vw;
+    background-size: 100% 100%;
+    overflow: scroll;
+}
+
+
+.boton{
+    margin: 5%;
+    padding: 2%;
+    background-color: aqua;
+    border-color: 2px solid gray;
+    border-radius: 100px;
+}
+
+.imagen{
+    margin-left: 10%;
+    height: 300px;
+    width: 300px;
+    border-radius: 10%;
+    box-shadow: 10px 10px 20px black, inset  5px 5px 15px white , inset  -5px -5px 15px black ;
+}
+
+.texto{
+    padding-top: 3%;
+    padding-left: 10%;
+    padding-bottom: 10%;
+}

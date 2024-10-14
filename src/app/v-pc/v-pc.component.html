@@ -1,0 +1,85 @@
+<div class="todo">
+    <div class="fondo"></div>
+    <p class="presentacion" [ngStyle]="{'margin': (posicionService.presentacion.y * 100) +'vh ' +
+      (posicionService.presentacion.x * 100) +'vw', 'scale': this.posicionService.presentacion.escala, 
+      transition: this.posicionService.presentacion.velocidad + 's'}">
+        ¡Hola! me llamo Carlos Carretero. <br> <br> Soy un desarrollador web autodidacta o algo así. <br>
+        A continuación le dejo diferentes proyectos con APIs, Firebase, etc.
+    </p>
+
+    <button class="botones" *ngIf="posicionService.botones.y <= 0.2" (click)="this.burbuja(99); this.mostrarInicio()" [ngStyle]="{'margin': (posicionService.botones.y * 100) +'vh ' +
+    (posicionService.botones.x * 100) +'vw'}">
+     Inicio </button>
+ <!-- *ngIf="posicionService.proyectoActual !== 98" -->
+     <button class="botones"  (click)="this.burbuja(98)" [ngStyle]="{'margin': (posicionService.botones.y * 100) +'vh ' +
+     (posicionService.botones.x * 100 + 7) +'vw'}">
+     Quien soy </button>
+
+     <button class="botones" (click)="this.burbuja(97)" [ngStyle]="{'margin': (posicionService.botones.y * 100) +'vh ' +
+     (posicionService.botones.x * 100 + 14) +'vw'}">
+     Contacto </button>
+
+     <button class="botones" (click)="this.posicionService.movil(true)"  [ngStyle]="{'margin': (posicionService.botones.y * 100) +'vh ' +
+     (posicionService.botones.x * 100 + 21) +'vw'}">
+     Version Simplificada </button>
+
+    <div class="autorretrato" (click)="autorretrato()" [ngStyle]="{'transition': this.posicionService.autorretrato.sAnimacion + 's', 'rotate':(posicionService.autorretrato.rotacion) +'deg ',
+     'scale': this.posicionService.autorretrato.escala, }">
+
+        <div [ngStyle]="{'margin': (posicionService.autorretrato.y * 100) + 'vh ' + (this.posicionService.autorretrato.x * 100) +'vw',
+         'transition': posicionService.autorretrato.sAnimacion + 's'}">
+            <app-autorretrato />
+        </div>
+    </div>
+
+    <div *ngFor="let proyecto of posicionService.proyectos">
+
+        <div class="burbujas" (click)="burbuja(proyecto.id)" [ngStyle]="{
+            'margin-top': proyecto.posicionY +'vh',
+            'margin-left': proyecto.posicionX + 'vw',
+            'height': proyecto.tamanioY + 'vh',
+            'width': proyecto.tamanioX + 'vh',
+            'border-radius': proyecto.bordeRadio + '%',
+            'transition': proyecto.sTransicion + 's',
+            'background-image': proyecto.url
+            }">
+
+        </div>
+
+    </div>
+
+
+    <div class="textoProyectos" [ngStyle]="{'margin': (posicionService.posicionTextos.y * 100) +'vh ' +
+(posicionService.posicionTextos.x * 100) +'vw','scale': this.posicionService.posicionTextos.escala,
+'transition': posicionService.posicionTextos.velocidad + 's'}">
+
+        <p *ngIf="this.posicionService.proyectoActual == 0">
+            Proyecto toh wapo de una escapeRoom <br>
+            Dele hermano! lo vas a Flipar! <br>
+        </p>
+
+        <p *ngIf="this.posicionService.proyectoActual == 1">
+            PokeApi <br>
+            Un juego usando la Api pública "PokeApi" Por alguien que nunca ha jugado a nada Pokemon <br>
+        </p>
+
+        <p *ngIf="this.posicionService.proyectoActual == 2">
+            Proyecto toh wapo de una cosa que vi en el TombRaider <br>
+            Dele hermano! lo vas a Flipar de lo cutre que es! <br>
+        </p>
+
+        <p *ngIf="this.posicionService.proyectoActual == 3">
+            Sí! soy friki, algún problema? <br>
+            Prepárese a pasar miedo Wey! <br>
+            ¡spoiler! por mucho que clikes no va a furular de momento.
+        </p>
+
+        <p *ngIf="this.posicionService.proyectoActual == 97">
+            Mi correo es tal, mi número cual y etc
+        </p>
+        <p *ngIf="this.posicionService.proyectoActual == 98">
+            Soy el mejor!
+        </p>
+    </div>
+
+</div>
