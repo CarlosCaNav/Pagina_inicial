@@ -51,8 +51,6 @@ export class AppComponent {
 
     setTimeout(() => {
 
-      this.posicionService.botones.y = 0.52;
-      this.posicionService.botones.x = 0.3;
 
       for (let i = 0; i <= this.posicionService.nombreProyectos.length - 1; ++i) {
 
@@ -98,14 +96,24 @@ export class AppComponent {
       this.posicionService.autorretrato.rotacion = 2000;
       this.posicionService.autorretrato.escala = 1.5;
 
+      window.open(this.posicionService.urlProyectos[this.posicionService.proyectoActual] ,"_self")
+
+
+    /*   
       switch (this.posicionService.proyectoActual) {
         case 0:
-          window.open('https://escaperoom-15o1.onrender.com', "_self")
+          window.open(this.posicionService.urlProyectos[0] ,"_self")
           break;
-        case 1:
-          window.open('https://luces-pentaculo-c.onrender.com', "_self")
-          break;
-      }
+          case 1:
+            window.open(this.posicionService.urlProyectos[1], "_self")
+            break;
+            case 1:
+              window.open(this.posicionService.urlProyectos[1], "_self")
+              break;
+              case 1:
+                window.open(this.posicionService.urlProyectos[1], "_self")
+                break;
+      } */
     }
     else {
 
@@ -114,7 +122,7 @@ export class AppComponent {
       this.posicionService.pupila.yd = 1.5;
       this.posicionService.pupila.xi = -0.5;
       this.posicionService.pupila.yi = 3;
-      
+
       const sTiempoTexto: number = 0.5;
 
       this.colocarBurbujas(true);
@@ -127,12 +135,13 @@ export class AppComponent {
       this.posicionService.autorretrato.rotacion = 0
       this.posicionService.autorretrato.escala = 1
 
-      if(id <= 90){
-      this.posicionService.proyectos[id].posicionX = 12;
-      this.posicionService.proyectos[id].posicionY = 25;
-      this.posicionService.proyectos[id].tamanioX = 45;
-      this.posicionService.proyectos[id].tamanioY = 35;
-      this.posicionService.proyectos[id].bordeRadio = 5;}
+      if (id <= 90) {
+        this.posicionService.proyectos[id].posicionX = 12;
+        this.posicionService.proyectos[id].posicionY = 25;
+        this.posicionService.proyectos[id].tamanioX = 45;
+        this.posicionService.proyectos[id].tamanioY = 35;
+        this.posicionService.proyectos[id].bordeRadio = 5;
+      }
 
 
       this.posicionService.presentacion.velocidad = sTiempoTexto / 2;
@@ -166,7 +175,8 @@ export class AppComponent {
     }
   }
 
-  mostrarInicio(){
+  mostrarInicio() {
+
     this.posicionService.autorretrato.sAnimacion = 0.5;
     this.posicionService.presentacion.x = 0.2;
     this.posicionService.presentacion.y = 0.3;
@@ -174,8 +184,12 @@ export class AppComponent {
     this.posicionService.animacionActual = "esquiva";
 
 
-    this.posicionService.botones.y = 0.52;
-    this.posicionService.botones.x = 0.3;
+    setTimeout(() => {
+
+
+      this.posicionService.botones.y = 0.55;
+      this.posicionService.botones.x = 0.3;
+    }, 1000)
   }
 
   autorretrato() {

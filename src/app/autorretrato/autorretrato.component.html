@@ -1,4 +1,4 @@
-<div class="autorretrato" >
+<div class="autorretrato">
 
     <img class="partes"
         [ngStyle]="{'margin': (25 + posicionService.pelo.y) +'px ' + (65 + posicionService.pelo.x) +'px', 'z-index': 11, 'transition': 0.3 + 's' }"
@@ -12,27 +12,41 @@
         [ngStyle]="{'margin': (185 + posicionService.cejas.yd) +'px ' + (227 + posicionService.cejas.xd) +'px','rotate': this.posicionService.cejas.ri + 'deg ', 'z-index': 10 }"
         src="/partes/cejaIz.png">
 
-    <img class="partes"
-        [ngStyle]="{'margin': (190 + posicionService.cejas.yd) +'px ' + (135 + posicionService.cejas.xd) +'px',
-         'rotate': this.posicionService.cejas.rd + 'deg ', 'z-index': 9 }"
-        src="/partes/cejaDer.png">
+    <img class="partes" [ngStyle]="{'margin': (190 + posicionService.cejas.yd) +'px ' + (135 + posicionService.cejas.xd) +'px',
+         'rotate': this.posicionService.cejas.rd + 'deg ', 'z-index': 9 }" src="/partes/cejaDer.png">
 
     <img class="partes" [ngStyle]="{'margin': 157 +'px ' + (95 + posicionService.nariz.x) +'px', 'z-index': 8 }"
         src="/partes/nariz.png">
+
     <img class="partes"
         [ngStyle]="{'margin': (220 + posicionService.pupila.yi) +'px ' + (255 + posicionService.pupila.xi) + 'px', 'z-index': 6 }"
         src="/partes/pupila.png">
+
     <img class="partes"
         [ngStyle]="{'margin': (220 + posicionService.pupila.yd) +'px ' + (posicionService.pupila.xd + 155) +'px', 'z-index': 6 }"
         src="/partes/pupila.png">
+
     <img class="partes"
         [ngStyle]="{'margin': (218 + posicionService.ojos.y) +'px ' + (150 + posicionService.ojos.x) +'px', 'z-index': 5 }"
         src="/partes/ojos.png">
+
     <img class="partes" [ngStyle]="{'margin': 324 +'px ' + (151 + posicionService.barba.x) +'px', 'z-index': 4 }"
         src="/partes/barba.png">
-    <img class="partes" [ngStyle]="{'margin': 358 +'px ' + (182 + posicionService.boca.x) +'px', 'z-index': 3 }"
-        src="/partes/boca.png">
+
+
+    <div *ngIf="posicionService.cejas.rd == 0" class="autorretrato">
+        <img class="partes" [ngStyle]="{'margin': 358 +'px ' + (182 + posicionService.boca.x) +'px', 'z-index': 3 }"
+            src="/partes/boca.png">
+    </div>
+
+    <div *ngIf="posicionService.cejas.rd != 0" class="autorretrato">
+        <img class="partes" [ngStyle]="{'margin': 358 +'px ' + (182 + posicionService.boca.x) +'px', 'z-index': 3 }"
+            src="/partes/bocaEnfado.png">
+    </div>
+
     <img class="partes" [ngStyle]="{'margin': 82 +'px ' + 138 +'px', 'z-index': 2 }" src="/partes/cara.png">
+
     <img class="partes" [ngStyle]="{'margin': 211 +'px ' + (352 + posicionService.oreja.x) +'px', 'z-index': 1 }"
         src="/partes/oreja.png">
+
 </div>

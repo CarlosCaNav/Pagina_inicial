@@ -32,9 +32,9 @@ export class PosicionService {
   posicionTextos = { x: 0.6, y: 0.6, escala: 0, velocidad: 2 };
   presentacion = { x: 0.6, y: 0.6, escala: 0, velocidad: 2 };
 
-  nombreProyectos = ["escapeRoom", "pentaculo", "rol"];
-  urlImagenes = ["url('/proyectos/escapeRoom.jpg'", "url('/proyectos/pentaculo.jpg'", "url('/proyectos/rol.jpg'"]
-
+  nombreProyectos = ["escapeRoom", "pokeApi", "pentaculo", "rol"];
+  urlImagenes = ["url('/proyectos/escapeRoom.jpg'","url('/proyectos/pokeApi.jpg'", "url('/proyectos/pentaculo.jpg'", "url('/proyectos/rol.jpg'"];
+urlProyectos = ['https://escaperoom-15o1.onrender.com', 'https://pokeapi-w9mo.onrender.com/', 'https://luces-pentaculo-c.onrender.com']
   proyectos: proyecto[] = [];
   /* 
     escapeRoom = { tamanioX: 10, tamanioY: 10, posicionX: 50, posicionY: 120, bordeRadio: 100, sTransicion: 1, url: "url('/proyectos/escapeRoom.jpg'"};

@@ -8,7 +8,7 @@
     <button class="botones" *ngIf="posicionService.botones.y <= 0.2" (click)="this.burbuja(99); this.mostrarInicio()" [ngStyle]="{'margin': (posicionService.botones.y * 100) +'vh ' +
     (posicionService.botones.x * 100) +'vw'}">
      Inicio </button>
-
+ <!-- *ngIf="posicionService.proyectoActual !== 98" -->
      <button class="botones"  (click)="this.burbuja(98)" [ngStyle]="{'margin': (posicionService.botones.y * 100) +'vh ' +
      (posicionService.botones.x * 100 + 7) +'vw'}">
      Quien soy </button>
@@ -53,14 +53,21 @@
         </p>
 
         <p *ngIf="this.posicionService.proyectoActual == 1">
+            PokeApi <br>
+            Un juego usando la Api pública "PokeApi" Por alguien que nunca ha jugado a nada Pokemon <br>
+        </p>
+
+        <p *ngIf="this.posicionService.proyectoActual == 2">
             Proyecto toh wapo de una cosa que vi en el TombRaider <br>
             Dele hermano! lo vas a Flipar de lo cutre que es! <br>
         </p>
-        <p *ngIf="this.posicionService.proyectoActual == 2">
+
+        <p *ngIf="this.posicionService.proyectoActual == 3">
             Sí! soy friki, algún problema? <br>
             Prepárese a pasar miedo Wey! <br>
             ¡spoiler! por mucho que clikes no va a furular de momento.
         </p>
+
         <p *ngIf="this.posicionService.proyectoActual == 97">
             Mi correo es tal, mi número cual y etc
         </p>
