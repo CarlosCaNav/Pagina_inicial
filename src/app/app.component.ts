@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { AutorretratoComponent } from "./autorretrato/autorretrato.component";
 import { NgFor, NgIf, NgStyle } from '@angular/common';

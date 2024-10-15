@@ -40,7 +40,7 @@ export class PosicionService {
   urlImagenes = ["url('/proyectos/escapeRoom.jpg'","url('/proyectos/pokeApi.jpg'", "url('/proyectos/pentaculo.jpg'", "url('/proyectos/rol.jpg'"];
 urlProyectos = ['https://escaperoom-15o1.onrender.com', 'https://pokeapi-w9mo.onrender.com/', 'https://luces-pentaculo-c.onrender.com']
 proyectos: proyecto[] = [];
-descripcionProyectos: [] = [];
+descripcionProyectos = ["hola! \t ¿Cómo hago para que este texto salga en otra línea?? \n  qué barra N ni qué barra N",];
 
 
 movil(dispositivo: boolean){
