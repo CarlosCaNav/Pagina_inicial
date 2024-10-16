@@ -14,4 +14,9 @@ export class VMovilComponent {
 
   constructor(public posicionService: PosicionService){}
 
+
+  lanzarProyecto(proyecto: number){
+
+    window.open(this.posicionService.urlProyectos[proyecto] ,"_self")
+  }
 }

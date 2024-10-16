@@ -27,7 +27,7 @@ export class PosicionService {
   boca = { x: 0, y: 0 };
   barba = { x: 0, y: 0 };
 
-  botones = { x: -0.3, y: 0.52};
+  botones = { x: -0.3, y: 0.52 };
 
   animacionActual: string = "aparecer"; //aparecer, esquiva, desplazamiento...
   proyectoActual: number = -1;
@@ -37,15 +37,17 @@ export class PosicionService {
   presentacion = { x: 0.6, y: 0.6, escala: 0, velocidad: 2 };
 
   nombreProyectos = ["escapeRoom", "pokeApi", "pentaculo", "rol"];
-  urlImagenes = ["url('/proyectos/escapeRoom.jpg'","url('/proyectos/pokeApi.jpg'", "url('/proyectos/pentaculo.jpg'", "url('/proyectos/rol.jpg'"];
-urlProyectos = ['https://escaperoom-15o1.onrender.com', 'https://pokeapi-w9mo.onrender.com/', 'https://luces-pentaculo-c.onrender.com']
-proyectos: proyecto[] = [];
-descripcionProyectos = ["hola! \t ¿Cómo hago para que este texto salga en otra línea?? \n  qué barra N ni qué barra N",];
+  urlImagenes = ["url('/proyectos/escapeRoom.jpg'", "url('/proyectos/pokeApi.jpg'", "url('/proyectos/pentaculo.jpg'", "url('/proyectos/rol.jpg'"];
+  urlProyectos = ['https://escaperoom-15o1.onrender.com', 'https://pokeapi-w9mo.onrender.com/', 'https://luces-pentaculo-c.onrender.com', 'https://rol-web-c.onrender.com']
+  proyectos: proyecto[] = [];
+  descripcionProyectos =[ "Aquí debería aparecer textos con un salto de línea <br> pero noooo! el mundo me odia!",
+
+   ]
 
 
-movil(dispositivo: boolean){
-  this.vMovil = dispositivo;
-}
+  movil(dispositivo: boolean) {
+    this.vMovil = dispositivo;
+  }
   /* 
     escapeRoom = { tamanioX: 10, tamanioY: 10, posicionX: 50, posicionY: 120, bordeRadio: 100, sTransicion: 1, url: "url('/proyectos/escapeRoom.jpg'"};
     pentaculo = { tamanioX: 10, tamanioY: 10, posicionX: 50, posicionY: 120, bordeRadio: 100, sTransicion: 1.5,  url: "url('/proyectos/pentaculo.jpg'"};

@@ -10,7 +10,6 @@
     <button class="botones" *ngIf="posicionService.botones.y <= 0.2" (click)="this.burbuja(99); this.mostrarInicio()" [ngStyle]="{'margin': (posicionService.botones.y * 100) +'vh ' +
     (posicionService.botones.x * 100) +'vw'}">
      Inicio </button>
- <!-- *ngIf="posicionService.proyectoActual !== 98" -->
      <button class="botones"  (click)="this.burbuja(98)" [ngStyle]="{'margin': (posicionService.botones.y * 100) +'vh ' +
      (posicionService.botones.x * 100 + 7) +'vw'}">
      Quien soy </button>
@@ -75,7 +74,7 @@
         </p>
 
         <p *ngIf="this.posicionService.proyectoActual == 97">
-            Mi correo es tal, mi número cual y etc
+            contáctame en <a href= "mailto:carloscn90@gmail.com">aquí iría mi puto correo electrónico</a> y visita mi linkedin tal
         </p>
         <p *ngIf="this.posicionService.proyectoActual == 98">
             Soy el mejor!
