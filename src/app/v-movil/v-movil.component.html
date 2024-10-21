@@ -1,28 +1,44 @@
 <div class="todo">
-    <button (click)="this.posicionService.movil(false)" class="boton">Ver sitio de escritorio</button>
+    <div style="width: 100vw;">
+        <button (click)="this.posicionService.movil(false)" class="boton">Ver sitio de escritorio</button>
+    </div>
 
     <div class="textoInicio">
-        <H1>¡Hola! me llamo Carlos Carretero y hoy no he tenido un buen día. <br> <br> Soy un desarrollador web autodidacta que ni soy capaz de poner esto en el centro. <br>
-            A continuación le dejo diferentes proyectos con APIs, Firebase, etc.</H1>
+        <div>
+            <h1>¡Hola! me llamo Carlos Carretero. Soy un desarrollador web
+                autodidacta.</h1>
 
-        <h2>contáctame en <a href= "mailto:carloscn90@gmail.com">aquí iría mi puto correo electrónico</a> y visita mi linkedin tal</h2>
+            <h2>contáctame en <a href="mailto:carloscn90@gmail.com">aquí iría mi puto correo electrónico</a> y visita mi
+                linkedin tal.<br>
 
-        <h2>A continuación le dejo algunos de mis proyectos. <br>
-            Le recomiendo que visite este portafolio desde un PC con monitor horizontal para poder acceder a todos mis
-            proyectos o poder disfrutarlos de la forma de la que fueron diseñados, o no, total nada funciona.</h2>
+                A continuación le dejo algunos de mis proyectos. Que son compatibles con su dispositivo. <br><br>
+                Le recomiendo que visite este portafolio desde un PC con monitor horizontal para poder acceder a todos
+                mis
+                proyectos y poder disfrutarlos de la forma de la que fueron diseñados.</h2>
+        </div>
     </div>
 
     <div class="proyectos">
-        <div *ngFor="let proyecto of posicionService.proyectos">
-
-            <div class="bloques">
-                <div class="imagen" (click)="this.lanzarProyecto(proyecto.id)" [ngStyle]="{
-            'background-image': proyecto.url,
-            }">
+        <div class="bloques">
+            <a
+                href="https://www.google.com/search?q=dado&oq=dado&gs_lcrp=EgZjaHJvbWUyDggAEEUYJxg5GIAEGIoFMg0IARAuGK8BGMcBGIAEMgcIAhAAGIAEMgcIAxAAGIAEMgcIBBAAGIAEMgcIBRAAGIAEMgcIBhAAGIAEMgkIBxAAGAoYgAQyBwgIEAAYgAQyBwgJEAAYjwLSAQc1MTVqMGo0qAIAsAIB&sourceid=chrome&ie=UTF-8">
+                <div class="imagen" [ngStyle]="{
+            'background-image': this.posicionService.urlImagenes[2]}">
                 </div>
-
-                <p class="texto">{{this.posicionService.descripcionProyectos[0]}}</p>
-            </div>
+            </a>
+            <p class="texto">Este es un juego muy simple que consiste en encender todas las bombillas.
+                la dificultad reside en que cuando alternas el estado de una, también lo hacen las dos de enfrente.
+            </p>
+        </div>
+        <div class="bloques">
+            <a
+                href="https://www.google.com/search?q=dado&oq=dado&gs_lcrp=EgZjaHJvbWUyDggAEEUYJxg5GIAEGIoFMg0IARAuGK8BGMcBGIAEMgcIAhAAGIAEMgcIAxAAGIAEMgcIBBAAGIAEMgcIBRAAGIAEMgcIBhAAGIAEMgkIBxAAGAoYgAQyBwgIEAAYgAQyBwgJEAAYjwLSAQc1MTVqMGo0qAIAsAIB&sourceid=chrome&ie=UTF-8">
+                <div class="imagen" [ngStyle]="{
+            'background-image': this.posicionService.urlImagenes[3]}">
+                </div>
+            </a>
+            <p class="texto">Un juego de rol muy básico, en el que tendrás que visitar una casa en mitad del bosque.
+            </p>
         </div>
     </div>
 </div>
