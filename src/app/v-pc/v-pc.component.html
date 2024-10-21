@@ -3,7 +3,7 @@
     <p class="presentacion" [ngStyle]="{'margin': (posicionService.presentacion.y * 100) +'vh ' +
       (posicionService.presentacion.x * 100) +'vw', 'scale': this.posicionService.presentacion.escala, 
       transition: this.posicionService.presentacion.velocidad + 's'}">
-        ¡Hola! me llamo Carlos Carretero. <br> <br> Soy un desarrollador web autodidacta o algo así. <br>
+        ¡Hola! me llamo Carlos Carretero. <br> <br> Soy un desarrollador web autodidacta. <br>
         A continuación le dejo diferentes proyectos con APIs, Firebase, etc.
     </p>
 
@@ -53,31 +53,36 @@
 'transition': posicionService.posicionTextos.velocidad + 's'}">
 
         <p *ngIf="this.posicionService.proyectoActual == 0">
-            Proyecto toh wapo de una escapeRoom <br>
-            Dele hermano! lo vas a Flipar! <br>
-        </p>
+            Proyecto de un escapeRoom. <br> <br> 
+            En este proyecto tendrás que investigar una habitación para poder descubrir la clave y escapar. ¿Estás preparado? <br> <br> 
+            </p>
 
         <p *ngIf="this.posicionService.proyectoActual == 1">
-            PokeApi <br>
-            Un juego usando la Api pública "PokeApi" Por alguien que nunca ha jugado a nada Pokemon <br>
+            Un juego usando la Api pública "PokeApi" por alguien que nunca ha jugado a nada Pokemon. <br> <br>
+            Aquí dejo un enlace alternativo, en el que es el propio servidor el que compila el proyecto desde git.
+            Por ello, el tiempo hasta que carga es excesivo.  <br> <br>
+
+            <a href="https://pokemonapi-6rb7.onrender.com">PokemonApi sin compilar.</a>       
         </p>
 
         <p *ngIf="this.posicionService.proyectoActual == 2">
-            Proyecto toh wapo de una cosa que vi en el TombRaider <br>
-            Dele hermano! lo vas a Flipar de lo cutre que es! <br>
+           Un pequeño minijuego que consiste en encender todas las bombillas.
+           El problema reside en que al alternar el estado de una bombilla, también lo harán las dos de enfrente. ¿Podrás solucionarlo?
         </p>
 
         <p *ngIf="this.posicionService.proyectoActual == 3">
-            Sí! soy friki, algún problema? <br>
-            Prepárese a pasar miedo Wey! <br>
-            ¡spoiler! por mucho que clikes no va a furular de momento.
+            Un ligero juego de rol, en el que te pondrás en la piel de una persona que recibe una herencia de lo más peculiar...
         </p>
 
         <p *ngIf="this.posicionService.proyectoActual == 97">
-            contáctame en <a href= "mailto:carloscn90@gmail.com">aquí iría mi puto correo electrónico</a> y visita mi linkedin tal
+            Contáctame en <a href="mailto:carloscn90@gmail.com">carloscn90&#64;gmail.com</a> y visita mi linkedin: (próximamente)
         </p>
         <p *ngIf="this.posicionService.proyectoActual == 98">
-            Soy el mejor!
+            Soy Carlos Carretero, un profesional con 12 años de experiencia en la industria de la siderurgia y madera y mueble,
+             donde me especialicé en el manejo y programación de máquinas CNC. La pandemia me llevó a explorar nuevas oportunidades
+              y descubrí una pasión por el desarrollo web. A través de estudios autodidactas y proyectos personales,
+               he adquirido sólidas habilidades en HTML, CSS, JavaScript, Angular, git, etc. Estoy listo para aplicar mis conocimientos
+               al desarrollo de soluciones web.
         </p>
     </div>
 
