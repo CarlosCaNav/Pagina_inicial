@@ -10,7 +10,7 @@
     z-index: 0;
     height: 100vh;
     width: 100vw;
-    background-image: url(/fondos/prueba.jpg);
+    background-image: url(/fondos/fondo.jpg);
     background-size: 100% 100%;
     filter: blur(0.3rem);
 }
@@ -22,9 +22,11 @@
     border: none;
     border-radius: 10vh;
     box-shadow: 1px 1px 5px;
-    width: 10vh;
-    height: 5vh;
+    min-width: 12vh;
+    height: 6vh;
     transition: 1s;
+    font-weight: bold;
+    font-size: large;
 }
 
 .botones:hover{

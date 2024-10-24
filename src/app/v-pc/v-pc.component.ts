@@ -150,8 +150,8 @@ export class VPcComponent {
 
       setTimeout(() => {
         this.posicionService.posicionTextos.velocidad = sTiempoTexto / 2;
-        this.posicionService.posicionTextos.x = 0.35;
-        this.posicionService.posicionTextos.y = 0.3;
+        this.posicionService.posicionTextos.x = 0.36;
+        this.posicionService.posicionTextos.y = 0.25;
         this.posicionService.posicionTextos.escala = window.innerHeight / 1000;
       }, sTiempoTexto * 1000)
 
