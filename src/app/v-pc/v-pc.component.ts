@@ -116,7 +116,7 @@ export class VPcComponent {
       this.colocarBurbujas(true);
 
       this.posicionService.botones.y = 0.05;
-      this.posicionService.botones.x = 0.4;
+      this.posicionService.botones.x = 0.94;
 
       this.posicionService.autorretrato.sAnimacion = 1;
       this.posicionService.autorretrato.x = 0.65;

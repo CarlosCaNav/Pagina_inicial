@@ -27,7 +27,7 @@ export class PosicionService {
   boca = { x: 0, y: 0 };
   barba = { x: 0, y: 0 };
 
-  botones = { x: -0.3, y: 0.52 };
+  botones = { x: -2, y: 0.52 };
 
   animacionActual: string = "aparecer"; //aparecer, esquiva, desplazamiento...
   proyectoActual: number = -1;

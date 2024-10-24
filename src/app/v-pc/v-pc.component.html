@@ -8,18 +8,18 @@
     </p>
 
     <button class="botones" *ngIf="posicionService.botones.y <= 0.2" (click)="this.burbuja(99); this.mostrarInicio()" [ngStyle]="{'margin': (posicionService.botones.y * 100) +'vh ' +
-    (posicionService.botones.x * 100) +'vw'}">
+    (posicionService.botones.x * 35) +'vw'}">
      Inicio </button>
      <button class="botones"  (click)="this.burbuja(98)" [ngStyle]="{'margin': (posicionService.botones.y * 100) +'vh ' +
-     (posicionService.botones.x * 100 + 7) +'vw'}">
+     (posicionService.botones.x * 35 + 10) +'vw'}">
      Quien soy </button>
 
      <button class="botones" (click)="this.burbuja(97)" [ngStyle]="{'margin': (posicionService.botones.y * 100) +'vh ' +
-     (posicionService.botones.x * 100 + 14) +'vw'}">
+     (posicionService.botones.x * 35 + 20) +'vw'}">
      Contacto </button>
 
      <button class="botones" (click)="this.posicionService.movil(true)"  [ngStyle]="{'margin': (posicionService.botones.y * 100) +'vh ' +
-     (posicionService.botones.x * 100 + 21) +'vw'}">
+     (posicionService.botones.x * 35 + 30) +'vw'}">
      Version Simplificada </button>
 
     <div class="autorretrato" (click)="autorretrato()" [ngStyle]="{'transition': this.posicionService.autorretrato.sAnimacion + 's', 'rotate':(posicionService.autorretrato.rotacion) +'deg ',
@@ -77,13 +77,14 @@
         <p *ngIf="this.posicionService.proyectoActual == 97">
             Contáctame en <a href="mailto:carloscn90@gmail.com">carloscn90&#64;gmail.com</a> y visita mi linkedin: (próximamente)
         </p>
-        <p *ngIf="this.posicionService.proyectoActual == 98">
-            Soy Carlos Carretero, un profesional con 12 años de experiencia en la industria de la siderurgia y madera y mueble,
-             donde me especialicé en el manejo y programación de máquinas computarizadas CNC. La pandemia me llevó a explorar nuevas oportunidades
-              y descubrí una pasión por el desarrollo web. A través de estudios autodidactas y proyectos personales,
-               he adquirido sólidas habilidades en HTML, CSS, JavaScript, Angular, git, etc. Estoy listo para aplicar mis conocimientos
-               al desarrollo de soluciones web.
-        </p>
     </div>
+    <p class="QuienSoy" *ngIf="this.posicionService.proyectoActual == 98">
+        Soy Carlos Carretero, un profesional con 12 años de experiencia en la industria de la siderurgia y madera y mueble,
+         donde me especialicé en el manejo y programación de máquinas computarizadas CNC. Apasionado por la informática desde niño,
+         uso por aficion GNU/Linux desde hace 15 años, así como programas como Blender, Gimp, etc. La pandemia me llevó a explorar nuevas oportunidades
+          y descubrí una pasión por el desarrollo web. A través de estudios autodidactas y proyectos personales,
+           he adquirido sólidas habilidades en HTML, CSS, JavaScript, Angular, Git, etc. Estoy listo para aplicar mis conocimientos
+           al desarrollo de soluciones web.
+    </p>
 
 </div>
