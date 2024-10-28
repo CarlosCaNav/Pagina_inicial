@@ -3,24 +3,25 @@
     <p class="presentacion" [ngStyle]="{'margin': (posicionService.presentacion.y * 100) +'vh ' +
       (posicionService.presentacion.x * 100) +'vw', 'scale': this.posicionService.presentacion.escala, 
       transition: this.posicionService.presentacion.velocidad + 's'}">
-        ¡Hola! me llamo Carlos Carretero. <br> <br> Soy un desarrollador web autodidacta.<br>
+        ¡Hola! me llamo Carlos Carretero. <br> <br> Soy un desarrollador web autodidacta.<br><br>
         A continuación le dejo diferentes proyectos con APIs, Firebase, etc.
     </p>
 
-    <button class="botones" *ngIf="posicionService.botones.y <= 0.2" (click)="this.burbuja(99); this.mostrarInicio()" [ngStyle]="{'margin': (posicionService.botones.y * 100) +'vh ' +
+    <button class="botones" *ngIf="posicionService.botones.y <= 0.2" (click)="this.burbuja(99); this.mostrarInicio()"
+        [ngStyle]="{'margin': (posicionService.botones.y * 100) +'vh ' +
     (posicionService.botones.x * 35) +'vw'}">
-     Inicio </button>
-     <button class="botones"  (click)="this.burbuja(98)" [ngStyle]="{'margin': (posicionService.botones.y * 100) +'vh ' +
+        Inicio </button>
+    <button class="botones" (click)="this.burbuja(98)" [ngStyle]="{'margin': (posicionService.botones.y * 100) +'vh ' +
      (posicionService.botones.x * 35 + 10) +'vw'}">
-     Quien soy </button>
+        Quien soy </button>
 
-     <button class="botones" (click)="this.burbuja(97)" [ngStyle]="{'margin': (posicionService.botones.y * 100) +'vh ' +
+    <button class="botones" (click)="this.burbuja(97)" [ngStyle]="{'margin': (posicionService.botones.y * 100) +'vh ' +
      (posicionService.botones.x * 35 + 20) +'vw'}">
-     Contacto </button>
+        Contacto </button>
 
-     <button class="botones" (click)="this.posicionService.movil(true)"  [ngStyle]="{'margin': (posicionService.botones.y * 100) +'vh ' +
+    <button class="botones" (click)="this.posicionService.movil(true)" [ngStyle]="{'margin': (posicionService.botones.y * 100) +'vh ' +
      (posicionService.botones.x * 35 + 30) +'vw'}">
-     Version Simplificada </button>
+        Version Simplificada </button>
 
     <div class="autorretrato" (click)="autorretrato()" [ngStyle]="{'transition': this.posicionService.autorretrato.sAnimacion + 's', 'rotate':(posicionService.autorretrato.rotacion) +'deg ',
      'scale': this.posicionService.autorretrato.escala, }">
@@ -34,10 +35,10 @@
     <div *ngFor="let proyecto of posicionService.proyectos">
 
         <div class="burbujas" (click)="burbuja(proyecto.id)" [ngStyle]="{
-            'margin-top': proyecto.posicionY +'vh',
-            'margin-left': proyecto.posicionX + 'vw',
-            'height': proyecto.tamanioY + 'vh',
-            'width': proyecto.tamanioX + 'vh',
+            'margin-top': proyecto.posicionY * 100 +'vh',
+            'margin-left': proyecto.posicionX * 100 + 'vw',
+            'height': proyecto.tamanioY * 100 + 'vw',
+            'width': proyecto.tamanioX * 100 + 'vw',
             'border-radius': proyecto.bordeRadio + '%',
             'transition': proyecto.sTransicion + 's',
             'background-image': proyecto.url
@@ -47,44 +48,54 @@
 
     </div>
 
+<!-- 
+    <div class="textoProyectos" [ngStyle]="{'margin': (posicionService.posicionTextos.y * 100) +'vh ' +
+(posicionService.posicionTextos.x * 100) +'vw','scale': this.posicionService.posicionTextos.escala,
+'transition': posicionService.posicionTextos.velocidad + 's'}"> -->
 
     <div class="textoProyectos" [ngStyle]="{'margin': (posicionService.posicionTextos.y * 100) +'vh ' +
 (posicionService.posicionTextos.x * 100) +'vw','scale': this.posicionService.posicionTextos.escala,
 'transition': posicionService.posicionTextos.velocidad + 's'}">
 
         <p *ngIf="this.posicionService.proyectoActual == 0">
-            Proyecto de un escapeRoom. <br> <br> 
-            En este proyecto tendrás que investigar una habitación para poder descubrir la clave y escapar. ¿Estás preparado? <br> <br> 
-            </p>
+            Proyecto de un escapeRoom. <br> <br>
+            En este proyecto tendrás que investigar una habitación para poder descubrir la clave y escapar. ¿Estás
+            preparado? <br> <br>
+        </p>
 
         <p *ngIf="this.posicionService.proyectoActual == 1">
-            Un juego usando la Api pública "PokeApi" por alguien que nunca ha jugado a nada Pokemon. <br> <br>
-            Dejo también un enlace alternativo, en el que es el propio servidor el que compila el proyecto desde git.
-            Por ello, el tiempo hasta que carga es excesivo.  <br> <br>
+            Usando la API pública "PokeApi", he diseñado un juego de Pokemon sin haber jugado nunca ha jugado a nada
+            Pokemon. <br> <br>
+            Dejo también un enlace alternativo, en el que es el propio servidor el que compila el proyecto desde Git.
+            Por ello, el tiempo de carga es excesivo. <br> <br>
 
-            <a href="https://pokemonapi-6rb7.onrender.com">PokemonApi sin compilar.</a>       
+            <a href="https://pokemonapi-6rb7.onrender.com">PokemonApi sin compilar.</a>
         </p>
 
         <p *ngIf="this.posicionService.proyectoActual == 2">
-           Un pequeño minijuego que consiste en encender todas las bombillas.
-           El problema reside en que al alternar el estado de una bombilla, también lo harán las dos de enfrente. ¿Podrás solucionarlo?
+            Un pequeño rompecabezas que consiste en encender todas las bombillas.
+            La dificultad reside en que al alternar el estado de una bombilla, también lo harán las dos de enfrente.<br> <br>
+            ¿Podrás solucionarlo?
         </p>
 
         <p *ngIf="this.posicionService.proyectoActual == 3">
-            Un ligero juego de rol, en el que te pondrás en la piel de una persona que recibe una herencia de lo más peculiar...
+            Un ligero juego de rol, en el que te pondrás en la piel de una persona que recibe una herencia de lo más
+            peculiar...
         </p>
 
         <p *ngIf="this.posicionService.proyectoActual == 97">
-            Contáctame en <a href="mailto:carloscn90@gmail.com">carloscn90&#64;gmail.com</a> y visita mi linkedin: (próximamente)
+            Contáctame en <a href="mailto:carloscn90@gmail.com">carloscn90&#64;gmail.com</a> y visita mi linkedin:
+            (próximamente)
         </p>
     </div>
+    
     <p class="QuienSoy" *ngIf="this.posicionService.proyectoActual == 98">
-        Soy Carlos Carretero, un profesional con 12 años de experiencia en la industria de la siderurgia y madera y mueble,
-         donde me especialicé en el manejo y programación de máquinas computarizadas CNC. Apasionado por la informática desde niño,
-         uso por aficion GNU/Linux desde hace 15 años, así como programas como Blender, Gimp, etc. La pandemia me llevó a explorar nuevas oportunidades
-          y descubrí una pasión por el desarrollo web. A través de estudios autodidactas y proyectos personales,
-           he adquirido sólidas habilidades en HTML, CSS, JavaScript, Angular, Git, etc. Estoy listo para aplicar mis conocimientos
-           al desarrollo de soluciones web.
+        Soy Carlos Carretero, un profesional con 12 años de experiencia en la industria de la siderurgia y madera y
+        mueble, donde me especialicé en el manejo y programación de máquinas computarizadas CNC. Apasionado por la informática
+        desde niño, uso por aficion GNU/Linux desde hace 15 años, así como Blender, Gimp, etc. La pandemia me llevó a
+        explorar nuevas oportunidades y descubrí una pasión por el desarrollo web. A través de estudios autodidactas y proyectos personales,
+        he adquirido sólidas habilidades en HTML, CSS, JavaScript, Angular, Git, etc. Estoy listo para aplicar mis
+        conocimientos al desarrollo de soluciones web.
     </p>
 
 </div>

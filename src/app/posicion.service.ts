@@ -40,10 +40,8 @@ export class PosicionService {
   urlImagenes = ["url('/proyectos/escapeRoom.jpg'", "url('/proyectos/pokeApi.jpg'", "url('/proyectos/pentaculo.jpg'", "url('/proyectos/rol.jpg'"];
   urlProyectos = ['https://escaperoom-15o1.onrender.com', 'https://pokeapi-w9mo.onrender.com/', 'https://luces-pentaculo-c.onrender.com', 'https://rol-web-c.onrender.com']
   proyectos: proyecto[] = [];
-  descripcionProyectos =[ "Aquí debería aparecer textos con un salto de línea <br> pero noooo! el mundo me odia!",
 
-   ]
-
+  tamanioPorDefectoImagen: number = 0.2;
 
   movil(dispositivo: boolean) {
     this.vMovil = dispositivo;

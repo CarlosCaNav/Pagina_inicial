@@ -24,7 +24,7 @@ export class VPcComponent {
     setTimeout(() => {
       this.posicionService.autorretrato.sAnimacion = duracionPresentacion / 1000;
       this.posicionService.autorretrato.x = 0.6;
-      this.posicionService.autorretrato.y = 0.3;
+      this.posicionService.autorretrato.y = 0.2;
       this.posicionService.autorretrato.escala = window.innerHeight / 1000;
 
       this.posicionService.presentacion.velocidad = duracionPresentacion / 1000
@@ -54,15 +54,15 @@ export class VPcComponent {
   colocarBurbujas(colocadas: boolean) {
     for (let i = 0; i <= this.posicionService.nombreProyectos.length - 1; ++i) {
 
-      const espaciado = 10;
-      const inicio = 50 - (this.posicionService.nombreProyectos.length - 1) / 2 * espaciado;
+      const espaciado = 0.10;
+      const inicio = 0.50 - (this.posicionService.nombreProyectos.length - 1) / 2 * espaciado;
       const duracionAnimacion = 1;
       const tiempoEntreBurbujas = duracionAnimacion / (this.posicionService.nombreProyectos.length - 1);
 
       this.posicionService.proyectos[i].posicionX = inicio + espaciado * i;
-      this.posicionService.proyectos[i].posicionY = 80;
-      this.posicionService.proyectos[i].tamanioX = 10;
-      this.posicionService.proyectos[i].tamanioY = 10;
+      this.posicionService.proyectos[i].posicionY = 0.80;
+      this.posicionService.proyectos[i].tamanioX = 0.05;
+      this.posicionService.proyectos[i].tamanioY = 0.05;
       this.posicionService.proyectos[i].bordeRadio = 100;
 
       if (colocadas) { this.posicionService.proyectos[i].sTransicion = 0.3 + (i * 0.05); }
@@ -124,10 +124,10 @@ export class VPcComponent {
       this.posicionService.autorretrato.escala = 1
 
       if (id <= 90) {
-        this.posicionService.proyectos[id].posicionX = 12;
-        this.posicionService.proyectos[id].posicionY = 25;
-        this.posicionService.proyectos[id].tamanioX = 45;
-        this.posicionService.proyectos[id].tamanioY = 35;
+        this.posicionService.proyectos[id].posicionX = 0.12;
+        this.posicionService.proyectos[id].posicionY = 0.25;
+        this.posicionService.proyectos[id].tamanioX = this.posicionService.tamanioPorDefectoImagen; /* 45 */
+        this.posicionService.proyectos[id].tamanioY = this.posicionService.tamanioPorDefectoImagen -0.05;
         this.posicionService.proyectos[id].bordeRadio = 5;
       }
 
@@ -150,7 +150,7 @@ export class VPcComponent {
 
       setTimeout(() => {
         this.posicionService.posicionTextos.velocidad = sTiempoTexto / 2;
-        this.posicionService.posicionTextos.x = 0.36;
+        this.posicionService.posicionTextos.x = 0.35;
         this.posicionService.posicionTextos.y = 0.25;
         this.posicionService.posicionTextos.escala = window.innerHeight / 1000;
       }, sTiempoTexto * 1000)
