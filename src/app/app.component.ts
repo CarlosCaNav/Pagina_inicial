@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { AutorretratoComponent } from "./autorretrato/autorretrato.component";
 import { NgFor, NgIf, NgStyle } from '@angular/common';
@@ -9,7 +9,7 @@ import { VMovilComponent } from './v-movil/v-movil.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, AutorretratoComponent, NgStyle, NgFor, NgIf, VPcComponent, VMovilComponent],
+  imports: [RouterOutlet, AutorretratoComponent, NgStyle, NgFor, NgIf, VPcComponent, VMovilComponent,],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -38,5 +38,18 @@ export class AppComponent {
         })
       }
   
+      if(window.innerWidth <= 1300){
+        this.posicionService.vMovil = true
+      }
   }
+
+
+  @HostListener('window:resize', ['$event'])
+  CambioTamanio(evento:any) {
+    if(window.innerWidth <= 1300){
+      this.posicionService.vMovil = true
+    }
+    else{this.posicionService.vMovil = false}
+
+  } 
 }

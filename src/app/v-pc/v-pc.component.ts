@@ -38,8 +38,7 @@ export class VPcComponent {
 
 
     setTimeout(() => {
-
-
+      
       for (let i = 0; i <= this.posicionService.nombreProyectos.length - 1; ++i) {
 
         this.posicionService.proyectos[i].sTransicion = 0.2;
@@ -49,7 +48,6 @@ export class VPcComponent {
   }
 
   title = 'Pagina_Inicial_2.1';
-
 
   colocarBurbujas(colocadas: boolean) {
     for (let i = 0; i <= this.posicionService.nombreProyectos.length - 1; ++i) {
@@ -69,6 +67,7 @@ export class VPcComponent {
       else { this.posicionService.proyectos[i].sTransicion = i * tiempoEntreBurbujas + 3; }
 
     }
+    this.posicionService.animacionActual = "esquiva";
   }
 
 
@@ -175,7 +174,7 @@ export class VPcComponent {
     setTimeout(() => {
 
 
-      this.posicionService.botones.y = 0.55;
+      this.posicionService.botones.y = 0.58;
       this.posicionService.botones.x = 0.3;
     }, 1000)
   }
@@ -199,6 +198,7 @@ export class VPcComponent {
 
   @HostListener('document:mousemove', ['$event'])
   raton(event: MouseEvent) {
+
 
     if (this.posicionService.deteccionPuntero) {
       /* this.posicionService.autorretrato.y = 0.5; */

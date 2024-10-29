@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { proyecto } from './proyectosInterface';
+import { HostListener } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +28,7 @@ export class PosicionService {
   boca = { x: 0, y: 0 };
   barba = { x: 0, y: 0 };
 
-  botones = { x: -2, y: 0.52 };
+  botones = { x: -2, y: 0.58 };
 
   animacionActual: string = "aparecer"; //aparecer, esquiva, desplazamiento...
   proyectoActual: number = -1;
@@ -46,6 +47,9 @@ export class PosicionService {
   movil(dispositivo: boolean) {
     this.vMovil = dispositivo;
   }
+
+  
+  
   /* 
     escapeRoom = { tamanioX: 10, tamanioY: 10, posicionX: 50, posicionY: 120, bordeRadio: 100, sTransicion: 1, url: "url('/proyectos/escapeRoom.jpg'"};
     pentaculo = { tamanioX: 10, tamanioY: 10, posicionX: 50, posicionY: 120, bordeRadio: 100, sTransicion: 1.5,  url: "url('/proyectos/pentaculo.jpg'"};
