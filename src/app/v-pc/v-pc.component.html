@@ -1,5 +1,8 @@
 <div class="todo">
     <div class="fondo"></div>
+    <div class="f uno"></div>
+    <div class="f dos"></div>
+    <div class="f tres"></div>
     <p class="presentacion" [ngStyle]="{'margin': (posicionService.presentacion.y * 100) +'vh ' +
       (posicionService.presentacion.x * 100) +'vw', 'scale': this.posicionService.presentacion.escala, 
       transition: this.posicionService.presentacion.velocidad + 's'}">
@@ -17,7 +20,7 @@
         Inicio </button>
     <button class="botones" (click)="this.burbuja(98)" [ngStyle]="{'margin': (posicionService.botones.y * 100) +'vh ' +
      (posicionService.botones.x * 35 + 10) +'vw'}">
-        Quien soy </button>
+        Quién soy </button>
 
     <button class="botones" (click)="this.burbuja(97)" [ngStyle]="{'margin': (posicionService.botones.y * 100) +'vh ' +
      (posicionService.botones.x * 35 + 20) +'vw'}">
@@ -73,7 +76,7 @@
                 Usando la API pública <a href="https://pokeapi.co/">"PokéAPI"</a>, he diseñado un juego de Pokemon sin
                 haber jugado nunca ha jugado a nada
                 Pokemon. <br> <br>
-                Debes investigar los pokemons que veas y luego responder a unas preguntas.
+                Debes investigar los pokemons que puedas y luego responder a unas preguntas.
                 <!-- 
                 Dejo también un enlace alternativo, en el que es el propio servidor el que compila el proyecto desde
                 Git.
