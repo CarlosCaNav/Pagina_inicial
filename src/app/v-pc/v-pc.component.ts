@@ -21,6 +21,7 @@ export class VPcComponent {
     const duracionPresentacion = 2000;
     const burbujas = 1000;
 
+    this.posicionService.proyectoActual = 0;
 
     this.posicionService.posicionTextos.escala = 0;
     setTimeout(() => {
@@ -124,17 +125,35 @@ export class VPcComponent {
       this.posicionService.botones.x = 0.94;
 
       this.posicionService.autorretrato.sAnimacion = 1;
-      this.posicionService.autorretrato.x = 0.75;
+      this.posicionService.autorretrato.x = 0.65;
       this.posicionService.autorretrato.rotacion = 0;
       this.posicionService.autorretrato.escala = 0.8;
 
-      if (id <= 90) {
+      if (id <= 90) { /* los proyectos */
         this.posicionService.proyectos[id].posicionX = 0.12;
         this.posicionService.proyectos[id].posicionY = 0.25;
         this.posicionService.proyectos[id].tamanioX = this.posicionService.tamanioPorDefectoImagen; /* 45 */
         this.posicionService.proyectos[id].tamanioY = this.posicionService.tamanioPorDefectoImagen - 0.05;
         this.posicionService.proyectos[id].bordeRadio = 5;
+        this.posicionService.cejas.rd = 0;
+        this.posicionService.cejas.ri = 0;
       }
+      else if (id == 99) {/* inicio */
+        this.posicionService.autorretrato.escala = 1;
+        this.posicionService.autorretrato.x = 0.65;
+        this.posicionService.autorretrato.y = 0.2;
+      }
+      else if (id == 97) {/* contacto */
+        this.posicionService.autorretrato.escala = 1;
+        this.posicionService.autorretrato.x = 0.65;
+        this.posicionService.autorretrato.y = 0.2;
+        this.posicionService.cejas.rd = -15;
+        this.posicionService.cejas.ri = 10;
+        this.posicionService.cejas.yd = -3;
+      }
+      else{
+        this.posicionService.cejas.rd = 0;
+        this.posicionService.cejas.ri = 0;}
 
 
       this.posicionService.presentacion.velocidad = sTiempoTexto / 2;
@@ -146,7 +165,7 @@ export class VPcComponent {
       setTimeout(() => {
         this.posicionService.posicionTextos.velocidad = sTiempoTexto / 2;
         this.posicionService.posicionTextos.x = 0.6;
-        this.posicionService.posicionTextos.y = 0.6;
+        this.posicionService.posicionTextos.y = 0.4;
       }, sTiempoTexto / 2 * 1000)
 
       setTimeout(() => {
@@ -240,36 +259,36 @@ export class VPcComponent {
 
       }
 
-/* 
-
-      if (this.posicionService.puntero.x >= 0.65 && this.posicionService.puntero.x <= 0.75 && this.posicionService.puntero.y >= 0.80) {
-        this.caraApartada = true;
-      }
-      else {
-        this.caraApartada = false;
-      }
-
-    if (this.caraApartada == true) {
-      this.posicionService.autorretrato.x = 0.8;
-      this.posicionService.pelo.x = -20;
-      setTimeout(() => {
-        this.posicionService.pelo.x = 20
-      }, 300)
-      setTimeout(() => {
-        this.posicionService.pelo.x = 0
-      }, 600)
-    }
-    else {
-      this.posicionService.autorretrato.x = 0.6
-
-      this.posicionService.pelo.x = 20;
-      setTimeout(() => {
-        this.posicionService.pelo.x = -20
-      }, 300)
-      setTimeout(() => {
-        this.posicionService.pelo.x = 0
-      }, 600)
-    } */
+      /* 
+      
+            if (this.posicionService.puntero.x >= 0.65 && this.posicionService.puntero.x <= 0.75 && this.posicionService.puntero.y >= 0.80) {
+              this.caraApartada = true;
+            }
+            else {
+              this.caraApartada = false;
+            }
+      
+          if (this.caraApartada == true) {
+            this.posicionService.autorretrato.x = 0.8;
+            this.posicionService.pelo.x = -20;
+            setTimeout(() => {
+              this.posicionService.pelo.x = 20
+            }, 300)
+            setTimeout(() => {
+              this.posicionService.pelo.x = 0
+            }, 600)
+          }
+          else {
+            this.posicionService.autorretrato.x = 0.6
+      
+            this.posicionService.pelo.x = 20;
+            setTimeout(() => {
+              this.posicionService.pelo.x = -20
+            }, 300)
+            setTimeout(() => {
+              this.posicionService.pelo.x = 0
+            }, 600)
+          } */
     }
   }
 }
