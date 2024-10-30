@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { proyecto } from './proyectosInterface';
-import { HostListener } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'

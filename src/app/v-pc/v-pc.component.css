@@ -12,22 +12,22 @@
     height: 100vh;
     width: 100vw;/* 
     background-image: url(/fondos/fondo.jpg); */
-    background-color: #78c7ff;
+    background-color: #78c7ff;/* 
     background-size: 100% 100%;
-    filter: blur(0.3rem);
+    filter: blur(0.1rem); */
 }
 
 .f{
     position: absolute;
-    z-index: 1;
-    filter: blur(0.3rem);
     height: 150vh;
     width: 100vw;
     background-size: 100% 100%;
 }
 
 .uno{
-    animation: "uno" 100s linear;
+    z-index: 1;
+    filter: blur(0.5rem);
+    animation: "uno" 90s linear;
     background-image: url(/fondos/f1.png);
     animation-iteration-count: infinite;
 }
@@ -37,7 +37,9 @@
     100%{margin-top: 0vh;}
 }
 .dos{
-    animation: "dos" 40s linear;
+    z-index: 2;
+    filter: blur(0.3rem);
+    animation: "dos" 70s linear;
     background-image: url(/fondos/f2.png);
     animation-iteration-count: infinite;
 }
@@ -47,7 +49,9 @@
     100%{margin-top: 0vh;}
 }
 .tres{
-    animation: "tres" 80s linear;
+    z-index: 3;
+    filter: blur(0.2rem);
+    animation: "tres" 50s linear;
     background-image: url(/fondos/f3.png);
     animation-iteration-count: infinite;
 }
@@ -59,7 +63,7 @@
 
 .textoBurbujas {
     position: absolute;
-    z-index: 50;
+    z-index: 5;
     font-size: 35px;
     margin-top: 75vh;
     margin-left: calc(53vw - 100px);
@@ -79,10 +83,10 @@
     z-index: 5;
     background-color: rgb(205, 253, 255);
     border: none;
-    border-radius: 10vh;
+    border-radius: 100px;
     box-shadow: 1px 1px 5px;
-    width: 15vh;
-    height: 6vh;
+    width: 130px;
+    height: 55px;
     transition: 1s;
     font-weight: bold;
     font-size: large;
@@ -102,19 +106,18 @@
 
 .presentacion {
     position: absolute;
-    z-index: 10;
+    z-index: 5;
     /* 
     margin-top: 30vh;
     margin-left: 10vw; */
     font-size: xx-large;
-    height: 20vh;
     width: 35vw;
     text-shadow: 0px 0px 10px white;
 }
 
 .textoProyectos {
     position: absolute;
-    z-index: 10;
+    z-index: 5;
     font-size: xx-large;
     /* 
     height: 20vh; */
@@ -135,27 +138,28 @@
     margin-top: 13vh;
     margin-left: 20vw;
     position: absolute;
-    z-index: 10;
+    z-index: 5;
     font-size: xx-large;
     /* 
     height: 20vh; */
-    width: 45vw;
+    width: 50vw;
     text-shadow: 0px 0px 10px white;
 }
 
 .autorretrato {
     /* estos márgenes los aplico para que la imagen se mueva desde el centro y no desde la esquina superior izquierda */
     position: absolute;
+    z-index: 2;
+    width: 500px;
+    height: 500px;
     /* 
     margin-top: -250px; 
     margin-left: -250px; */
-    transition: 1s;
 }
 
 .burbujas {
     position: absolute;
-    z-index: 10;
-    border-color: 2px solid red;
+    z-index: 5;
     background-size: 100% 100%;
     box-shadow: 0.5vh 0.5vh 1vh black, inset 0.5vh 0.5vh 1vh white, inset -0.2vh -0.2vh 1vh rgb(0, 0, 0);
     cursor: pointer;

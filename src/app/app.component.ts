@@ -49,7 +49,9 @@ export class AppComponent {
     if(window.innerWidth <= 1300){
       this.posicionService.vMovil = true
     }
-    else{this.posicionService.vMovil = false}
+    else{this.posicionService.vMovil = false;
+      
+    }
 
   } 
 }

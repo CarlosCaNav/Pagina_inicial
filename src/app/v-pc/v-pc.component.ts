@@ -21,11 +21,13 @@ export class VPcComponent {
     const duracionPresentacion = 2000;
     const burbujas = 1000;
 
+
+    this.posicionService.posicionTextos.escala = 0;
     setTimeout(() => {
       this.posicionService.autorretrato.sAnimacion = duracionPresentacion / 1000;
-      this.posicionService.autorretrato.x = 0.6;
+      this.posicionService.autorretrato.x = 0.65;
       this.posicionService.autorretrato.y = 0.2;
-      this.posicionService.autorretrato.escala = window.innerHeight / 1000;
+      this.posicionService.autorretrato.escala = 1;
 
       this.posicionService.presentacion.velocidad = duracionPresentacion / 1000
     }, delayAutorretrato)
@@ -38,7 +40,7 @@ export class VPcComponent {
 
 
     setTimeout(() => {
-      
+
       for (let i = 0; i <= this.posicionService.nombreProyectos.length - 1; ++i) {
 
         this.posicionService.proyectos[i].sTransicion = 0.2;
@@ -48,8 +50,11 @@ export class VPcComponent {
   }
 
   title = 'Pagina_Inicial_2.1';
+  caraApartada: boolean = false;
 
   colocarBurbujas(colocadas: boolean) {
+
+
     for (let i = 0; i <= this.posicionService.nombreProyectos.length - 1; ++i) {
 
       const espaciado = 0.10;
@@ -80,19 +85,17 @@ export class VPcComponent {
 
       this.posicionService.deteccionPuntero = false;
       this.posicionService.autorretrato.sAnimacion = 5;
-      this.posicionService.autorretrato.rotacion = 2000;
-      this.posicionService.autorretrato.escala = 1.5;
+      this.posicionService.autorretrato.rotacion = 800;
+      this.posicionService.autorretrato.escala = 0.0;
+      this.posicionService.autorretrato.x = -0.4;
 
-      window.open(this.posicionService.urlProyectos[this.posicionService.proyectoActual] ,"_self")
+      window.open(this.posicionService.urlProyectos[this.posicionService.proyectoActual], "_self")
 
 
-    /*   
-      switch (this.posicionService.proyectoActual) {
-        case 0:
-          window.open(this.posicionService.urlProyectos[0] ,"_self")
-          break;
-          case 1:
-            window.open(this.posicionService.urlProyectos[1], "_self")
+      /*   
+        switch (this.posicionService.proyectoActual) {
+          case 0:
+            window.open(this.posicionService.urlProyectos[0] ,"_self")
             break;
             case 1:
               window.open(this.posicionService.urlProyectos[1], "_self")
@@ -100,7 +103,10 @@ export class VPcComponent {
               case 1:
                 window.open(this.posicionService.urlProyectos[1], "_self")
                 break;
-      } */
+                case 1:
+                  window.open(this.posicionService.urlProyectos[1], "_self")
+                  break;
+        } */
     }
     else {
 
@@ -118,15 +124,15 @@ export class VPcComponent {
       this.posicionService.botones.x = 0.94;
 
       this.posicionService.autorretrato.sAnimacion = 1;
-      this.posicionService.autorretrato.x = 0.65;
-      this.posicionService.autorretrato.rotacion = 0
-      this.posicionService.autorretrato.escala = 1
+      this.posicionService.autorretrato.x = 0.75;
+      this.posicionService.autorretrato.rotacion = 0;
+      this.posicionService.autorretrato.escala = 0.8;
 
       if (id <= 90) {
         this.posicionService.proyectos[id].posicionX = 0.12;
         this.posicionService.proyectos[id].posicionY = 0.25;
         this.posicionService.proyectos[id].tamanioX = this.posicionService.tamanioPorDefectoImagen; /* 45 */
-        this.posicionService.proyectos[id].tamanioY = this.posicionService.tamanioPorDefectoImagen -0.05;
+        this.posicionService.proyectos[id].tamanioY = this.posicionService.tamanioPorDefectoImagen - 0.05;
         this.posicionService.proyectos[id].bordeRadio = 5;
       }
 
@@ -151,7 +157,7 @@ export class VPcComponent {
         this.posicionService.posicionTextos.velocidad = sTiempoTexto / 2;
         this.posicionService.posicionTextos.x = 0.35;
         this.posicionService.posicionTextos.y = 0.25;
-        this.posicionService.posicionTextos.escala = window.innerHeight / 1000;
+        this.posicionService.posicionTextos.escala = 1;
       }, sTiempoTexto * 1000)
 
       setTimeout(() => {
@@ -163,7 +169,6 @@ export class VPcComponent {
   }
 
   mostrarInicio() {
-
     this.posicionService.autorretrato.sAnimacion = 0.5;
     this.posicionService.presentacion.x = 0.2;
     this.posicionService.presentacion.y = 0.3;
@@ -199,10 +204,9 @@ export class VPcComponent {
   @HostListener('document:mousemove', ['$event'])
   raton(event: MouseEvent) {
 
-
     if (this.posicionService.deteccionPuntero) {
-      /* this.posicionService.autorretrato.y = 0.5; */
-      this.posicionService.autorretrato.escala = window.innerHeight / 1000;
+      /* this.posicionService.autorretrato.y = 0.5; *//* 
+      this.posicionService.autorretrato.escala = window.innerHeight / 1000; */
 
       this.posicionService.puntero.x = event.clientX / window.innerWidth;
       this.posicionService.puntero.y = event.clientY / window.innerHeight;
@@ -236,33 +240,36 @@ export class VPcComponent {
 
       }
 
+/* 
 
-      if (this.posicionService.animacionActual == "esquiva") /* esquiva */ {
-
-        if (this.posicionService.puntero.x >= 0.65 && this.posicionService.puntero.x <= 0.75 && this.posicionService.autorretrato.x == 0.6 && this.posicionService.puntero.y >= 0.80) {
-          this.posicionService.autorretrato.x = 0.8;
-          this.posicionService.pelo.x = -20;
-          setTimeout(() => {
-            this.posicionService.pelo.x = 20
-          }, 300)
-          setTimeout(() => {
-            this.posicionService.pelo.x = 0
-          }, 600)
-        }
-        else if (((this.posicionService.puntero.x >= 0.75 && this.posicionService.puntero.x <= 0.9) || this.posicionService.puntero.x <= 0.4) && this.posicionService.autorretrato.x == 0.8) {
-          this.posicionService.autorretrato.x = 0.6
-
-
-          this.posicionService.pelo.x = 20;
-          setTimeout(() => {
-            this.posicionService.pelo.x = -20
-          }, 300)
-          setTimeout(() => {
-            this.posicionService.pelo.x = 0
-          }, 600)
-        }
-
+      if (this.posicionService.puntero.x >= 0.65 && this.posicionService.puntero.x <= 0.75 && this.posicionService.puntero.y >= 0.80) {
+        this.caraApartada = true;
       }
+      else {
+        this.caraApartada = false;
+      }
+
+    if (this.caraApartada == true) {
+      this.posicionService.autorretrato.x = 0.8;
+      this.posicionService.pelo.x = -20;
+      setTimeout(() => {
+        this.posicionService.pelo.x = 20
+      }, 300)
+      setTimeout(() => {
+        this.posicionService.pelo.x = 0
+      }, 600)
+    }
+    else {
+      this.posicionService.autorretrato.x = 0.6
+
+      this.posicionService.pelo.x = 20;
+      setTimeout(() => {
+        this.posicionService.pelo.x = -20
+      }, 300)
+      setTimeout(() => {
+        this.posicionService.pelo.x = 0
+      }, 600)
+    } */
     }
   }
 }

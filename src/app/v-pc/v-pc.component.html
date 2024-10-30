@@ -30,13 +30,15 @@
      (posicionService.botones.x * 35 + 30) +'vw'}">
         Version Simplificada </button>
 
-    <div class="autorretrato" (click)="autorretrato()" [ngStyle]="{'transition': this.posicionService.autorretrato.sAnimacion + 's', 'rotate':(posicionService.autorretrato.rotacion) +'deg ',
-     'scale': this.posicionService.autorretrato.escala, }">
+    <div class="autorretrato" (click)="autorretrato()" [ngStyle]="{'margin': (posicionService.autorretrato.y * 100) + 'vh ' + 
+    (this.posicionService.autorretrato.x * 100) +'vw','transition': this.posicionService.autorretrato.sAnimacion + 's',
+     'scale': this.posicionService.autorretrato.escala, 'rotate':(posicionService.autorretrato.rotacion) +'deg '}">
+        <app-autorretrato />
 
-        <div [ngStyle]="{'margin': (posicionService.autorretrato.y * 100) + 'vh ' + (this.posicionService.autorretrato.x * 100) +'vw',
+        <!-- <div [ngStyle]="{'margin': (posicionService.autorretrato.y * 100) + 'vh ' + (this.posicionService.autorretrato.x * 100) +'vw', 'rotate':(posicionService.autorretrato.rotacion) +'deg ',
          'transition': posicionService.autorretrato.sAnimacion + 's'}">
-            <app-autorretrato />
-        </div>
+            <app-autorretrato /> 
+        </div> -->
     </div>
 
     <div *ngFor="let proyecto of posicionService.proyectos">
@@ -97,7 +99,7 @@
         <div *ngIf="this.posicionService.proyectoActual == 3">
             <a href="https://rol-web-c.onrender.com/" class="titulo">Toma de decisiones</a>
             <p> Un ligero juego de rol, en el que te pondrás en la piel de una persona que recibe una herencia de lo más
-            peculiar...</p>
+                peculiar...</p>
         </div>
 
         <div *ngIf="this.posicionService.proyectoActual == 97">
