@@ -14,6 +14,7 @@ export class PosicionService {
 
   userAgent = navigator.userAgent.toLowerCase();
 
+  vSimplie: boolean = false;
   vMovil: boolean = false;
 
   autorretrato = { x: 1.1, y: 0, escala: 0, sAnimacion: 1, rotacion: 0 };
@@ -44,7 +45,7 @@ export class PosicionService {
   tamanioPorDefectoImagen: number = 0.2;
 
   movil(dispositivo: boolean) {
-    this.vMovil = dispositivo;
+    this.vSimplie = dispositivo;
   }
 
   

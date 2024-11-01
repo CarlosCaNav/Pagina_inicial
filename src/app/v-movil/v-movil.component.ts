@@ -10,7 +10,7 @@ import { NgFor, NgIf, NgStyle } from '@angular/common';
   templateUrl: './v-movil.component.html',
   styleUrl: './v-movil.component.css'
 })
-export class VMovilComponent {
+export class vSimplieComponent {
 
   constructor(public posicionService: PosicionService){}
 

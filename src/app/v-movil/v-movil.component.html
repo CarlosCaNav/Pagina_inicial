@@ -1,6 +1,6 @@
 <div class="todo">
     <div style="width: 100vw;">
-        <button (click)="this.posicionService.movil(false)" class="boton">Ver sitio de escritorio</button>
+        <button *ngIf="this.posicionService.vMovil == false" (click)="this.posicionService.movil(false)" class="boton">Ver sitio de escritorio</button>
     </div>
 
     <div class="textoInicio">
@@ -8,9 +8,10 @@
             <h1>¡Hola! Me llamo Carlos Carretero. Soy un desarrollador web autodidacta.</h1>
 
             <h3>Contáctame en <a href="mailto:carloscn90@gmail.com">carloscn90&#64;gmail.com</a> y visita mi
-                linkedin (próximamente).<br><br>
+                linkedin <a href="https://www.linkedin.com/in/carlos-carretero-navarro-8682a82ba/"> Carlos Carretero Navarro</a>.<br><br>
 
-                A continuación le dejo algunos de mis proyectos. Algunos no son compatibles con su dispositivo ya que hacen uso del ratón. <br><br>
+                A continuación le dejo algunos de mis proyectos. 
+                <span *ngIf="this.posicionService.vMovil">Algunos no son compatibles con su dispositivo ya que hacen uso de la posición del ratón.</span> <br>
             </h3>
         </div>
     </div>
@@ -19,29 +20,32 @@
         <div class="bloques">
             <a
                 href="https://pokeapi-w9mo.onrender.com/">
+                <h2 class="centrado"><b>Cuestionario Pokemons</b></h2>
                 <div class="imagen" [ngStyle]="{
             'background-image': this.posicionService.urlImagenes[1]}">
                 </div>
             </a>
             <p class="texto">
-                Un juego usando la Api pública "PokeApi" por alguien que nunca ha jugado a nada Pokemon.
+                Un juego usando la Api pública "PokeApi" por alguien que nunca ha jugado a nada Pokemon.<br><br>
+                <span *ngIf="this.posicionService.vMovil">Actualmente tiene algunos problemas de legibilidad en su dispositivo.</span>
             </p>
         </div>
         <div class="bloques">
             <a
                 href="https://luces-pentaculo-c.onrender.com/">
+                <h1 class="centrado">Rompecabezas</h1>
                 <div class="imagen" [ngStyle]="{
             'background-image': this.posicionService.urlImagenes[2]}">
                 </div>
             </a>
             <p class="texto">
-                Un pequeño minijuego que consiste en encender todas las bombillas.
-                El problema reside en que al alternar el estado de una bombilla, también lo harán las dos de enfrente. ¿Podrás solucionarlo?
+                Un pequeño minijuego que consiste en encender todas las bombillas, pero al alternar el estado de una bombilla, también lo harán las dos de enfrente. ¿Podrás solucionarlo?
             </p>
         </div>
         <div class="bloques">
             <a
                 href="https://rol-web-c.onrender.com/">
+                <h1 class="centrado">Toma de decisiones</h1>
                 <div class="imagen" [ngStyle]="{
             'background-image': this.posicionService.urlImagenes[3]}">
                 </div>
@@ -52,11 +56,13 @@
         <div class="bloques">
             <a
                 href="https://escaperoom-15o1.onrender.com/">
+                <h1 class="centrado">EscapeRoom</h1>
                 <div class="imagen" [ngStyle]="{
             'background-image': this.posicionService.urlImagenes[0]}">
                 </div>
             </a>
-            <p class="texto"> Un escape-room sencillo, en el que tendrás que investigar para encontrar la clave. (no diposible con controles táctiles)
+            <p class="texto"> Un escape-room sencillo, tendrás que investigar la habitación para encontrar la clave y escapar. 
+                <span *ngIf="this.posicionService.vMovil">No compatible con su dispositivo.</span>
             </p>
         </div>
     </div>

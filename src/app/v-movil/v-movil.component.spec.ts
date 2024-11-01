@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VMovilComponent } from './v-movil.component';
+import { vSimplieComponent } from './v-movil.component';
 
-describe('VMovilComponent', () => {
-  let component: VMovilComponent;
-  let fixture: ComponentFixture<VMovilComponent>;
+describe('vSimplieComponent', () => {
+  let component: vSimplieComponent;
+  let fixture: ComponentFixture<vSimplieComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [VMovilComponent]
+      imports: [vSimplieComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(VMovilComponent);
+    fixture = TestBed.createComponent(vSimplieComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
