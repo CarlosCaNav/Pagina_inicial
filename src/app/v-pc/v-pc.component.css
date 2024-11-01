@@ -1,6 +1,7 @@
 .todo {
     height: 100vh;
     width: 100vw;
+    font-family: "Roboto", sans-serif;
     /* 
     background-size: 100% 100%;/* 
     filter: blur(1rem); */
@@ -113,6 +114,9 @@
     font-size: xx-large;
     width: 35vw;
     text-shadow: 0px 0px 10px white;
+    @media screen and (max-width: 1800px){
+        font-size: x-large;
+    }
 }
 
 .textoProyectos {
@@ -121,7 +125,7 @@
     font-size: xx-large;
     /* 
     height: 20vh; */
-    width: 32vw;
+    width: 35vw;
     text-shadow: 0px 0px 10px white;
     text-align: justify;
 }
@@ -144,12 +148,18 @@
     height: 20vh; */
     width: 50vw;
     text-shadow: 0px 0px 10px white;
+
+
+@media screen and (max-width: 1800px){
+    font-size: x-large;
 }
+}
+
 
 .autorretrato {
     /* estos márgenes los aplico para que la imagen se mueva desde el centro y no desde la esquina superior izquierda */
     position: absolute;
-    z-index: 2;
+    z-index: 20;
     width: 500px;
     height: 500px;
     /* 
@@ -163,6 +173,8 @@
     background-size: 100% 100%;
     box-shadow: 0.5vh 0.5vh 1vh black, inset 0.5vh 0.5vh 1vh white, inset -0.2vh -0.2vh 1vh rgb(0, 0, 0);
     cursor: pointer;
+    max-width: 600px;
+    max-height: 400px;
 }
 
 

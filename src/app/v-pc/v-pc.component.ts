@@ -21,7 +21,7 @@ export class VPcComponent {
     const duracionPresentacion = 2000;
     const burbujas = 1000;
 
-    this.posicionService.proyectoActual = 0;
+    this.posicionService.proyectoActual = -1;
 
     this.posicionService.posicionTextos.escala = 0;
     setTimeout(() => {
@@ -69,6 +69,13 @@ export class VPcComponent {
       this.posicionService.proyectos[i].tamanioY = 0.05;
       this.posicionService.proyectos[i].bordeRadio = 100;
 
+
+      // En monitores ultrapanorámicos, las burbujas crecían desproporcionadamente. Esta función es para tratar de evitarlo
+      if(window.innerWidth > 3000){
+        this.posicionService.proyectos[i].tamanioX = 0.03;
+        this.posicionService.proyectos[i].tamanioY = 0.03;}
+
+      //Esto es para que la primera vez que se carga la página, las burbujas aparezcan de una en una
       if (colocadas) { this.posicionService.proyectos[i].sTransicion = 0.3 + (i * 0.05); }
       else { this.posicionService.proyectos[i].sTransicion = i * tiempoEntreBurbujas + 3; }
 
@@ -174,7 +181,7 @@ export class VPcComponent {
 
       setTimeout(() => {
         this.posicionService.posicionTextos.velocidad = sTiempoTexto / 2;
-        this.posicionService.posicionTextos.x = 0.35;
+        this.posicionService.posicionTextos.x = 0.34;
         this.posicionService.posicionTextos.y = 0.25;
         this.posicionService.posicionTextos.escala = 1;
       }, sTiempoTexto * 1000)
