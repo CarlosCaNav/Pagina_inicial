@@ -14,6 +14,9 @@
         - Proyectos -
     </div>
 
+    <img class="tecnologias" [ngStyle]="{'margin': (posicionService.botones.y * 100 - 45) +'vh ' +
+     (posicionService.botones.x * 35 + 10) +'vw'}" src="logos.png" alt="">
+
     <button class="botones" *ngIf="posicionService.botones.y <= 0.2" (click)="this.burbuja(99); this.mostrarInicio()"
         [ngStyle]="{'margin': (posicionService.botones.y * 100) +'vh ' +
     (posicionService.botones.x * 35) +'vw'}">

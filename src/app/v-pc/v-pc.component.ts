@@ -199,10 +199,10 @@ export class VPcComponent {
   mostrarInicio() {
     this.posicionService.autorretrato.sAnimacion = 0.5;
     this.posicionService.presentacion.x = 0.2;
-    this.posicionService.presentacion.y = 0.25;
+    this.posicionService.presentacion.y = 0.3;
     this.posicionService.presentacion.escala = 1;
     this.posicionService.animacionActual = "esquiva";
-    this.posicionService.botones.y = 0.58;
+    this.posicionService.botones.y = 0.62;
     this.posicionService.botones.x = 0.3;
   }
 

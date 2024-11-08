@@ -120,6 +120,12 @@
     cursor: pointer; 
 }
 
+.tecnologias{
+    position: absolute;
+    z-index: 5;
+    transition: 1.5s;
+}
+
 .presentacion {
     position: absolute;
     z-index: 5;
