@@ -6,7 +6,7 @@
     <p class="presentacion" [ngStyle]="{'margin': (posicionService.presentacion.y * 100) +'vh ' +
       (posicionService.presentacion.x * 100) +'vw', 'scale': this.posicionService.presentacion.escala, 
       transition: this.posicionService.presentacion.velocidad + 's'}">
-        ¡Hola! me llamo Carlos Carretero. <br> <br> Soy un desarrollador web autodidacta.<br><br>
+        ¡Hola! me llamo Carlos Carretero. <br> <br> Soy un desarrollador web autodidacta especializado en Angular.<br><br>
         En la parte inferior le dejo diferentes proyectos con APIs, Firebase, etc.
     </p>
 
@@ -18,12 +18,13 @@
         [ngStyle]="{'margin': (posicionService.botones.y * 100) +'vh ' +
     (posicionService.botones.x * 35) +'vw'}">
         Inicio </button>
-    <button class="botones" (click)="this.burbuja(98)" [ngStyle]="{'margin': (posicionService.botones.y * 100) +'vh ' +
-     (posicionService.botones.x * 35 + 10) +'vw'}">
+
+    <button [ngClass]="{'botones': this.posicionService.proyectoActual != 98, 'actual': this.posicionService.proyectoActual == 98,}"
+    (click)="this.burbuja(98)" [ngStyle]="{'margin': (posicionService.botones.y * 100) +'vh ' + (posicionService.botones.x * 35 + 10) +'vw'}">
         Quién soy </button>
 
-    <button class="botones" (click)="this.burbuja(97)" [ngStyle]="{'margin': (posicionService.botones.y * 100) +'vh ' +
-     (posicionService.botones.x * 35 + 20) +'vw'}">
+    <button [ngClass]="{'botones': this.posicionService.proyectoActual != 97, 'actual': this.posicionService.proyectoActual == 97,}"
+    (click)="this.burbuja(97)" [ngStyle]="{'margin': (posicionService.botones.y * 100) +'vh ' + (posicionService.botones.x * 35 + 20) +'vw'}">
         Contacto </button>
 
     <button class="botones" (click)="this.posicionService.movil(true)" [ngStyle]="{'margin': (posicionService.botones.y * 100) +'vh ' +
@@ -98,8 +99,9 @@
 
         <div *ngIf="this.posicionService.proyectoActual == 3">
             <a href="https://rol-web-c.onrender.com/" class="titulo">Toma de decisiones</a>
-            <p> Un ligero juego de rol, en el que te pondrás en la piel de una persona que recibe una herencia de lo más
-                peculiar...</p>
+            <p> Embárcate en una aventura de 5 minutos llena de decisiones. 
+                El azar y tus habilidades determinarán el desenlace. Cada acción requerirá lanzar un dado virtual para superar desafíos.<br><br>
+            ¿Estás preparado?</p>
         </div>
 
         <div *ngIf="this.posicionService.proyectoActual == 97">

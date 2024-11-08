@@ -91,7 +91,7 @@
     transition: 1s;
     font-weight: bold;
     font-size: large;
-    cursor: pointer;
+    cursor: pointer; 
 }
 
 .botones:hover {
@@ -103,6 +103,21 @@
 
 .botones:active {
     scale: 0.8;
+}
+
+.actual {
+    position: absolute;
+    z-index: 5;
+    background-color: rgb(205, 253, 255);
+    border: none;
+    border-radius: 100px;
+    width: 130px;
+    height: 55px;
+    transition: 1s;
+    color: #22689f;
+    font-weight: bold;
+    font-size: large;
+    cursor: pointer; 
 }
 
 .presentacion {

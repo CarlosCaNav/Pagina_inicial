@@ -1,4 +1,4 @@
-import { NgFor, NgIf, NgStyle } from '@angular/common';
+import { NgFor, NgIf, NgStyle, NgClass } from '@angular/common';
 import { Component, HostListener } from '@angular/core';
 import { AutorretratoComponent } from '../autorretrato/autorretrato.component';
 import { RouterOutlet } from '@angular/router';
@@ -7,7 +7,7 @@ import { PosicionService } from '../posicion.service';
 @Component({
   selector: 'app-v-pc',
   standalone: true,
-  imports: [RouterOutlet, AutorretratoComponent, NgStyle, NgFor, NgIf],
+  imports: [RouterOutlet, AutorretratoComponent, NgStyle, NgFor, NgIf, NgClass],
   templateUrl: './v-pc.component.html',
   styleUrl: './v-pc.component.css'
 })
@@ -71,9 +71,10 @@ export class VPcComponent {
 
 
       // En monitores ultrapanorámicos, las burbujas crecían desproporcionadamente. Esta función es para tratar de evitarlo
-      if(window.innerWidth > 3000){
+      if (window.innerWidth > 3000) {
         this.posicionService.proyectos[i].tamanioX = 0.03;
-        this.posicionService.proyectos[i].tamanioY = 0.03;}
+        this.posicionService.proyectos[i].tamanioY = 0.03;
+      }
 
       //Esto es para que la primera vez que se carga la página, las burbujas aparezcan de una en una
       if (colocadas) { this.posicionService.proyectos[i].sTransicion = 0.3 + (i * 0.05); }
@@ -89,7 +90,8 @@ export class VPcComponent {
 
     this.posicionService.deteccionPuntero = true;
 
-    if (id == this.posicionService.proyectoActual) {
+    //id > 90 lo he reservado para los botones superiores, y <90 para los proyectos
+    if (id == this.posicionService.proyectoActual && id <= 90) {
 
       this.posicionService.deteccionPuntero = false;
       this.posicionService.autorretrato.sAnimacion = 5;
@@ -142,10 +144,10 @@ export class VPcComponent {
         this.posicionService.proyectos[id].tamanioX = this.posicionService.tamanioPorDefectoImagen; /* 45 */
         this.posicionService.proyectos[id].tamanioY = this.posicionService.tamanioPorDefectoImagen - 0.05;
         this.posicionService.proyectos[id].bordeRadio = 5;
-        this.posicionService.cejas.rd = 0;
-        this.posicionService.cejas.ri = 0;
+        this.ReestrablecerAutorretrato()
       }
       else if (id == 99) {/* inicio */
+        this.ReestrablecerAutorretrato()
         this.posicionService.autorretrato.escala = 1;
         this.posicionService.autorretrato.x = 0.65;
         this.posicionService.autorretrato.y = 0.2;
@@ -158,9 +160,9 @@ export class VPcComponent {
         this.posicionService.cejas.ri = 10;
         this.posicionService.cejas.yd = -3;
       }
-      else{
-        this.posicionService.cejas.rd = 0;
-        this.posicionService.cejas.ri = 0;}
+      else {
+        this.ReestrablecerAutorretrato()
+      }
 
 
       this.posicionService.presentacion.velocidad = sTiempoTexto / 2;
@@ -197,19 +199,21 @@ export class VPcComponent {
   mostrarInicio() {
     this.posicionService.autorretrato.sAnimacion = 0.5;
     this.posicionService.presentacion.x = 0.2;
-    this.posicionService.presentacion.y = 0.3;
+    this.posicionService.presentacion.y = 0.25;
     this.posicionService.presentacion.escala = 1;
     this.posicionService.animacionActual = "esquiva";
-
-
-    setTimeout(() => {
-
-
-      this.posicionService.botones.y = 0.58;
-      this.posicionService.botones.x = 0.3;
-    }, 1000)
+    this.posicionService.botones.y = 0.58;
+    this.posicionService.botones.x = 0.3;
   }
 
+ReestrablecerAutorretrato(){
+  this.posicionService.autorretrato.sAnimacion = 0.5;
+  this.posicionService.deteccionPuntero = true;
+  this.posicionService.cejas.rd = 0;
+  this.posicionService.cejas.ri = 0;
+}
+
+  //cuando pulsas en la cara se enfada
   autorretrato() {
     this.posicionService.deteccionPuntero = false;
 
@@ -220,10 +224,7 @@ export class VPcComponent {
 
 
     setTimeout(() => {
-      this.posicionService.autorretrato.sAnimacion = 0.5;
-      this.posicionService.deteccionPuntero = true;
-      this.posicionService.cejas.rd = 0;
-      this.posicionService.cejas.ri = 0;
+      this.ReestrablecerAutorretrato()
     }, 1000)
   }
 
