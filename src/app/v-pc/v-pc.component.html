@@ -7,7 +7,7 @@
       (posicionService.presentacion.x * 100) +'vw', 'scale': this.posicionService.presentacion.escala, 
       transition: this.posicionService.presentacion.velocidad + 's'}">
         ¡Hola! me llamo Carlos Carretero. <br> <br> Soy un desarrollador web autodidacta especializado en Angular.<br><br>
-        En la parte inferior le dejo diferentes proyectos con APIs, Firebase, etc.
+        En la parte inferior le dejo diferentes proyectos usando APIs, Firebase, etc.
     </p>
 
     <div class="textoBurbujas">
@@ -15,7 +15,7 @@
     </div>
 
     <img class="tecnologias" [ngStyle]="{'margin': (posicionService.botones.y * 100 - 45) +'vh ' +
-     (posicionService.botones.x * 35 + 10) +'vw'}" src="logos.png" alt="">
+     (posicionService.botones.x * 35 + 9.5) +'vw'}" src="logos.png" alt="">
 
     <button class="botones" *ngIf="posicionService.botones.y <= 0.2" (click)="this.burbuja(99); this.mostrarInicio()"
         [ngStyle]="{'margin': (posicionService.botones.y * 100) +'vh ' +
@@ -119,7 +119,7 @@
         <div class="titulo">Quién soy</div>
         <p>Soy Carlos Carretero, un profesional con 12 años de experiencia en la industria de la siderurgia y madera y
             mueble, donde me especialicé en el manejo y programación de máquinas computarizadas CNC. <br><br>
-            Apasionado por la informática desde niño, uso por aficion GNU/Linux desde hace 15 años, así como Blender,
+            Apasionado por la informática desde niño, uso por afición GNU/Linux desde hace 15 años, así como Blender,
             Gimp,
             etc. <br><br>La pandemia me llevó a explorar nuevas oportunidades y descubrí una pasión por el desarrollo
             web.
