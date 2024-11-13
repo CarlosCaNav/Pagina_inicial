@@ -1,13 +1,13 @@
 import { NgFor, NgIf, NgStyle, NgClass } from '@angular/common';
 import { Component, HostListener } from '@angular/core';
-import { AutorretratoComponent } from '../autorretrato/autorretrato.component';
-import { RouterOutlet } from '@angular/router';
+import { AutorretratoComponent } from '../autorretrato/autorretrato.component';/* 
+import { RouterOutlet } from '@angular/router'; */
 import { PosicionService } from '../posicion.service';
 
 @Component({
   selector: 'app-v-pc',
   standalone: true,
-  imports: [RouterOutlet, AutorretratoComponent, NgStyle, NgFor, NgIf, NgClass],
+  imports: [ AutorretratoComponent, NgStyle, NgFor, NgIf, NgClass],
   templateUrl: './v-pc.component.html',
   styleUrl: './v-pc.component.css'
 })
@@ -64,7 +64,7 @@ export class VPcComponent {
       const tiempoEntreBurbujas = duracionAnimacion / (this.posicionService.nombreProyectos.length - 1);
 
       this.posicionService.proyectos[i].posicionX = inicio + espaciado * i;
-      this.posicionService.proyectos[i].posicionY = 0.80;
+      this.posicionService.proyectos[i].posicionY = 0.83;
       this.posicionService.proyectos[i].tamanioX = 0.05;
       this.posicionService.proyectos[i].tamanioY = 0.05;
       this.posicionService.proyectos[i].bordeRadio = 100;

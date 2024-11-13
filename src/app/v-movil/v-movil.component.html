@@ -1,6 +1,6 @@
 <div class="todo">
     <div style="width: 100vw;">
-        <button *ngIf="this.posicionService.vMovil == false" (click)="this.posicionService.movil(false)" class="boton">Ver sitio de escritorio</button>
+        <button *ngIf="this.posicionService.botonVersionEscritorio == true" (click)="this.posicionService.movil(false)" class="boton">Ver sitio de escritorio</button>
     </div>
 
     <div class="textoInicio">

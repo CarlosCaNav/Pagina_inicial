@@ -4,12 +4,13 @@ import { AutorretratoComponent } from "./autorretrato/autorretrato.component";
 import { NgFor, NgIf, NgStyle } from '@angular/common';
 import { PosicionService } from './posicion.service';
 import { VPcComponent } from "./v-pc/v-pc.component";
-import { vSimplieComponent } from './v-movil/v-movil.component';
+import { vSimpleComponent } from './v-movil/v-movil.component';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, AutorretratoComponent, NgStyle, NgFor, NgIf, VPcComponent, vSimplieComponent,],
+  standalone: true,/* 
+  imports: [RouterOutlet, AutorretratoComponent, NgStyle, NgFor, NgIf, VPcComponent, vSimpleComponent,], */
+  imports: [NgIf, VPcComponent, vSimpleComponent,],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -19,12 +20,15 @@ export class AppComponent {
 
     //detección por dispositivo
     if (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(this.posicionService.userAgent))    {
-      this.posicionService.vSimplie = true;
+      this.posicionService.vSimple = true;
       this.posicionService.vMovil = true;
+      this.posicionService.botonVersionEscritorio = false;
     }
     else {
-      this.posicionService.vSimplie = false;
-      this.posicionService.vMovil = false}
+      this.posicionService.vSimple = false;
+      this.posicionService.vMovil = false;
+      this.posicionService.botonVersionEscritorio = true;
+    }
 
 
       for (let i = 0; i <= this.posicionService.nombreProyectos.length - 1; ++i) {
@@ -42,7 +46,7 @@ export class AppComponent {
       }
   
       if(window.innerWidth <= 1300){
-        this.posicionService.vSimplie = true
+        this.posicionService.vSimple = true
       }
   }
 
@@ -50,9 +54,12 @@ export class AppComponent {
   @HostListener('window:resize', ['$event'])
   CambioTamanio(evento:any) {
     if(window.innerWidth <= 1300){
-      this.posicionService.vSimplie = true
+      this.posicionService.vSimple = true;
+      this.posicionService.botonVersionEscritorio = false;
     }
-    else{this.posicionService.vSimplie = false;      
+    else{/* 
+      this.posicionService.vSimple = false;    */
+      this.posicionService.botonVersionEscritorio = true;
     }
 
   } 
