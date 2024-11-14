@@ -1,17 +1,36 @@
 <div class="todo">
     <div style="width: 100vw;">
-        <button *ngIf="this.posicionService.botonVersionEscritorio == true" (click)="this.posicionService.movil(false)" class="boton">Ver sitio de escritorio</button>
+        <button *ngIf="this.posicionService.botonVersionEscritorio == true" (click)="this.posicionService.movil(false)" class="boton"
+        style="float: right;">Ver sitio de escritorio</button>
     </div>
 
     <div class="textoInicio">
         <div>
-            <h1>¡Hola! Me llamo Carlos Carretero. Soy un desarrollador web autodidacta.</h1>
+            <h1>Carlos Carretero<span *ngIf="this.posicionService.vMovil == false"> Navarro.</span> </h1>
+            <h2>Soy un desarrollador web autodidacta especializado en Angular.</h2>
 
-            <h3>Contáctame en <a href="mailto:carloscn90@gmail.com">carloscn90&#64;gmail.com</a> y visita mi
-                linkedin <a href="https://www.linkedin.com/in/carlos-carretero-navarro-8682a82ba/"> Carlos Carretero Navarro</a>.<br><br>
+            <img src="/logos.png" width="300px" alt="" >
 
+            <h3>Email: <a href="mailto:carloscn90@gmail.com">carloscn90&#64;gmail.com</a><br>
+                linkedin: <a href="https://www.linkedin.com/in/carlos-carretero-navarro-8682a82ba/"> Carlos Carretero Navarro</a><br><br>
+
+
+<button (click)="AlternarSobreMi()" class="boton">Saber más sobre mí</button>
+<div id="section-to-scroll">
+<p *ngIf="this.sobreMi">Soy Carlos Carretero, un profesional con 12 años de experiencia en la industria de la siderurgia y madera y
+    mueble, donde me especialicé en el manejo y programación de máquinas computarizadas CNC. <br><br>
+    Apasionado por la informática desde niño, uso por afición GNU/Linux desde hace 15 años, así como Blender,
+    Gimp,
+    etc. <br><br>La pandemia me llevó a explorar nuevas oportunidades y descubrí una pasión por el desarrollo
+    web.
+    A través de estudios autodidactas y proyectos personales,
+    he adquirido sólidas habilidades en HTML, CSS, JavaScript, Angular, Git, etc. Estoy listo para aplicar mis
+    conocimientos al desarrollo de soluciones web.
+</p></div>
+
+<br>
                 A continuación le dejo algunos de mis proyectos. 
-                <span *ngIf="this.posicionService.vMovil">Algunos no son compatibles con su dispositivo ya que hacen uso de la posición del ratón.</span> <br>
+                <span *ngIf="this.posicionService.vMovil">No todos son compatibles con su dispositivo ya que hacen uso de la posición del ratón.</span> <br>
             </h3>
         </div>
     </div>
@@ -20,7 +39,7 @@
         <div class="bloques">
             <a
                 href="https://pokeapi-w9mo.onrender.com/">
-                <h2 class="centrado"><b>Cuestionario Pokemons</b></h2>
+                <h1 class="centrado" style="font-size: 30px;"><b>Cuestionario Pokemons</b></h1>
                 <div class="imagen" [ngStyle]="{
             'background-image': this.posicionService.urlImagenes[1]}">
                 </div>

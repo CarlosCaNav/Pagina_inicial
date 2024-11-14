@@ -27,7 +27,6 @@ export class AppComponent {
     else {
       this.posicionService.vSimple = false;
       this.posicionService.vMovil = false;
-      this.posicionService.botonVersionEscritorio = true;
     }
 
 

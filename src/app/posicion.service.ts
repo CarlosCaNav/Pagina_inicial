@@ -16,7 +16,7 @@ export class PosicionService {
 
   vSimple: boolean = false;
   vMovil: boolean = false;
-  botonVersionEscritorio: boolean = true; //con esto hago desaparecer el botón que te lleva a la versión de escritorio
+  botonVersionEscritorio: boolean = false; //con esto hago desaparecer el botón que te lleva a la versión de escritorio
 
 
   autorretrato = { x: 1.1, y: 0, escala: 0, sAnimacion: 1, rotacion: 0 };
@@ -48,6 +48,7 @@ export class PosicionService {
 
   movil(dispositivo: boolean) {
     this.vSimple = dispositivo;
+    this.botonVersionEscritorio = true;
   }
 
   

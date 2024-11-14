@@ -14,9 +14,21 @@ export class vSimpleComponent {
 
   constructor(public posicionService: PosicionService){}
 
-
-  lanzarProyecto(proyecto: number){
+  sobreMi: boolean = false;
+/* 
+  LanzarProyecto(proyecto: number){
 
     window.open(this.posicionService.urlProyectos[proyecto] ,"_self")
+  } */
+
+  AlternarSobreMi(){
+    console.log("esto está " + this.sobreMi);
+    
+    if (this.sobreMi){this.sobreMi = false}
+    else {this.sobreMi = true;
+      const element = document.getElementById('section-to-scroll');
+      element!.scrollIntoView({ behavior: 'smooth' });
+    }
   }
+
 }
