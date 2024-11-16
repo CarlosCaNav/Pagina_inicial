@@ -71,6 +71,7 @@
     color:#c4edff;
     font-weight: bold;
     animation: "aparicion" 6s;
+    text-wrap: balance;
 }
 
 @keyframes aparicion {

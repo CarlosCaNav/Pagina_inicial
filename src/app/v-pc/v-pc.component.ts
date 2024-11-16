@@ -243,20 +243,34 @@ ReestrablecerAutorretrato(){
       this.posicionService.cejas.xd = this.posicionService.puntero.x * 4;
       this.posicionService.cejas.yd = this.posicionService.puntero.y * 5;
       this.posicionService.ojos.x = this.posicionService.puntero.x * 2;
-      this.posicionService.pupila.yi = this.posicionService.puntero.y * 5;
+      this.posicionService.pupila.yi = this.posicionService.puntero.y * 4 + 1.5;
       this.posicionService.pupila.yd = this.posicionService.puntero.y * 5;
       this.posicionService.nariz.x = this.posicionService.puntero.x * 10;
       this.posicionService.barba.x = this.posicionService.puntero.x * 5;
       this.posicionService.boca.x = this.posicionService.puntero.x * 4;
       this.posicionService.oreja.x = 1 - this.posicionService.puntero.x * 4;
 
+
+      const posicionRelativa = (this.posicionService.autorretrato.x * this.posicionService.puntero.x) /
+      (this.posicionService.autorretrato.x * this.posicionService.autorretrato.x);
+
+      if(posicionRelativa <= 1){
+      this.posicionService.pupila.xd = posicionRelativa * 15 ;
+      this.posicionService.pupila.xi = posicionRelativa * 10 - 5; 
+      }
+      else{
+        this.posicionService.pupila.xd = posicionRelativa * 15 - ((posicionRelativa - 1) * 5);
+        this.posicionService.pupila.xi = posicionRelativa * 10 - 5 + ((posicionRelativa - 1) * 10); 
+      }
+
+/* 
       if (this.posicionService.puntero.x < this.posicionService.autorretrato.x) {
 
         const posicionRelativa = (this.posicionService.autorretrato.x * this.posicionService.puntero.x) /
           (this.posicionService.autorretrato.x * this.posicionService.autorretrato.x);
 
         this.posicionService.pupila.xd = posicionRelativa * 18;
-        this.posicionService.pupila.xi = 0; // si se sale el puntero de la pantalla y luego vuelve por el lado opuesto, no volvía a su lugar
+        this.posicionService.pupila.xi = posicionRelativa * 18; // si se sale el puntero de la pantalla y luego vuelve por el lado opuesto, no volvía a su lugar
       }
       else {
         const posicionRelativa = (this.posicionService.puntero.x - this.posicionService.autorretrato.x) / (1 - this.posicionService.autorretrato.x)
@@ -265,7 +279,7 @@ ReestrablecerAutorretrato(){
         this.posicionService.pupila.xi = posicionRelativa * 20;
         this.posicionService.pupila.xd = 18; // si se sale el puntero de la pantalla y luego vuelve por el lado opuesto, no volvía a su lugar
 
-      }
+      } */
 
       /* 
       
