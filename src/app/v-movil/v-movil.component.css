@@ -21,9 +21,12 @@
 .boton{
     margin: 15px;
     padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
     background-color: rgb(152, 222, 255);
-    border-color: 2px solid gray;
+    border: none;
     border-radius: 100px;
+    box-shadow: 2px 2px 4px black, inset  1px 1px 3px white , inset  -1px -1px 3px black ;
 }
 
 .textoInicio{

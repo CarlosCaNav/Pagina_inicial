@@ -35,8 +35,8 @@
 @keyframes uno {
     0%{margin-top: 0vh;}
     50%{margin-top: -50vh;}
-    100%{margin-top: 0vh;}
 }
+
 .dos{
     z-index: 2;
     filter: blur(0.3rem);
@@ -47,19 +47,19 @@
 @keyframes dos {
     0%{margin-top: 0vh;}
     50%{margin-top: -50vh;}
-    100%{margin-top: 0vh;}
 }
+
 .tres{
     z-index: 3;
     filter: blur(0.2rem);
     animation: "tres" 50s linear;
+    margin-top: -50vh;
     background-image: url(/fondos/f3.png);
     animation-iteration-count: infinite;
 }
 @keyframes tres {
     0%{margin-top: -50vh;}
     50%{margin-top: 0vh;}
-    100%{margin-top: -50vh;}
 }
 
 .textoBurbujas {
@@ -70,8 +70,8 @@
     margin-left: calc(53vw - 110px);
     color:#c4edff;
     font-weight: bold;
+    animation-delay: 5s;
     animation: "aparicion" 6s;
-    text-wrap: balance;
 }
 
 @keyframes aparicion {
@@ -138,6 +138,7 @@
     text-shadow: 0px 0px 10px white;
     @media screen and (max-width: 1800px){
         font-size: x-large;
+        text-wrap: balance;
     }
 }
 

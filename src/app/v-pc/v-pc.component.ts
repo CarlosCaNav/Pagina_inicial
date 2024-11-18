@@ -3,19 +3,20 @@ import { Component, HostListener } from '@angular/core';
 import { AutorretratoComponent } from '../autorretrato/autorretrato.component';/* 
 import { RouterOutlet } from '@angular/router'; */
 import { PosicionService } from '../posicion.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-v-pc',
   standalone: true,
-  imports: [ AutorretratoComponent, NgStyle, NgFor, NgIf, NgClass],
+  imports: [ AutorretratoComponent, NgStyle, NgFor, NgIf, NgClass,],
   templateUrl: './v-pc.component.html',
   styleUrl: './v-pc.component.css'
 })
 export class VPcComponent {
 
 
-  constructor(public posicionService: PosicionService) {
-
+  constructor(public posicionService: PosicionService, 
+   private location: Location) {
 
     const delayAutorretrato = 100;
     const duracionPresentacion = 2000;
@@ -90,6 +91,7 @@ export class VPcComponent {
 
     this.posicionService.deteccionPuntero = true;
 
+  
     //id > 90 lo he reservado para los botones superiores, y <90 para los proyectos
     if (id == this.posicionService.proyectoActual && id <= 90) {
 
@@ -120,6 +122,8 @@ export class VPcComponent {
     }
     else {
 
+      this.posicionService.proyectoActual = -1;
+
       this.posicionService.deteccionPuntero = false; //quiero que los ojos miren al proyecto
       this.posicionService.pupila.xd = 1.5;
       this.posicionService.pupila.yd = 1.5;
@@ -144,6 +148,7 @@ export class VPcComponent {
         this.posicionService.proyectos[id].tamanioX = this.posicionService.tamanioPorDefectoImagen; /* 45 */
         this.posicionService.proyectos[id].tamanioY = this.posicionService.tamanioPorDefectoImagen - 0.05;
         this.posicionService.proyectos[id].bordeRadio = 5;
+        this.location.go('/proyectos')
         this.ReestrablecerAutorretrato()
       }
       else if (id == 99) {/* inicio */
@@ -151,7 +156,10 @@ export class VPcComponent {
         this.posicionService.autorretrato.escala = 1;
         this.posicionService.autorretrato.x = 0.65;
         this.posicionService.autorretrato.y = 0.2;
+        this.location.go('/inicio');
       }
+      else if (id == 98) {this.location.go('/QuienSoy')} /* quienSoy */
+
       else if (id == 97) {/* contacto */
         this.posicionService.autorretrato.escala = 1;
         this.posicionService.autorretrato.x = 0.65;
@@ -159,6 +167,7 @@ export class VPcComponent {
         this.posicionService.cejas.rd = -15;
         this.posicionService.cejas.ri = 10;
         this.posicionService.cejas.yd = -3;
+        this.location.go('/contacto');
       }
       else {
         this.ReestrablecerAutorretrato()
@@ -244,7 +253,7 @@ ReestrablecerAutorretrato(){
       this.posicionService.cejas.yd = this.posicionService.puntero.y * 5;
       this.posicionService.ojos.x = this.posicionService.puntero.x * 2;
       this.posicionService.pupila.yi = this.posicionService.puntero.y * 4 + 1.5;
-      this.posicionService.pupila.yd = this.posicionService.puntero.y * 5;
+      this.posicionService.pupila.yd = this.posicionService.puntero.y * 4;
       this.posicionService.nariz.x = this.posicionService.puntero.x * 10;
       this.posicionService.barba.x = this.posicionService.puntero.x * 5;
       this.posicionService.boca.x = this.posicionService.puntero.x * 4;
