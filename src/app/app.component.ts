@@ -1,7 +1,5 @@
 import { Component, HostListener } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { AutorretratoComponent } from "./autorretrato/autorretrato.component";
-import { NgFor, NgIf, NgStyle } from '@angular/common';
+import { NgIf, } from '@angular/common';
 import { PosicionService } from './posicion.service';
 import { VPcComponent } from "./v-pc/v-pc.component";
 import { vSimpleComponent } from './v-movil/v-movil.component';
@@ -39,7 +37,7 @@ export class AppComponent {
           posicionX: 0.5,
           posicionY: 1.2,
           bordeRadio: 100,
-          sTransicion: 1,
+          sTransicion: 0.5,
           url: posicionService.urlImagenes[i],
         })
       }

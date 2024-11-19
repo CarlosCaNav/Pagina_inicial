@@ -4,6 +4,7 @@ import { AutorretratoComponent } from '../autorretrato/autorretrato.component';/
 import { RouterOutlet } from '@angular/router'; */
 import { PosicionService } from '../posicion.service';
 import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-v-pc',
@@ -15,14 +16,17 @@ import { Location } from '@angular/common';
 export class VPcComponent {
 
 
-  constructor(public posicionService: PosicionService, 
-   private location: Location) {
+  constructor(
+  public posicionService: PosicionService, 
+   private location: Location,
+   private router: Router) {
 
-    const delayAutorretrato = 100;
-    const duracionPresentacion = 2000;
-    const burbujas = 1000;
 
-    this.posicionService.proyectoActual = -1;
+    const delayAutorretrato = 600;
+    const duracionPresentacion = 1500;
+    const burbujas = 100;
+
+    this.posicionService.proyectoActual = -1; //al pasar entre el modo simple y el modo escritorio se mezclan cosas. Por eso ordeno mostrar un proyecto inexistente
 
     this.posicionService.posicionTextos.escala = 0;
     setTimeout(() => {
@@ -35,13 +39,12 @@ export class VPcComponent {
     }, delayAutorretrato)
 
     setTimeout(() => {
-      this.colocarBurbujas(false);
       this.mostrarInicio();
+      this.colocarBurbujas(false);
 
     }, delayAutorretrato + duracionPresentacion)
 
-
-    setTimeout(() => {
+    setTimeout(() => { 
 
       for (let i = 0; i <= this.posicionService.nombreProyectos.length - 1; ++i) {
 
@@ -59,9 +62,9 @@ export class VPcComponent {
 
     for (let i = 0; i <= this.posicionService.nombreProyectos.length - 1; ++i) {
 
-      const espaciado = 0.10;
-      const inicio = 0.50 - (this.posicionService.nombreProyectos.length - 1) / 2 * espaciado;
-      const duracionAnimacion = 1;
+      const espaciado = 0.10; //espacio entre las burbujas expresado en proporcion de pantalla X
+      const inicio = 0.50 - (this.posicionService.nombreProyectos.length - 1) / 2 * espaciado; //posición de conjunto en pantalla
+      const duracionAnimacion = 1; 
       const tiempoEntreBurbujas = duracionAnimacion / (this.posicionService.nombreProyectos.length - 1);
 
       this.posicionService.proyectos[i].posicionX = inicio + espaciado * i;
@@ -77,9 +80,10 @@ export class VPcComponent {
         this.posicionService.proyectos[i].tamanioY = 0.03;
       }
 
-      //Esto es para que la primera vez que se carga la página, las burbujas aparezcan de una en una
+      //La primera vez que se carga la página, las burbujas aparezcan de una en una
       if (colocadas) { this.posicionService.proyectos[i].sTransicion = 0.3 + (i * 0.05); }
-      else { this.posicionService.proyectos[i].sTransicion = i * tiempoEntreBurbujas + 3; }
+      //si ya estaban colocadas de antes
+      else { this.posicionService.proyectos[i].sTransicion = i * tiempoEntreBurbujas + tiempoEntreBurbujas; }
 
     }
     this.posicionService.animacionActual = "esquiva";
@@ -90,7 +94,7 @@ export class VPcComponent {
   burbuja(id: number) {
 
     this.posicionService.deteccionPuntero = true;
-
+   
   
     //id > 90 lo he reservado para los botones superiores, y <90 para los proyectos
     if (id == this.posicionService.proyectoActual && id <= 90) {
@@ -130,7 +134,7 @@ export class VPcComponent {
       this.posicionService.pupila.xi = -0.5;
       this.posicionService.pupila.yi = 3;
 
-      const sTiempoTexto: number = 0.5;
+      const sTiempoTexto: number = 0.2;
 
       this.colocarBurbujas(true);
 
@@ -148,7 +152,7 @@ export class VPcComponent {
         this.posicionService.proyectos[id].tamanioX = this.posicionService.tamanioPorDefectoImagen; /* 45 */
         this.posicionService.proyectos[id].tamanioY = this.posicionService.tamanioPorDefectoImagen - 0.05;
         this.posicionService.proyectos[id].bordeRadio = 5;
-        this.location.go('/proyectos')
+        this.location.go('/#/proyectos')
         this.ReestrablecerAutorretrato()
       }
       else if (id == 99) {/* inicio */
@@ -156,9 +160,12 @@ export class VPcComponent {
         this.posicionService.autorretrato.escala = 1;
         this.posicionService.autorretrato.x = 0.65;
         this.posicionService.autorretrato.y = 0.2;
-        this.location.go('/inicio');
+        this.location.go('/#/inicio');
       }
-      else if (id == 98) {this.location.go('/QuienSoy')} /* quienSoy */
+      else if (id == 98) {
+        this.location.go('/#/QuienSoy')
+              this.ReestrablecerAutorretrato()
+            } /* quienSoy */
 
       else if (id == 97) {/* contacto */
         this.posicionService.autorretrato.escala = 1;
@@ -167,7 +174,7 @@ export class VPcComponent {
         this.posicionService.cejas.rd = -15;
         this.posicionService.cejas.ri = 10;
         this.posicionService.cejas.yd = -3;
-        this.location.go('/contacto');
+        this.location.go('/#/contacto');
       }
       else {
         this.ReestrablecerAutorretrato()

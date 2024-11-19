@@ -22,11 +22,11 @@
     (posicionService.botones.x * 35) +'vw'}">
         Inicio </button>
 
-    <button [ngClass]="{'botones': this.posicionService.proyectoActual != 98, 'actual': this.posicionService.proyectoActual == 98,}"
+    <button [ngClass]="{'botones': this.posicionService.proyectoActual != 98, 'botonActual': this.posicionService.proyectoActual == 98,}"
     (click)="this.burbuja(98)" [ngStyle]="{'margin': (posicionService.botones.y * 100) +'vh ' + (posicionService.botones.x * 35 + 10) +'vw'}">
         Quién soy </button>
 
-    <button [ngClass]="{'botones': this.posicionService.proyectoActual != 97, 'actual': this.posicionService.proyectoActual == 97,}"
+    <button [ngClass]="{'botones': this.posicionService.proyectoActual != 97, 'botonActual': this.posicionService.proyectoActual == 97,}"
     (click)="this.burbuja(97)" [ngStyle]="{'margin': (posicionService.botones.y * 100) +'vh ' + (posicionService.botones.x * 35 + 20) +'vw'}">
         Contacto </button>
 

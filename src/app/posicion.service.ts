@@ -19,7 +19,7 @@ export class PosicionService {
   botonVersionEscritorio: boolean = false; //con esto hago desaparecer el botón que te lleva a la versión de escritorio
 
 
-  autorretrato = { x: 1.1, y: 0, escala: 0, sAnimacion: 1, rotacion: 0 };
+  autorretrato = { x: 1.1, y: 0, escala: 0, sAnimacion: 0.5, rotacion: 0 };
 
   pelo = { x: 0, y: 0 };
   cejas = { xd: 1, yd: 1, xi: 1, yi: 1, rd: 0, ri: 0 };
@@ -36,8 +36,8 @@ export class PosicionService {
   proyectoActual: number = -1;
 
   //textos
-  posicionTextos = { x: 0.6, y: 0.6, escala: 0, velocidad: 2 };
-  presentacion = { x: 0.6, y: 0.6, escala: 0, velocidad: 2 };
+  posicionTextos = { x: 0.6, y: 0.6, escala: 0, velocidad: 0 };
+  presentacion = { x: 0.6, y: 0.6, escala: 0, velocidad: 0 };
 
   nombreProyectos = ["escapeRoom", "pokeApi", "pentaculo", "rol"];
   urlImagenes = ["url('/proyectos/escapeRoom.jpg'", "url('/proyectos/pokeApi.jpg'", "url('/proyectos/pentaculo.jpg'", "url('/proyectos/rol.jpg'"];
