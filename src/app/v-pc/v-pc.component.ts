@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-v-pc',
   standalone: true,
-  imports: [ AutorretratoComponent, NgStyle, NgFor, NgIf, NgClass,],
+  imports: [AutorretratoComponent, NgStyle, NgFor, NgIf, NgClass,],
   templateUrl: './v-pc.component.html',
   styleUrl: './v-pc.component.css'
 })
@@ -17,9 +17,9 @@ export class VPcComponent {
 
 
   constructor(
-  public posicionService: PosicionService, 
-   private location: Location,
-   private router: Router) {
+    public posicionService: PosicionService,
+    private location: Location,
+    private router: Router) {
 
 
     const delayAutorretrato = 600;
@@ -44,7 +44,7 @@ export class VPcComponent {
 
     }, delayAutorretrato + duracionPresentacion)
 
-    setTimeout(() => { 
+    setTimeout(() => {
 
       for (let i = 0; i <= this.posicionService.nombreProyectos.length - 1; ++i) {
 
@@ -64,7 +64,7 @@ export class VPcComponent {
 
       const espaciado = 0.10; //espacio entre las burbujas expresado en proporcion de pantalla X
       const inicio = 0.50 - (this.posicionService.nombreProyectos.length - 1) / 2 * espaciado; //posición de conjunto en pantalla
-      const duracionAnimacion = 1; 
+      const duracionAnimacion = 1;
       const tiempoEntreBurbujas = duracionAnimacion / (this.posicionService.nombreProyectos.length - 1);
 
       this.posicionService.proyectos[i].posicionX = inicio + espaciado * i;
@@ -94,8 +94,8 @@ export class VPcComponent {
   burbuja(id: number) {
 
     this.posicionService.deteccionPuntero = true;
-   
-  
+
+
     //id > 90 lo he reservado para los botones superiores, y <90 para los proyectos
     if (id == this.posicionService.proyectoActual && id <= 90) {
 
@@ -106,23 +106,6 @@ export class VPcComponent {
       this.posicionService.autorretrato.x = -0.4;
 
       window.open(this.posicionService.urlProyectos[this.posicionService.proyectoActual], "_self")
-
-
-      /*   
-        switch (this.posicionService.proyectoActual) {
-          case 0:
-            window.open(this.posicionService.urlProyectos[0] ,"_self")
-            break;
-            case 1:
-              window.open(this.posicionService.urlProyectos[1], "_self")
-              break;
-              case 1:
-                window.open(this.posicionService.urlProyectos[1], "_self")
-                break;
-                case 1:
-                  window.open(this.posicionService.urlProyectos[1], "_self")
-                  break;
-        } */
     }
     else {
 
@@ -142,7 +125,7 @@ export class VPcComponent {
       this.posicionService.botones.x = 0.94;
 
       this.posicionService.autorretrato.sAnimacion = 1;
-      this.posicionService.autorretrato.x = 0.65;
+      this.posicionService.autorretrato.x = 0.67;
       this.posicionService.autorretrato.rotacion = 0;
       this.posicionService.autorretrato.escala = 0.8;
 
@@ -164,12 +147,12 @@ export class VPcComponent {
       }
       else if (id == 98) {
         this.location.go('/#/QuienSoy')
-              this.ReestrablecerAutorretrato()
-            } /* quienSoy */
+        this.ReestrablecerAutorretrato()
+      } /* quienSoy */
 
       else if (id == 97) {/* contacto */
         this.posicionService.autorretrato.escala = 1;
-        this.posicionService.autorretrato.x = 0.65;
+        this.posicionService.autorretrato.x = 0.68;
         this.posicionService.autorretrato.y = 0.2;
         this.posicionService.cejas.rd = -15;
         this.posicionService.cejas.ri = 10;
@@ -222,12 +205,12 @@ export class VPcComponent {
     this.posicionService.botones.x = 0.3;
   }
 
-ReestrablecerAutorretrato(){
-  this.posicionService.autorretrato.sAnimacion = 0.5;
-  this.posicionService.deteccionPuntero = true;
-  this.posicionService.cejas.rd = 0;
-  this.posicionService.cejas.ri = 0;
-}
+  ReestrablecerAutorretrato() {
+    this.posicionService.autorretrato.sAnimacion = 0.5;
+    this.posicionService.deteccionPuntero = true;
+    this.posicionService.cejas.rd = 0;
+    this.posicionService.cejas.ri = 0;
+  }
 
   //cuando pulsas en la cara se enfada
   autorretrato() {
@@ -244,8 +227,40 @@ ReestrablecerAutorretrato(){
     }, 1000)
   }
 
+  @HostListener('window:wheel', ['$event'])
+  ruedecilla(event: any) {
+    if (event.deltaY > 0) {
+      if (this.posicionService.proyectoActual == this.posicionService.proyectos.length - 1) {
+        this.burbuja(this.posicionService.proyectoActual = 97)
+      }
+      else if (this.posicionService.proyectoActual == 98) {
+        return
+      }
+      else {
+        this.burbuja(this.posicionService.proyectoActual + 1)
+      }
+    }
+    else if (event.deltaY < 0) {
+      if (this.posicionService.proyectoActual == 97) {
+        this.burbuja(this.posicionService.proyectos.length - 1)
+      }
+      else if (this.posicionService.proyectoActual == 0) {
+        this.posicionService.proyectoActual = -1
+        this.mostrarInicio()
+        this.colocarBurbujas(true)
+      }
+      else if (this.posicionService.proyectoActual == -1) {
+        return
+      }
+      else {
+        this.burbuja((this.posicionService.proyectoActual - 1))
+      }
+    }
+  }
+
   @HostListener('document:mousemove', ['$event'])
-  raton(event: MouseEvent) {
+  movimientoRaton(event: MouseEvent) { /* MouseEvent */
+
 
     if (this.posicionService.deteccionPuntero) {
       /* this.posicionService.autorretrato.y = 0.5; *//* 
@@ -268,34 +283,34 @@ ReestrablecerAutorretrato(){
 
 
       const posicionRelativa = (this.posicionService.autorretrato.x * this.posicionService.puntero.x) /
-      (this.posicionService.autorretrato.x * this.posicionService.autorretrato.x);
+        (this.posicionService.autorretrato.x * this.posicionService.autorretrato.x);
 
-      if(posicionRelativa <= 1){
-      this.posicionService.pupila.xd = posicionRelativa * 15 ;
-      this.posicionService.pupila.xi = posicionRelativa * 10 - 5; 
-      }
-      else{
-        this.posicionService.pupila.xd = posicionRelativa * 15 - ((posicionRelativa - 1) * 5);
-        this.posicionService.pupila.xi = posicionRelativa * 10 - 5 + ((posicionRelativa - 1) * 10); 
-      }
-
-/* 
-      if (this.posicionService.puntero.x < this.posicionService.autorretrato.x) {
-
-        const posicionRelativa = (this.posicionService.autorretrato.x * this.posicionService.puntero.x) /
-          (this.posicionService.autorretrato.x * this.posicionService.autorretrato.x);
-
-        this.posicionService.pupila.xd = posicionRelativa * 18;
-        this.posicionService.pupila.xi = posicionRelativa * 18; // si se sale el puntero de la pantalla y luego vuelve por el lado opuesto, no volvía a su lugar
+      if (posicionRelativa <= 1) {
+        this.posicionService.pupila.xd = posicionRelativa * 15;
+        this.posicionService.pupila.xi = posicionRelativa * 10 - 5;
       }
       else {
-        const posicionRelativa = (this.posicionService.puntero.x - this.posicionService.autorretrato.x) / (1 - this.posicionService.autorretrato.x)
+        this.posicionService.pupila.xd = posicionRelativa * 15 - ((posicionRelativa - 1) * 5);
+        this.posicionService.pupila.xi = posicionRelativa * 10 - 5 + ((posicionRelativa - 1) * 10);
+      }
 
-
-        this.posicionService.pupila.xi = posicionRelativa * 20;
-        this.posicionService.pupila.xd = 18; // si se sale el puntero de la pantalla y luego vuelve por el lado opuesto, no volvía a su lugar
-
-      } */
+      /* 
+            if (this.posicionService.puntero.x < this.posicionService.autorretrato.x) {
+      
+              const posicionRelativa = (this.posicionService.autorretrato.x * this.posicionService.puntero.x) /
+                (this.posicionService.autorretrato.x * this.posicionService.autorretrato.x);
+      
+              this.posicionService.pupila.xd = posicionRelativa * 18;
+              this.posicionService.pupila.xi = posicionRelativa * 18; // si se sale el puntero de la pantalla y luego vuelve por el lado opuesto, no volvía a su lugar
+            }
+            else {
+              const posicionRelativa = (this.posicionService.puntero.x - this.posicionService.autorretrato.x) / (1 - this.posicionService.autorretrato.x)
+      
+      
+              this.posicionService.pupila.xi = posicionRelativa * 20;
+              this.posicionService.pupila.xd = 18; // si se sale el puntero de la pantalla y luego vuelve por el lado opuesto, no volvía a su lugar
+      
+            } */
 
       /* 
       

@@ -22,12 +22,12 @@
     (posicionService.botones.x * 35) +'vw'}">
         Inicio </button>
 
-    <button [ngClass]="{'botones': this.posicionService.proyectoActual != 98, 'botonActual': this.posicionService.proyectoActual == 98,}"
-    (click)="this.burbuja(98)" [ngStyle]="{'margin': (posicionService.botones.y * 100) +'vh ' + (posicionService.botones.x * 35 + 10) +'vw'}">
+    <button [ngClass]="{'botones': this.posicionService.proyectoActual != 97, 'botonActual': this.posicionService.proyectoActual == 97,}"
+    (click)="this.burbuja(97)" [ngStyle]="{'margin': (posicionService.botones.y * 100) +'vh ' + (posicionService.botones.x * 35 + 10) +'vw'}">
         Quién soy </button>
 
-    <button [ngClass]="{'botones': this.posicionService.proyectoActual != 97, 'botonActual': this.posicionService.proyectoActual == 97,}"
-    (click)="this.burbuja(97)" [ngStyle]="{'margin': (posicionService.botones.y * 100) +'vh ' + (posicionService.botones.x * 35 + 20) +'vw'}">
+    <button [ngClass]="{'botones': this.posicionService.proyectoActual != 98, 'botonActual': this.posicionService.proyectoActual == 98,}"
+    (click)="this.burbuja(98)" [ngStyle]="{'margin': (posicionService.botones.y * 100) +'vh ' + (posicionService.botones.x * 35 + 20) +'vw'}">
         Contacto </button>
 
     <button class="botones" (click)="this.posicionService.movil(true)" [ngStyle]="{'margin': (posicionService.botones.y * 100) +'vh ' +
@@ -107,7 +107,7 @@
             ¿Estás preparado?</p>
         </div>
 
-        <div *ngIf="this.posicionService.proyectoActual == 97">
+        <div *ngIf="this.posicionService.proyectoActual == 98">
             <div class="titulo">Contacto</div>
             <p>Email: <a href="mailto:carloscn90@gmail.com">carloscn90&#64;gmail.com</a> <br><br> Linkedin:
                 <a href="https://www.linkedin.com/in/carlos-carretero-navarro-8682a82ba/"> Carlos Carretero Navarro</a><br><br>
@@ -115,7 +115,7 @@
         </div>
     </div>
 
-    <div class="QuienSoy" *ngIf="this.posicionService.proyectoActual == 98">
+    <div class="QuienSoy" *ngIf="this.posicionService.proyectoActual == 97">
         <div class="titulo">Quién soy</div>
         <p>Soy Carlos Carretero, un profesional con 12 años de experiencia en la industria de la siderurgia y madera y
             mueble, donde me especialicé en el manejo y programación de máquinas computarizadas CNC. <br><br>
