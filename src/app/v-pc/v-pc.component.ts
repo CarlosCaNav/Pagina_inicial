@@ -92,14 +92,15 @@ export class VPcComponent {
 
   //pulsar burbuja
   burbuja(id: number) {
-
-    this.posicionService.deteccionPuntero = true;
+/* 
+    this.posicionService.deteccionPuntero = true; */
 
 
     //id > 90 lo he reservado para los botones superiores, y <90 para los proyectos
     if (id == this.posicionService.proyectoActual && id <= 90) {
 
       this.posicionService.deteccionPuntero = false;
+      
       this.posicionService.autorretrato.sAnimacion = 5;
       this.posicionService.autorretrato.rotacion = 800;
       this.posicionService.autorretrato.escala = 0.0;
@@ -112,6 +113,7 @@ export class VPcComponent {
       this.posicionService.proyectoActual = -1;
 
       this.posicionService.deteccionPuntero = false; //quiero que los ojos miren al proyecto
+      console.log(this.posicionService.deteccionPuntero);
       this.posicionService.pupila.xd = 1.5;
       this.posicionService.pupila.yd = 1.5;
       this.posicionService.pupila.xi = -0.5;
@@ -145,18 +147,18 @@ export class VPcComponent {
         this.posicionService.autorretrato.y = 0.2;
         this.location.go('/#/inicio');
       }
-      else if (id == 98) {
+      else if (id == 97) {
         this.location.go('/#/QuienSoy')
         this.ReestrablecerAutorretrato()
       } /* quienSoy */
 
-      else if (id == 97) {/* contacto */
+      else if (id == 98) {/* contacto */
         this.posicionService.autorretrato.escala = 1;
         this.posicionService.autorretrato.x = 0.68;
-        this.posicionService.autorretrato.y = 0.2;
+        this.posicionService.autorretrato.y = 0.2;/* 
         this.posicionService.cejas.rd = -15;
         this.posicionService.cejas.ri = 10;
-        this.posicionService.cejas.yd = -3;
+        this.posicionService.cejas.yd = -10; */
         this.location.go('/#/contacto');
       }
       else {
@@ -189,10 +191,11 @@ export class VPcComponent {
 
       setTimeout(() => {
         this.posicionService.deteccionPuntero = true; //quiero que los ojos miren al puntero
-      }, 3000)
+      }, 2000)
 
       this.posicionService.animacionActual = "esquiva"
     }
+    console.log(this.posicionService.deteccionPuntero);
   }
 
   mostrarInicio() {
@@ -206,8 +209,8 @@ export class VPcComponent {
   }
 
   ReestrablecerAutorretrato() {
-    this.posicionService.autorretrato.sAnimacion = 0.5;
-    this.posicionService.deteccionPuntero = true;
+    this.posicionService.autorretrato.sAnimacion = 0.5;/* 
+    this.posicionService.deteccionPuntero = true; */
     this.posicionService.cejas.rd = 0;
     this.posicionService.cejas.ri = 0;
   }
@@ -260,6 +263,8 @@ export class VPcComponent {
 
   @HostListener('document:mousemove', ['$event'])
   movimientoRaton(event: MouseEvent) { /* MouseEvent */
+
+console.log(this.posicionService.deteccionPuntero);
 
 
     if (this.posicionService.deteccionPuntero) {
