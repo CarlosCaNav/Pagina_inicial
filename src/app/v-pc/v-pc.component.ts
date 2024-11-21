@@ -15,6 +15,10 @@ import { Router } from '@angular/router';
 })
 export class VPcComponent {
 
+  posicionAutorretratoXhabitual: number = 0.66;
+  vecesAntesDeEnfadarse: number = 3;
+  vecesAntesDeIrse: number = 2;
+
 
   constructor(
     public posicionService: PosicionService,
@@ -29,16 +33,29 @@ export class VPcComponent {
     this.posicionService.proyectoActual = -1; //al pasar entre el modo simple y el modo escritorio se mezclan cosas. Por eso ordeno mostrar un proyecto inexistente
 
     this.posicionService.posicionTextos.escala = 0;
+
+    this.posicionService.deteccionPuntero = false; //el pelo empieza hacia atrás
+    this.posicionService.pelo.x = 10;
+    this.posicionService.pelo.y = -10;
+
+    setTimeout(() => {
+      this.posicionService.pelo.x = -20; //el pelo se mueve hacia delante por la inercia
+      this.posicionService.pelo.y = 10;
+    }, delayAutorretrato + (duracionPresentacion / 1.5))
+
     setTimeout(() => {
       this.posicionService.autorretrato.sAnimacion = duracionPresentacion / 1000;
-      this.posicionService.autorretrato.x = 0.65;
+      this.posicionService.autorretrato.x = this.posicionAutorretratoXhabitual;
       this.posicionService.autorretrato.y = 0.2;
       this.posicionService.autorretrato.escala = 1;
-
       this.posicionService.presentacion.velocidad = duracionPresentacion / 1000
     }, delayAutorretrato)
 
     setTimeout(() => {
+      this.posicionService.pelo.x = 0;      //el pelo vuelve a su estado original 
+      this.posicionService.pelo.y = 0;
+      this.posicionService.deteccionPuntero = true;
+
       this.mostrarInicio();
       this.colocarBurbujas(false);
 
@@ -90,17 +107,17 @@ export class VPcComponent {
   }
 
 
-  //pulsar burbuja
+  //pulsar burbuja o botón
   burbuja(id: number) {
-/* 
-    this.posicionService.deteccionPuntero = true; */
-
+        this.posicionService.deteccionPuntero = true;
+        this.vecesAntesDeEnfadarse = 3;
+        this.vecesAntesDeIrse = 2;
 
     //id > 90 lo he reservado para los botones superiores, y <90 para los proyectos
     if (id == this.posicionService.proyectoActual && id <= 90) {
 
       this.posicionService.deteccionPuntero = false;
-      
+
       this.posicionService.autorretrato.sAnimacion = 5;
       this.posicionService.autorretrato.rotacion = 800;
       this.posicionService.autorretrato.escala = 0.0;
@@ -113,7 +130,6 @@ export class VPcComponent {
       this.posicionService.proyectoActual = -1;
 
       this.posicionService.deteccionPuntero = false; //quiero que los ojos miren al proyecto
-      console.log(this.posicionService.deteccionPuntero);
       this.posicionService.pupila.xd = 1.5;
       this.posicionService.pupila.yd = 1.5;
       this.posicionService.pupila.xi = -0.5;
@@ -127,7 +143,8 @@ export class VPcComponent {
       this.posicionService.botones.x = 0.94;
 
       this.posicionService.autorretrato.sAnimacion = 1;
-      this.posicionService.autorretrato.x = 0.67;
+      this.posicionService.autorretrato.x = this.posicionAutorretratoXhabitual;
+      this.posicionService.autorretrato.y = 0.2;
       this.posicionService.autorretrato.rotacion = 0;
       this.posicionService.autorretrato.escala = 0.8;
 
@@ -143,8 +160,9 @@ export class VPcComponent {
       else if (id == 99) {/* inicio */
         this.ReestrablecerAutorretrato()
         this.posicionService.autorretrato.escala = 1;
-        this.posicionService.autorretrato.x = 0.65;
+        this.posicionService.autorretrato.x = this.posicionAutorretratoXhabitual;
         this.posicionService.autorretrato.y = 0.2;
+        this.posicionService.proyectoActual = -1;
         this.location.go('/#/inicio');
       }
       else if (id == 97) {
@@ -154,7 +172,7 @@ export class VPcComponent {
 
       else if (id == 98) {/* contacto */
         this.posicionService.autorretrato.escala = 1;
-        this.posicionService.autorretrato.x = 0.68;
+        this.posicionService.autorretrato.x = this.posicionAutorretratoXhabitual;
         this.posicionService.autorretrato.y = 0.2;/* 
         this.posicionService.cejas.rd = -15;
         this.posicionService.cejas.ri = 10;
@@ -195,7 +213,6 @@ export class VPcComponent {
 
       this.posicionService.animacionActual = "esquiva"
     }
-    console.log(this.posicionService.deteccionPuntero);
   }
 
   mostrarInicio() {
@@ -227,17 +244,24 @@ export class VPcComponent {
 
     setTimeout(() => {
       this.ReestrablecerAutorretrato()
+      this.posicionService.deteccionPuntero = true;
     }, 1000)
   }
 
   @HostListener('window:wheel', ['$event'])
   ruedecilla(event: any) {
+
+    console.log(this.posicionService.proyectoActual);
+
     if (event.deltaY > 0) {
       if (this.posicionService.proyectoActual == this.posicionService.proyectos.length - 1) {
-        this.burbuja(this.posicionService.proyectoActual = 97)
+        this.burbuja(this.posicionService.proyectoActual = 97) //quien soy
       }
-      else if (this.posicionService.proyectoActual == 98) {
+      else if (this.posicionService.proyectoActual == 98) { // contacto
         return
+      }
+      else if (this.posicionService.proyectoActual == 99) { //inicio
+        this.posicionService.proyectoActual = -1
       }
       else {
         this.burbuja(this.posicionService.proyectoActual + 1)
@@ -262,14 +286,13 @@ export class VPcComponent {
   }
 
   @HostListener('document:mousemove', ['$event'])
-  movimientoRaton(event: MouseEvent) { /* MouseEvent */
-
-console.log(this.posicionService.deteccionPuntero);
+  movimientoRaton(event: MouseEvent) { /* La detección del puntero la utilizo para mover los ojos y el pelo si es necesario */
 
 
+
+
+    //----------- mirada a puntero ---------------------
     if (this.posicionService.deteccionPuntero) {
-      /* this.posicionService.autorretrato.y = 0.5; *//* 
-      this.posicionService.autorretrato.escala = window.innerHeight / 1000; */
 
       this.posicionService.puntero.x = event.clientX / window.innerWidth;
       this.posicionService.puntero.y = event.clientY / window.innerHeight;
@@ -291,62 +314,69 @@ console.log(this.posicionService.deteccionPuntero);
         (this.posicionService.autorretrato.x * this.posicionService.autorretrato.x);
 
       if (posicionRelativa <= 1) {
-        this.posicionService.pupila.xd = posicionRelativa * 15;
-        this.posicionService.pupila.xi = posicionRelativa * 10 - 5;
+        this.posicionService.pupila.xd = posicionRelativa * 12;
+        this.posicionService.pupila.xi = posicionRelativa * 8 - 5;
       }
       else {
-        this.posicionService.pupila.xd = posicionRelativa * 15 - ((posicionRelativa - 1) * 5);
-        this.posicionService.pupila.xi = posicionRelativa * 10 - 5 + ((posicionRelativa - 1) * 10);
+        this.posicionService.pupila.xd = posicionRelativa * 12 - ((posicionRelativa - 1) * 5);
+        this.posicionService.pupila.xi = posicionRelativa * 8 - 5 + ((posicionRelativa - 1) * 10);
       }
 
-      /* 
-            if (this.posicionService.puntero.x < this.posicionService.autorretrato.x) {
-      
-              const posicionRelativa = (this.posicionService.autorretrato.x * this.posicionService.puntero.x) /
-                (this.posicionService.autorretrato.x * this.posicionService.autorretrato.x);
-      
-              this.posicionService.pupila.xd = posicionRelativa * 18;
-              this.posicionService.pupila.xi = posicionRelativa * 18; // si se sale el puntero de la pantalla y luego vuelve por el lado opuesto, no volvía a su lugar
-            }
-            else {
-              const posicionRelativa = (this.posicionService.puntero.x - this.posicionService.autorretrato.x) / (1 - this.posicionService.autorretrato.x)
-      
-      
-              this.posicionService.pupila.xi = posicionRelativa * 20;
-              this.posicionService.pupila.xd = 18; // si se sale el puntero de la pantalla y luego vuelve por el lado opuesto, no volvía a su lugar
-      
-            } */
+      // -------------- Esquiva y pelo --------------
 
-      /* 
-      
-            if (this.posicionService.puntero.x >= 0.65 && this.posicionService.puntero.x <= 0.75 && this.posicionService.puntero.y >= 0.80) {
-              this.caraApartada = true;
-            }
-            else {
-              this.caraApartada = false;
-            }
-      
-          if (this.caraApartada == true) {
-            this.posicionService.autorretrato.x = 0.8;
-            this.posicionService.pelo.x = -20;
-            setTimeout(() => {
-              this.posicionService.pelo.x = 20
-            }, 300)
-            setTimeout(() => {
-              this.posicionService.pelo.x = 0
-            }, 600)
-          }
-          else {
-            this.posicionService.autorretrato.x = 0.6
-      
-            this.posicionService.pelo.x = 20;
-            setTimeout(() => {
-              this.posicionService.pelo.x = -20
-            }, 300)
-            setTimeout(() => {
-              this.posicionService.pelo.x = 0
-            }, 600)
-          } */
+      if (this.posicionService.puntero.x > this.posicionService.autorretrato.x && this.posicionService.autorretrato.x === this.posicionAutorretratoXhabitual) {
+
+        //enfado
+        this.vecesAntesDeEnfadarse--;
+        if (this.vecesAntesDeEnfadarse <= 0) {
+          this.autorretrato()
+          this.vecesAntesDeEnfadarse = 3;
+          this.vecesAntesDeIrse--;
+        }
+        //irse
+        if (this.vecesAntesDeIrse <= 0) {
+          this.posicionService.deteccionPuntero = false;
+          this.posicionService.autorretrato.sAnimacion = 1;
+          this.posicionService.autorretrato.x = -0.5
+          setTimeout(() => {
+            this.posicionService.autorretrato.sAnimacion = 0;
+            this.posicionService.autorretrato.y = -1
+          }, 1000)
+          setTimeout(() => {
+            this.posicionService.autorretrato.x = 1
+          }, 1100)
+
+        }
+        else {
+          //pelo
+          this.posicionService.autorretrato.x = 0.8;
+          this.posicionService.pelo.x = -20
+
+          this.posicionService.deteccionPuntero = false;
+          this.posicionService.pelo.x = -20
+          setTimeout(() => {
+            this.posicionService.pelo.x = 10
+          }, 400)
+          setTimeout(() => {
+            this.posicionService.pelo.x = 0
+            this.posicionService.deteccionPuntero = true;
+          }, 800)
+        }
+      }
+
+      else if (this.posicionService.puntero.x < 0.5 && this.posicionService.autorretrato.x == 0.8) {
+        this.posicionService.autorretrato.x = this.posicionAutorretratoXhabitual;
+
+        this.posicionService.deteccionPuntero = false;
+        this.posicionService.pelo.x = 20
+        setTimeout(() => {
+          this.posicionService.pelo.x = -10
+        }, 400)
+        setTimeout(() => {
+          this.posicionService.pelo.x = 0
+          this.posicionService.deteccionPuntero = true;
+        }, 800)
+      }
     }
   }
 }

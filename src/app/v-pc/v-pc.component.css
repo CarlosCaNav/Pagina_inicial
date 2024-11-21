@@ -139,7 +139,8 @@
     font-size: xx-large;
     width: 35vw;
     text-shadow: 0px 0px 10px white;
-    @media screen and (max-width: 1800px){
+
+    @media screen and (max-width: 1800px) and (max-height: 100px){
         font-size: x-large;
         text-wrap: balance;
     }
@@ -192,6 +193,10 @@
     margin-top: -250px; 
     margin-left: -250px; */
 }
+.pelo{
+    position: absolute;
+    transition: 0.8;
+    }
 
 .burbujas {
     position: absolute;

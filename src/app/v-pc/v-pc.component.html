@@ -38,12 +38,8 @@
     (this.posicionService.autorretrato.x * 100) +'vw','transition': this.posicionService.autorretrato.sAnimacion + 's',
      'scale': this.posicionService.autorretrato.escala, 'rotate':(posicionService.autorretrato.rotacion) +'deg '}">
         <app-autorretrato />
-
-        <!-- <div [ngStyle]="{'margin': (posicionService.autorretrato.y * 100) + 'vh ' + (this.posicionService.autorretrato.x * 100) +'vw', 'rotate':(posicionService.autorretrato.rotacion) +'deg ',
-         'transition': posicionService.autorretrato.sAnimacion + 's'}">
-            <app-autorretrato /> 
-        </div> -->
     </div>
+
 
     <div *ngFor="let proyecto of posicionService.proyectos">
         <div class="burbujas" (click)="burbuja(proyecto.id)" [ngStyle]="{
@@ -111,7 +107,7 @@
             <div class="titulo">Contacto</div>
             <p>Email: <a href="mailto:carloscn90@gmail.com">carloscn90&#64;gmail.com</a> <br><br> Linkedin:
                 <a href="https://www.linkedin.com/in/carlos-carretero-navarro-8682a82ba/"> Carlos Carretero Navarro</a><br><br>
-           
+           También puedes visitar mi github: <a href="https://carloscanav.github.io/">CarlosCaNav.github.io</a>
         </div>
     </div>
 
