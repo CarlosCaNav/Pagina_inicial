@@ -17,7 +17,7 @@ export class VPcComponent {
 
   posicionAutorretratoXhabitual: number = 0.66;
   vecesAntesDeEnfadarse: number = 3;
-  vecesAntesDeIrse: number = 2;
+  vecesAntesDeIrse: number = 4;
 
 
   constructor(
@@ -324,13 +324,14 @@ export class VPcComponent {
 
       // -------------- Esquiva y pelo --------------
 
-      if (this.posicionService.puntero.x > this.posicionService.autorretrato.x && this.posicionService.autorretrato.x === this.posicionAutorretratoXhabitual) {
+      if (this.posicionService.puntero.x > (this.posicionService.autorretrato.x + 0.1) //el 0.1 lo he añadido para que el puntero lo solape un poco. Algo irrelevante
+         && this.posicionService.autorretrato.x === this.posicionAutorretratoXhabitual) {
 
         //enfado
         this.vecesAntesDeEnfadarse--;
         if (this.vecesAntesDeEnfadarse <= 0) {
-          this.autorretrato()
-          this.vecesAntesDeEnfadarse = 3;
+          this.autorretrato()/* 
+          this.vecesAntesDeEnfadarse = 3; */
           this.vecesAntesDeIrse--;
         }
         //irse
@@ -343,7 +344,7 @@ export class VPcComponent {
             this.posicionService.autorretrato.y = -1
           }, 1000)
           setTimeout(() => {
-            this.posicionService.autorretrato.x = 1
+            this.posicionService.autorretrato.x = 1.5
           }, 1100)
 
         }
