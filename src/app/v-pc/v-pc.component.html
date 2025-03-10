@@ -91,6 +91,8 @@
         (posicionService.botones.x * 35 + 30) +
         'vw'
     }"
+
+
   >
     Version Simplificada
   </button>
@@ -126,13 +128,14 @@
         'background-image': proyecto.url,
       }"
     >
-    <youtube-player [height]="this.posicionService.videoHeight" [width]="this.posicionService.videoWidth" videoId="dQw4w9WgXcQ" 
+    <youtube-player [height]="this.posicionService.videoHeight" [width]="this.posicionService.videoWidth" videoId="Sg87IhK12kE" 
     *ngIf="proyecto === posicionService.proyectos[0] && this.posicionService.proyectoActual === 0"
     style="position: absolute; z-index: 9;"
     ></youtube-player>
 
   </div>
   <!-- excepción para el vídeo del juego de mesa --><!-- 
+   https://youtu.be/Sg87IhK12kE
   <youtube-player videoId="dQw4w9WgXcQ" *ngIf="this.posicionService.proyectoActual === 0" style="position: absolute; z-index: 9;"></youtube-player>
  -->
   </div>
@@ -160,12 +163,16 @@
       >
       <p style="font-size: x-large">
         Por afición, he decidido crear mi propio juego de mesa guiado por una
-        aplicación web. El zombicide es un juego que me gusta mucho. Miras las
+        aplicación web. El zombicide es un juego que me gusta mucho; miras las
         instrucciones, construyes el mapa, colocas los enemigos y empiezas a
         jugar. Pero ¿Y si no supieras cómo es el mapa al empezar si no que lo
         vas descubriendo? Y si los enemigos se van creando y moviéndose aunque
         no los veas y en cada esquina tuvieras la incertidumbre de qué hay al
         otro lado?
+<br>
+        <a href="https://mesacompilado.onrender.com/"><button class="titulo git" style="font-size: larger;"> Aplicación </button> </a>
+        
+        <a href="https://github.com/CarlosCaNav/aplicacion_juegoMesa"> <button class="titulo git" style="font-size: larger;">Sitio en Github </button></a>
       </p>
     </div>
 

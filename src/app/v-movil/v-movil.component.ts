@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { PosicionService } from '../posicion.service';/* 
 import { RouterOutlet } from '@angular/router'; */
 import { NgFor, NgIf, NgStyle } from '@angular/common';
+import { YouTubePlayer } from '@angular/youtube-player';
 
 @Component({
     selector: 'app-v-movil',
     standalone: true,
-    imports: [NgIf, NgStyle],
+    imports: [NgIf, NgStyle, YouTubePlayer],
     templateUrl: './v-movil.component.html',
     styleUrl: './v-movil.component.css'
 })
