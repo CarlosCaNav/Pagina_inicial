@@ -14,7 +14,7 @@ import { vSimpleComponent } from './v-movil/v-movil.component';
 })
 export class AppComponent {
 
-  constructor(public posicionService: PosicionService) {
+    constructor(public posicionService: PosicionService) {
 
     //detección por dispositivo
     if (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(this.posicionService.userAgent))    {
