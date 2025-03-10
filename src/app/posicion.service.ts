@@ -39,12 +39,16 @@ export class PosicionService {
   posicionTextos = { x: 0.6, y: 0.6, escala: 0, velocidad: 0 };
   presentacion = { x: 0.6, y: 0.6, escala: 0, velocidad: 0 };
 
-  nombreProyectos = ["¿QuéComemos?", "escapeRoom", "pokeApi", "pentaculo", "rol"];
-  urlImagenes = ["url('/proyectos/quecomemos.jpg'", "url('/proyectos/escapeRoom.jpg'", "url('/proyectos/pokeApi.jpg'", "url('/proyectos/pentaculo.jpg'", "url('/proyectos/rol.jpg'"];
-  urlProyectos = ['https://que-comemos.onrender.com/', 'https://escaperoom-15o1.onrender.com', 'https://pokeapi-w9mo.onrender.com/', 'https://luces-pentaculo-c.onrender.com', 'https://rol-web-c.onrender.com']
+  nombreProyectos = ["Juego de mesa", "¿QuéComemos?", "escapeRoom", "pokeApi", "pentaculo", "rol"];
+  urlImagenes = ["url('/proyectos/mesa.jpg'", "url('/proyectos/quecomemos.jpg'", "url('/proyectos/escapeRoom.jpg'", "url('/proyectos/pokeApi.jpg'", "url('/proyectos/pentaculo.jpg'", "url('/proyectos/rol.jpg'"];
+  urlProyectos = ['https://mesacompilado.onrender.com/', 'https://que-comemos.onrender.com/', 'https://escaperoom-15o1.onrender.com', 'https://pokeapi-w9mo.onrender.com/', 'https://luces-pentaculo-c.onrender.com', 'https://rol-web-c.onrender.com']
   proyectos: proyecto[] = [];
 
   tamanioPorDefectoImagen: number = 0.2;
+
+  //para el vídeo de youtube
+  videoWidth = window.innerWidth / 5;
+  videoHeight= window.innerWidth / 6.5;
 
   movil(dispositivo: boolean) {
     this.vSimple = dispositivo;

@@ -4,11 +4,11 @@ import { RouterOutlet } from '@angular/router'; */
 import { NgFor, NgIf, NgStyle } from '@angular/common';
 
 @Component({
-  selector: 'app-v-movil',
-  standalone: true,
-  imports: [ NgIf, NgStyle],
-  templateUrl: './v-movil.component.html',
-  styleUrl: './v-movil.component.css'
+    selector: 'app-v-movil',
+    standalone: true,
+    imports: [NgIf, NgStyle],
+    templateUrl: './v-movil.component.html',
+    styleUrl: './v-movil.component.css'
 })
 export class vSimpleComponent {
 

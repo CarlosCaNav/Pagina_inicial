@@ -123,9 +123,18 @@
         width: proyecto.tamanioX * 100 + 'vw',
         'border-radius': proyecto.bordeRadio + '%',
         transition: proyecto.sTransicion + 's',
-        'background-image': proyecto.url
+        'background-image': proyecto.url,
       }"
-    ></div>
+    >
+    <youtube-player [height]="this.posicionService.videoHeight" [width]="this.posicionService.videoWidth" videoId="dQw4w9WgXcQ" 
+    *ngIf="proyecto === posicionService.proyectos[0] && this.posicionService.proyectoActual === 0"
+    style="position: absolute; z-index: 9;"
+    ></youtube-player>
+
+  </div>
+  <!-- excepción para el vídeo del juego de mesa --><!-- 
+  <youtube-player videoId="dQw4w9WgXcQ" *ngIf="this.posicionService.proyectoActual === 0" style="position: absolute; z-index: 9;"></youtube-player>
+ -->
   </div>
 
   <!-- 
@@ -145,33 +154,47 @@
       transition: posicionService.posicionTextos.velocidad + 's'
     }"
   >
-  <div *ngIf="this.posicionService.proyectoActual == 0">
-    <a href="https://que-comemos.onrender.com/" class="titulo"
-      >¿QuéComemos?</a
-    >
-    <p>
-      <span style="color: red;">¡Proyecto en desarrollo temprano!</span>
-      <br />
-        QuéComemos es una aplicación que te ayudará a decidir qué comer. <br /> 
-        Puedes crear y eliminar tus propios platos, así como guardar tu configuración personal en local y próximamente en la nube.
-    </p>
+    <div *ngIf="this.posicionService.proyectoActual == 0">
+      <a href="https://mesacompilado.onrender.com/" class="titulo"
+        >Juego de mesa</a
+      >
+      <p style="font-size: x-large">
+        Por afición, he decidido crear mi propio juego de mesa guiado por una
+        aplicación web. El zombicide es un juego que me gusta mucho. Miras las
+        instrucciones, construyes el mapa, colocas los enemigos y empiezas a
+        jugar. Pero ¿Y si no supieras cómo es el mapa al empezar si no que lo
+        vas descubriendo? Y si los enemigos se van creando y moviéndose aunque
+        no los veas y en cada esquina tuvieras la incertidumbre de qué hay al
+        otro lado?
+      </p>
+    </div>
 
-  </div>
-
-  <div *ngIf="this.posicionService.proyectoActual == 1">
-    <a href="https://escaperoom-15o1.onrender.com/" class="titulo"
-      >Escape Room</a
-    >
-    <p>
-      En este proyecto tendrás que investigar una habitación para poder
-      descubrir la clave y escapar. <br />
-      <br />
-      ¿Estás preparado?
-    </p>
-
-  </div>
+    <div *ngIf="this.posicionService.proyectoActual == 1">
+      <a href="https://que-comemos.onrender.com/" class="titulo"
+        >¿QuéComemos?</a
+      >
+      <p>
+        <span style="color: red">¡Proyecto en desarrollo temprano!</span>
+        <br />
+        QuéComemos es una aplicación que te ayudará a decidir qué comer. <br />
+        Puedes crear y eliminar tus propios platos, así como guardar tu
+        configuración personal en local y próximamente en la nube.
+      </p>
+    </div>
 
     <div *ngIf="this.posicionService.proyectoActual == 2">
+      <a href="https://escaperoom-15o1.onrender.com/" class="titulo"
+        >Escape Room</a
+      >
+      <p>
+        En este proyecto tendrás que investigar una habitación para poder
+        descubrir la clave y escapar. <br />
+        <br />
+        ¿Estás preparado?
+      </p>
+    </div>
+
+    <div *ngIf="this.posicionService.proyectoActual == 3">
       <a href="https://pokeapi-w9mo.onrender.com/" class="titulo"
         >Cuestionario pokemons en peligro</a
       >
@@ -191,7 +214,7 @@
       </p>
     </div>
 
-    <div *ngIf="this.posicionService.proyectoActual == 3">
+    <div *ngIf="this.posicionService.proyectoActual == 4">
       <a class="titulo" href="https://luces-pentaculo-c.onrender.com/"
         >Rompecabezas</a
       >
@@ -203,7 +226,7 @@
       </p>
     </div>
 
-    <div *ngIf="this.posicionService.proyectoActual == 4">
+    <div *ngIf="this.posicionService.proyectoActual == 5">
       <a href="https://rol-web-c.onrender.com/" class="titulo"
         >Toma de decisiones</a
       >

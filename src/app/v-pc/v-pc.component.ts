@@ -1,17 +1,17 @@
 import { NgFor, NgIf, NgStyle, NgClass } from '@angular/common';
-import { Component, HostListener } from '@angular/core';
-import { AutorretratoComponent } from '../autorretrato/autorretrato.component';/* 
-import { RouterOutlet } from '@angular/router'; */
+import { Component, HostListener} from '@angular/core';
+import { AutorretratoComponent } from '../autorretrato/autorretrato.component';
 import { PosicionService } from '../posicion.service';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
+import { YouTubePlayerModule } from '@angular/youtube-player';
 
 @Component({
-  selector: 'app-v-pc',
-  standalone: true,
-  imports: [AutorretratoComponent, NgStyle, NgFor, NgIf, NgClass,],
-  templateUrl: './v-pc.component.html',
-  styleUrl: './v-pc.component.css'
+    selector: 'app-v-pc',
+    standalone: true,
+    imports: [NgStyle, NgFor, NgIf, NgClass, AutorretratoComponent, YouTubePlayerModule],
+    templateUrl: './v-pc.component.html',
+    styleUrl: './v-pc.component.css'
 })
 export class VPcComponent {
 
@@ -123,7 +123,8 @@ export class VPcComponent {
       this.posicionService.autorretrato.escala = 0.0;
       this.posicionService.autorretrato.x = -0.4;
 
-      window.open(this.posicionService.urlProyectos[this.posicionService.proyectoActual], "_self")
+      if(id != 0){ //esto lo hago para que pueda darle al vídeo de youtube
+      window.open(this.posicionService.urlProyectos[this.posicionService.proyectoActual], "_self")}
     }
     else {
 
@@ -154,7 +155,7 @@ export class VPcComponent {
         this.posicionService.proyectos[id].tamanioX = this.posicionService.tamanioPorDefectoImagen; /* 45 */
         this.posicionService.proyectos[id].tamanioY = this.posicionService.tamanioPorDefectoImagen - 0.05;
         this.posicionService.proyectos[id].bordeRadio = 5;
-        this.location.go('/#/proyectos')
+        this.location.go('/#/proyectos');
         this.ReestrablecerAutorretrato()
       }
       else if (id == 99) {/* inicio */
