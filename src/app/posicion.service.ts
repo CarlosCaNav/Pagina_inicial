@@ -39,9 +39,9 @@ export class PosicionService {
   posicionTextos = { x: 0.6, y: 0.6, escala: 0, velocidad: 0 };
   presentacion = { x: 0.6, y: 0.6, escala: 0, velocidad: 0 };
 
-  nombreProyectos = ["Juego de mesa", "¿QuéComemos?", "escapeRoom", "pokeApi", "pentaculo", "rol"];
-  urlImagenes = ["url('/proyectos/mesa.jpg'", "url('/proyectos/quecomemos.jpg'", "url('/proyectos/escapeRoom.jpg'", "url('/proyectos/pokeApi.jpg'", "url('/proyectos/pentaculo.jpg'", "url('/proyectos/rol.jpg'"];
-  urlProyectos = ['https://mesacompilado.onrender.com/', 'https://que-comemos.onrender.com/', 'https://escaperoom-15o1.onrender.com', 'https://pokeapi-w9mo.onrender.com/', 'https://luces-pentaculo-c.onrender.com', 'https://rol-web-c.onrender.com']
+  nombreProyectos = ["Juego de mesa", "Unsplash Miniaturas", "escapeRoom", "pokeApi", "pentaculo", "rol"];
+  urlImagenes = ["url('/proyectos/mesa.jpg'", "url('/proyectos/unsplash.jpg'", "url('/proyectos/escapeRoom.jpg'", "url('/proyectos/pokeApi.jpg'", "url('/proyectos/pentaculo.jpg'", "url('/proyectos/rol.jpg'"];
+  urlProyectos = ['https://mesacompilado.onrender.com/', 'https://unsplash-compilado.onrender.com', 'https://escaperoom-15o1.onrender.com', 'https://pokeapi-w9mo.onrender.com/', 'https://luces-pentaculo-c.onrender.com', 'https://rol-web-c.onrender.com']
   proyectos: proyecto[] = [];
 
   tamanioPorDefectoImagen: number = 0.2;

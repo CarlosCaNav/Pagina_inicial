@@ -133,8 +133,8 @@ export class VPcComponent {
       this.posicionService.deteccionPuntero = false; //quiero que los ojos miren al proyecto
       this.posicionService.pupila.xd = 1.5;
       this.posicionService.pupila.yd = 1.5;
-      this.posicionService.pupila.xi = -0.5;
-      this.posicionService.pupila.yi = 3;
+      this.posicionService.pupila.xi = -2.5;
+      this.posicionService.pupila.yi = 4;
 
       const sTiempoTexto: number = 0.2;
 
@@ -210,7 +210,7 @@ export class VPcComponent {
 
       setTimeout(() => {
         this.posicionService.deteccionPuntero = true; //quiero que los ojos miren al puntero
-      }, 2000)
+      }, 600)
 
       this.posicionService.animacionActual = "esquiva"
     }
